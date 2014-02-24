@@ -26,5 +26,15 @@
 + (IntroScene *)scene;
 - (id)init;
 
+@property (nonatomic, weak) CCSprite *start;
+@property (nonatomic, weak) CCSprite *score;
+@property (nonatomic, weak) CCSprite *title;
+@property (nonatomic, weak) CCSprite *bird;
+
+@property (nonatomic, weak) CCSprite *copyright;
+
+@property (nonatomic, weak) CCSprite *background;
+@property (nonatomic, weak) CCSprite *ground;
+
 // -----------------------------------------------------------------------
 @end

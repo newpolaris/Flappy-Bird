@@ -35,9 +35,45 @@
     self = [super init];
     if (!self) return(nil);
     
-    // Create a colored background (Dark Grey)
-    CCNodeColor *background = [CCNodeColor nodeWithColor:[CCColor colorWithRed:0.2f green:0.2f blue:0.2f alpha:1.0f]];
-    [self addChild:background];
+    // 스프라이트 프레임 캐쉬에 스프라이트를 저장한다.
+    [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:@"FlappyBird.plist"];
+    
+    // window size get!
+    CGSize winSize = [[CCDirector sharedDirector] viewSize];
+    
+    // 전체 백그라운드를 설정한다.
+    _background = [CCSprite spriteWithImageNamed:@"background.png"];
+    _background.anchorPoint = CGPointZero;
+    [self addChild:_background z:-2];
+    
+    float scale = winSize.width/_background.contentSize.width;
+    
+    // 가로 화면에 맞춰서 늘린다.
+    [_background setScale:scale];
+    
+    // 백그라운드 앞의 땅을 설정한다.
+    _ground = [CCSprite spriteWithImageNamed:@"ground.png"];
+    _ground.anchorPoint = CGPointZero;
+    
+    // 가로 화면에 맞춰서 늘린다.
+    [_ground setScale:scale];
+    [self addChild:_ground z:-1];
+    
+    _copyright = [CCSprite spriteWithImageNamed:@"logo.png"];
+    _copyright.anchorPoint = ccp(0.5, 0);
+    [_copyright setScale:scale];
+    _copyright.position = ccp(winSize.width/2, winSize.height*0.18);
+    [self addChild:_copyright z:0];
+    
+    _start = [CCSprite spriteWithImageNamed:@"start.png"];
+    [self addChild:_start];
+    
+    _score = [CCSprite spriteWithImageNamed:@"score.png"];
+    [self addChild:_score];
+    
+    _title = [CCSprite spriteWithImageNamed:@"title.png"];
+    [self addChild:_title];
+    
     
     // Hello world
     CCLabelTTF *label = [CCLabelTTF labelWithString:@"Hello World" fontName:@"Chalkduster" fontSize:36.0f];

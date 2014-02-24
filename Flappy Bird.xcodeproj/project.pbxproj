@@ -224,6 +224,11 @@
 		661E369F18B9D39E006EF8DA /* newton-ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 661E369E18B9D39E006EF8DA /* newton-ipad.png */; };
 		661E36A118B9D39E006EF8DA /* newton.plist in Resources */ = {isa = PBXBuildFile; fileRef = 661E36A018B9D39E006EF8DA /* newton.plist */; };
 		661E36A318B9D39E006EF8DA /* newton.png in Resources */ = {isa = PBXBuildFile; fileRef = 661E36A218B9D39E006EF8DA /* newton.png */; };
+		661E36B018BA2A85006EF8DA /* FlappyBird.pvr.ccz in Resources */ = {isa = PBXBuildFile; fileRef = 661E36AC18BA2A85006EF8DA /* FlappyBird.pvr.ccz */; };
+		661E36B118BA2A85006EF8DA /* FlappyBirdOutLine.pvr.ccz in Resources */ = {isa = PBXBuildFile; fileRef = 661E36AD18BA2A85006EF8DA /* FlappyBirdOutLine.pvr.ccz */; };
+		661E36B218BA2A85006EF8DA /* FlappyBird.plist in Resources */ = {isa = PBXBuildFile; fileRef = 661E36AE18BA2A85006EF8DA /* FlappyBird.plist */; };
+		661E36B318BA2A85006EF8DA /* FlappyBirdOutline.plist in Resources */ = {isa = PBXBuildFile; fileRef = 661E36AF18BA2A85006EF8DA /* FlappyBirdOutline.plist */; };
+		661E36B618BA4345006EF8DA /* Bird.mm in Sources */ = {isa = PBXBuildFile; fileRef = 661E36B518BA4345006EF8DA /* Bird.mm */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -682,6 +687,12 @@
 		661E369E18B9D39E006EF8DA /* newton-ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "newton-ipad.png"; path = "Resources/newton-ipad.png"; sourceTree = "<group>"; };
 		661E36A018B9D39E006EF8DA /* newton.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = newton.plist; path = Resources/newton.plist; sourceTree = "<group>"; };
 		661E36A218B9D39E006EF8DA /* newton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = newton.png; path = Resources/newton.png; sourceTree = "<group>"; };
+		661E36AC18BA2A85006EF8DA /* FlappyBird.pvr.ccz */ = {isa = PBXFileReference; lastKnownFileType = file; name = FlappyBird.pvr.ccz; path = Resources/FlappyBird.pvr.ccz; sourceTree = "<group>"; };
+		661E36AD18BA2A85006EF8DA /* FlappyBirdOutLine.pvr.ccz */ = {isa = PBXFileReference; lastKnownFileType = file; name = FlappyBirdOutLine.pvr.ccz; path = Resources/FlappyBirdOutLine.pvr.ccz; sourceTree = "<group>"; };
+		661E36AE18BA2A85006EF8DA /* FlappyBird.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = FlappyBird.plist; path = Resources/FlappyBird.plist; sourceTree = "<group>"; };
+		661E36AF18BA2A85006EF8DA /* FlappyBirdOutline.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = FlappyBirdOutline.plist; path = Resources/FlappyBirdOutline.plist; sourceTree = "<group>"; };
+		661E36B418BA4345006EF8DA /* Bird.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; path = Bird.h; sourceTree = "<group>"; };
+		661E36B518BA4345006EF8DA /* Bird.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Bird.mm; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -753,6 +764,10 @@
 		661E33EF18B9D39C006EF8DA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				661E36AC18BA2A85006EF8DA /* FlappyBird.pvr.ccz */,
+				661E36AD18BA2A85006EF8DA /* FlappyBirdOutLine.pvr.ccz */,
+				661E36AE18BA2A85006EF8DA /* FlappyBird.plist */,
+				661E36AF18BA2A85006EF8DA /* FlappyBirdOutline.plist */,
 				661E33F018B9D39C006EF8DA /* Default.png */,
 				661E33F218B9D39C006EF8DA /* Default@2x.png */,
 				661E33F418B9D39C006EF8DA /* Default-568h@2x.png */,
@@ -1584,6 +1599,8 @@
 				661E368418B9D39E006EF8DA /* IntroScene.h */,
 				661E368518B9D39E006EF8DA /* IntroScene.m */,
 				661E368718B9D39E006EF8DA /* NewtonConstants.h */,
+				661E36B418BA4345006EF8DA /* Bird.h */,
+				661E36B518BA4345006EF8DA /* Bird.mm */,
 				661E368818B9D39E006EF8DA /* NewtonScene.h */,
 				661E368918B9D39E006EF8DA /* NewtonScene.m */,
 				661E368B18B9D39E006EF8DA /* NewtonSphere.h */,
@@ -1696,6 +1713,10 @@
 				661E369F18B9D39E006EF8DA /* newton-ipad.png in Resources */,
 				661E36A118B9D39E006EF8DA /* newton.plist in Resources */,
 				661E36A318B9D39E006EF8DA /* newton.png in Resources */,
+				661E36B018BA2A85006EF8DA /* FlappyBird.pvr.ccz in Resources */,
+				661E36B118BA2A85006EF8DA /* FlappyBirdOutLine.pvr.ccz in Resources */,
+				661E36B218BA2A85006EF8DA /* FlappyBird.plist in Resources */,
+				661E36B318BA2A85006EF8DA /* FlappyBirdOutline.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1848,6 +1869,7 @@
 				661E368D18B9D39E006EF8DA /* NewtonSphere.m in Sources */,
 				661E369018B9D39E006EF8DA /* LightBulb.m in Sources */,
 				661E369318B9D39E006EF8DA /* Rope.m in Sources */,
+				661E36B618BA4345006EF8DA /* Bird.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
