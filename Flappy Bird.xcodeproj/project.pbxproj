@@ -229,6 +229,7 @@
 		661E36B218BA2A85006EF8DA /* FlappyBird.plist in Resources */ = {isa = PBXBuildFile; fileRef = 661E36AE18BA2A85006EF8DA /* FlappyBird.plist */; };
 		661E36B318BA2A85006EF8DA /* FlappyBirdOutline.plist in Resources */ = {isa = PBXBuildFile; fileRef = 661E36AF18BA2A85006EF8DA /* FlappyBirdOutline.plist */; };
 		661E36B618BA4345006EF8DA /* Bird.mm in Sources */ = {isa = PBXBuildFile; fileRef = 661E36B518BA4345006EF8DA /* Bird.mm */; };
+		661E36B918BB9192006EF8DA /* Title.m in Sources */ = {isa = PBXBuildFile; fileRef = 661E36B818BB9192006EF8DA /* Title.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -691,8 +692,10 @@
 		661E36AD18BA2A85006EF8DA /* FlappyBirdOutLine.pvr.ccz */ = {isa = PBXFileReference; lastKnownFileType = file; name = FlappyBirdOutLine.pvr.ccz; path = Resources/FlappyBirdOutLine.pvr.ccz; sourceTree = "<group>"; };
 		661E36AE18BA2A85006EF8DA /* FlappyBird.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = FlappyBird.plist; path = Resources/FlappyBird.plist; sourceTree = "<group>"; };
 		661E36AF18BA2A85006EF8DA /* FlappyBirdOutline.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = FlappyBirdOutline.plist; path = Resources/FlappyBirdOutline.plist; sourceTree = "<group>"; };
-		661E36B418BA4345006EF8DA /* Bird.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; path = Bird.h; sourceTree = "<group>"; };
+		661E36B418BA4345006EF8DA /* Bird.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bird.h; sourceTree = "<group>"; };
 		661E36B518BA4345006EF8DA /* Bird.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Bird.mm; sourceTree = "<group>"; };
+		661E36B718BB9192006EF8DA /* Title.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Title.h; sourceTree = "<group>"; };
+		661E36B818BB9192006EF8DA /* Title.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Title.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1609,6 +1612,8 @@
 				661E368F18B9D39E006EF8DA /* LightBulb.m */,
 				661E369118B9D39E006EF8DA /* Rope.h */,
 				661E369218B9D39E006EF8DA /* Rope.m */,
+				661E36B718BB9192006EF8DA /* Title.h */,
+				661E36B818BB9192006EF8DA /* Title.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -1870,6 +1875,7 @@
 				661E369018B9D39E006EF8DA /* LightBulb.m in Sources */,
 				661E369318B9D39E006EF8DA /* Rope.m in Sources */,
 				661E36B618BA4345006EF8DA /* Bird.mm in Sources */,
+				661E36B918BB9192006EF8DA /* Title.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2067,6 +2073,7 @@
 				661E36A818B9D39E006EF8DA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		661E36A918B9D39E006EF8DA /* Build configuration list for PBXNativeTarget "Flappy Bird" */ = {
 			isa = XCConfigurationList;
@@ -2075,6 +2082,7 @@
 				661E36AB18B9D39E006EF8DA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

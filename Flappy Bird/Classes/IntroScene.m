@@ -11,6 +11,7 @@
 #import "IntroScene.h"
 #import "HelloWorldScene.h"
 #import "NewtonScene.h"
+#import "Bird.h"
 
 // -----------------------------------------------------------------------
 #pragma mark - IntroScene
@@ -74,6 +75,9 @@
     _title = [CCSprite spriteWithImageNamed:@"title.png"];
     [self addChild:_title];
     
+    _bird = [Bird node];
+    _bird.position = ccp(winSize.width/2, winSize.height/2);
+    [self addChild:_bird];
     
     // Hello world
     CCLabelTTF *label = [CCLabelTTF labelWithString:@"Hello World" fontName:@"Chalkduster" fontSize:36.0f];

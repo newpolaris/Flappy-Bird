@@ -12,17 +12,26 @@
 @implementation Bird
 
 - (id)init {
-    self = [CCSprite node];
+    self = [super initWithImageNamed:@"bird_normal.png"];
     if (!self) return nil;
     
-    CCSpriteFrame *bird0 = [[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:@"bird_normal.png"];
-    CCSpriteFrame *bird1 = [[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:@"bird_up_0.png"];
-    CCSpriteFrame *bird2 = [[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:@"bird_up_1.png"];
-
-    NSArray *frames = [NSArray arrayWithObjects:bird0, bird1, bird2, nil];
+    NSArray *birdSpriteNames = [NSArray arrayWithObjects:
+                               @"bird_normal.png",
+                               @"bird_up_0.png",
+                               @"bird_up_1.png",
+                               nil];
     
-    _animation = [CCAnimation animationWithSpriteFrames:frames delay:0.2];
-    _action = [CCaction ]
+    NSMutableArray *frames = [[NSMutableArray alloc] init];
+    
+    for (id object in birdSpriteNames)
+        [frames addObject:[[CCSpriteFrameCache sharedSpriteFrameCache]
+                          spriteFrameByName:object]];
+    
+    CCAnimation *animation = [CCAnimation animationWithSpriteFrames:frames delay:0.2];
+    
+    [self runAction:[CCActionRepeatForever actionWithAction
+                     :[CCActionAnimate actionWithAnimation:animation]]];
+    
     return self;
 }
 @end

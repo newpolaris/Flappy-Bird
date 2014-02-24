@@ -12,6 +12,4 @@
 @interface Bird : CCSprite {
 }
 
-@property (nonatomic, weak) CCAnimation *animation;
-
 @end
