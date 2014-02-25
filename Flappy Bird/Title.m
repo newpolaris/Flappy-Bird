@@ -18,9 +18,9 @@
     if (!self) return nil;
     
     // window size get!
-    CGSize winSize = [[CCDirector sharedDirector] viewSize];
+    CGSize winSize = [[CCDirector sharedDirector] winSize];
     
-    CCSprite* titleName = [CCSprite spriteWithImageNamed:@"title.png"];
+    CCSprite* titleName = [CCSprite spriteWithSpriteFrameName:@"title.png"];
     // 왼쪽에 Gap만 더하게 만들기 위해
     titleName.anchorPoint = ccp(0, 0.5);
     [titleName setScale:gScale];
@@ -39,11 +39,11 @@
     [self addChild:bird];
     [self addChild:titleName];
     
-    CCAction *moveUpward = [CCActionMoveBy actionWithDuration:0.7 position:ccp(0, gScale*5)];
-    CCAction *moveDownward = [CCActionMoveBy actionWithDuration:0.7 position:ccp(0, -gScale*5)];
-    CCAction *sequenceAction = [CCActionSequence actions: moveUpward, moveDownward, nil];
+    CCAction *moveUpward = [CCMoveBy actionWithDuration:0.7 position:ccp(0, gScale*5)];
+    CCAction *moveDownward = [CCMoveBy actionWithDuration:0.7 position:ccp(0, -gScale*5)];
+    CCAction *sequenceAction = [CCSequence actions: moveUpward, moveDownward, nil];
 
-    [self runAction:[CCActionRepeatForever actionWithAction:sequenceAction]];
+    [self runAction:[CCRepeatForever actionWithAction:sequenceAction]];
                      
     
     return self;

@@ -12,7 +12,7 @@
 @implementation Bird
 
 - (id)init {
-    self = [super initWithImageNamed:@"bird_normal.png"];
+    self = [super initWithSpriteFrameName:@"bird_normal.png"];
     if (!self) return nil;
     
     NSArray *birdSpriteNames = [NSArray arrayWithObjects:
@@ -29,8 +29,8 @@
     
     CCAnimation *animation = [CCAnimation animationWithSpriteFrames:frames delay:0.2];
     
-    [self runAction:[CCActionRepeatForever actionWithAction
-                     :[CCActionAnimate actionWithAnimation:animation]]];
+    [self runAction:[CCRepeatForever actionWithAction
+                     :[CCAnimate actionWithAnimation:animation]]];
     
     return self;
 }
