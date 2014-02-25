@@ -178,6 +178,7 @@
 		661E38EF18BCDEEF006EF8DA /* Bird.mm in Sources */ = {isa = PBXBuildFile; fileRef = 661E38EE18BCDEEE006EF8DA /* Bird.mm */; };
 		661E38F418BCDEFB006EF8DA /* GlobalVariable.m in Sources */ = {isa = PBXBuildFile; fileRef = 661E38F118BCDEFA006EF8DA /* GlobalVariable.m */; };
 		661E38F518BCDEFB006EF8DA /* Title.m in Sources */ = {isa = PBXBuildFile; fileRef = 661E38F318BCDEFB006EF8DA /* Title.m */; };
+		66EB55B418BD0FA800833542 /* Ground.m in Sources */ = {isa = PBXBuildFile; fileRef = 66EB55B318BD0FA800833542 /* Ground.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -530,6 +531,8 @@
 		661E38F118BCDEFA006EF8DA /* GlobalVariable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GlobalVariable.m; sourceTree = "<group>"; };
 		661E38F218BCDEFA006EF8DA /* Title.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Title.h; sourceTree = "<group>"; };
 		661E38F318BCDEFB006EF8DA /* Title.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Title.m; sourceTree = "<group>"; };
+		66EB55B218BD0FA800833542 /* Ground.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Ground.h; sourceTree = "<group>"; };
+		66EB55B318BD0FA800833542 /* Ground.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Ground.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -605,6 +608,8 @@
 				661E36DE18BCDA82006EF8DA /* Resources */,
 				661E36F618BCDA82006EF8DA /* libs */,
 				661E38C618BCDA85006EF8DA /* Supporting Files */,
+				66EB55B218BD0FA800833542 /* Ground.h */,
+				66EB55B318BD0FA800833542 /* Ground.m */,
 			);
 			path = "Flappy Bird";
 			sourceTree = "<group>";
@@ -1322,6 +1327,7 @@
 				661E38EF18BCDEEF006EF8DA /* Bird.mm in Sources */,
 				661E38F418BCDEFB006EF8DA /* GlobalVariable.m in Sources */,
 				661E38F518BCDEFB006EF8DA /* Title.m in Sources */,
+				66EB55B418BD0FA800833542 /* Ground.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

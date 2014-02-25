@@ -10,6 +10,7 @@
 // Import the interfaces
 #import "Bird.h"
 #import "Title.h"
+#import "Ground.h"
 #import "GlobalVariable.h"
 
 #import "TitleLayer.h"
@@ -40,6 +41,10 @@
     // 스프라이트 프레임 캐쉬에 스프라이트를 저장한다.
     [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:@"FlappyBird.plist"];
     
+    // 전체 백그라운드를 설정한다.
+    _background = [CCSprite spriteWithSpriteFrameName:@"background.png"];
+    _background.anchorPoint = CGPointZero;
+    
     // window size get
     CGSize winSize = [[CCDirector sharedDirector] winSize];
     float scale = winSize.width/_background.contentSize.width;
@@ -47,14 +52,13 @@
     // 으아아 전역 변수를 쓰고 말았어 으아아
     gScale = scale;
     
-    // 전체 백그라운드를 설정한다.
-    _background = [CCSprite spriteWithSpriteFrameName:@"background.png"];
-    _background.anchorPoint = CGPointZero;
-    
     // 가로 화면에 맞춰서 늘린다.
     [_background setScale:scale];
     
     [self addChild:_background z:-2];
+    
+    CCLayer *ground = [Ground node];
+    [self addChild:ground z:-1];
     
     // 백그라운드 앞의 땅을 설정한다.
     _ground = [CCSprite spriteWithSpriteFrameName:@"ground.png"];
@@ -62,7 +66,7 @@
     
     // 가로 화면에 맞춰서 늘린다.
     [_ground setScale:scale];
-    [self addChild:_ground z:-1];
+    [self addChild:_ground z:-3];
     
     _copyright = [CCSprite spriteWithSpriteFrameName:@"logo.png"];
     _copyright.anchorPoint = ccp(0.5, 0);
@@ -74,7 +78,6 @@
     [self addChild:_copyright z:0];
     
     CCSprite *startMenuNormal = [CCSprite spriteWithSpriteFrameName:@"start.png"];
-    
     CCSprite *startMenuSelect = [CCSprite spriteWithSpriteFrameName:@"start.png"];
     startMenuSelect.color = ccc3(128, 128, 128);
 
@@ -95,7 +98,6 @@
     scoreMenu.scale = gScale;
     
     CCMenu *menu = [CCMenu menuWithItems: startMenu, scoreMenu, nil];
-    
     float padding = (winSize.width - [startMenuNormal boundingBox].size.width*2)/3;
     
     // 수평으로 배치.
@@ -109,7 +111,6 @@
     _title = [Title node];
     float titleHeight = (winSize.height+[_ground boundingBox].size.height)/2;
     _title.position = ccp(0, titleHeight);
-    NSAssert(_title!=nil, @"Invalid title sprite for sprite");
     [self addChild:_title z:1];
     
     // done
