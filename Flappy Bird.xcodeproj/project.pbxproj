@@ -180,7 +180,7 @@
 		661E38F518BCDEFB006EF8DA /* Title.m in Sources */ = {isa = PBXBuildFile; fileRef = 661E38F318BCDEFB006EF8DA /* Title.m */; };
 		6624ACFB18BE3E0A00A3AEA8 /* BackgroundLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 6624ACFA18BE3E0A00A3AEA8 /* BackgroundLayer.m */; };
 		66EB55B418BD0FA800833542 /* GroundLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 66EB55B318BD0FA800833542 /* GroundLayer.m */; };
-		66EB55B718BE396400833542 /* ReadyScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 66EB55B618BE396400833542 /* ReadyScene.m */; };
+		66EB55B718BE396400833542 /* GameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 66EB55B618BE396400833542 /* GameScene.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -537,8 +537,8 @@
 		6624ACFA18BE3E0A00A3AEA8 /* BackgroundLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BackgroundLayer.m; sourceTree = "<group>"; };
 		66EB55B218BD0FA800833542 /* GroundLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroundLayer.h; sourceTree = "<group>"; };
 		66EB55B318BD0FA800833542 /* GroundLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroundLayer.m; sourceTree = "<group>"; };
-		66EB55B518BE396400833542 /* ReadyScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReadyScene.h; sourceTree = "<group>"; };
-		66EB55B618BE396400833542 /* ReadyScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReadyScene.m; sourceTree = "<group>"; };
+		66EB55B518BE396400833542 /* GameScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameScene.h; sourceTree = "<group>"; };
+		66EB55B618BE396400833542 /* GameScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameScene.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -603,8 +603,8 @@
 				661E38F118BCDEFA006EF8DA /* GlobalVariable.m */,
 				661E38F218BCDEFA006EF8DA /* Title.h */,
 				661E38F318BCDEFB006EF8DA /* Title.m */,
-				66EB55B518BE396400833542 /* ReadyScene.h */,
-				66EB55B618BE396400833542 /* ReadyScene.m */,
+				66EB55B518BE396400833542 /* GameScene.h */,
+				66EB55B618BE396400833542 /* GameScene.m */,
 				661E38EE18BCDEEE006EF8DA /* Bird.mm */,
 				661E38E218BCDED1006EF8DA /* Bird.h */,
 				661E38E618BCDED3006EF8DA /* TitleLayer.h */,
@@ -1338,7 +1338,7 @@
 				661E38F418BCDEFB006EF8DA /* GlobalVariable.m in Sources */,
 				661E38F518BCDEFB006EF8DA /* Title.m in Sources */,
 				66EB55B418BD0FA800833542 /* GroundLayer.m in Sources */,
-				66EB55B718BE396400833542 /* ReadyScene.m in Sources */,
+				66EB55B718BE396400833542 /* GameScene.m in Sources */,
 				6624ACFB18BE3E0A00A3AEA8 /* BackgroundLayer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

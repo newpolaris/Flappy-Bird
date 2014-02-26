@@ -13,7 +13,7 @@
 #import "GroundLayer.h"
 #import "BackgroundLayer.h"
 #import "GlobalVariable.h"
-#import "ReadyScene.h"
+#import "GameScene.h"
 
 #import "TitleLayer.h"
 
@@ -78,7 +78,7 @@ enum {
     CCMenuItem *startMenu = [CCMenuItemImage itemWithNormalSprite:startMenuNormal
                                selectedSprite:startMenuSelect
                                         block:^(id sender) {
-        [[CCDirector sharedDirector] replaceScene:[ReadyScene node]];
+        [[CCDirector sharedDirector] replaceScene:[GameScene node]];
                                         }];
     startMenu.scale = gScale;
     
