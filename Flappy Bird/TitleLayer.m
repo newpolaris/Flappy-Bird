@@ -59,7 +59,7 @@
     
     CCLayer *ground = [Ground node];
     [self addChild:ground z:-1];
-    
+
     // 백그라운드 앞의 땅을 설정한다.
     _ground = [CCSprite spriteWithSpriteFrameName:@"ground.png"];
     _ground.anchorPoint = CGPointZero;
