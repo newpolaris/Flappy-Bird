@@ -169,18 +169,16 @@
 		661E38C918BCDA85006EF8DA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 661E38C818BCDA85006EF8DA /* main.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		661E38CC18BCDA85006EF8DA /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 661E38CB18BCDA85006EF8DA /* AppDelegate.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		661E38D218BCDA85006EF8DA /* IntroLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 661E38D118BCDA85006EF8DA /* IntroLayer.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		661E38D418BCDA85006EF8DA /* grossini_dance_atlas.png in Resources */ = {isa = PBXBuildFile; fileRef = 661E38D318BCDA85006EF8DA /* grossini_dance_atlas.png */; };
 		661E38DE18BCDE57006EF8DA /* FlappyBird.pvr.ccz in Resources */ = {isa = PBXBuildFile; fileRef = 661E38DA18BCDE57006EF8DA /* FlappyBird.pvr.ccz */; };
-		661E38DF18BCDE57006EF8DA /* FlappyBirdOutLine.pvr.ccz in Resources */ = {isa = PBXBuildFile; fileRef = 661E38DB18BCDE57006EF8DA /* FlappyBirdOutLine.pvr.ccz */; };
 		661E38E018BCDE57006EF8DA /* FlappyBird.plist in Resources */ = {isa = PBXBuildFile; fileRef = 661E38DC18BCDE57006EF8DA /* FlappyBird.plist */; };
-		661E38E118BCDE57006EF8DA /* FlappyBirdOutline.plist in Resources */ = {isa = PBXBuildFile; fileRef = 661E38DD18BCDE57006EF8DA /* FlappyBirdOutline.plist */; };
 		661E38EC18BCDED4006EF8DA /* TitleLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 661E38E718BCDED3006EF8DA /* TitleLayer.m */; };
 		661E38EF18BCDEEF006EF8DA /* Bird.mm in Sources */ = {isa = PBXBuildFile; fileRef = 661E38EE18BCDEEE006EF8DA /* Bird.mm */; };
 		661E38F418BCDEFB006EF8DA /* GlobalVariable.m in Sources */ = {isa = PBXBuildFile; fileRef = 661E38F118BCDEFA006EF8DA /* GlobalVariable.m */; };
 		661E38F518BCDEFB006EF8DA /* Title.m in Sources */ = {isa = PBXBuildFile; fileRef = 661E38F318BCDEFB006EF8DA /* Title.m */; };
 		6624ACFB18BE3E0A00A3AEA8 /* BackgroundLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 6624ACFA18BE3E0A00A3AEA8 /* BackgroundLayer.m */; };
+		6624ACFE18BF5A1C00A3AEA8 /* GameLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 6624ACFD18BF5A1C00A3AEA8 /* GameLayer.m */; };
+		6660A3E618BF5D7400309F2F /* GameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 6660A3E518BF5D7400309F2F /* GameScene.m */; };
 		66EB55B418BD0FA800833542 /* GroundLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 66EB55B318BD0FA800833542 /* GroundLayer.m */; };
-		66EB55B718BE396400833542 /* GameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 66EB55B618BE396400833542 /* GameScene.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -520,11 +518,8 @@
 		661E38CB18BCDA85006EF8DA /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		661E38D018BCDA85006EF8DA /* IntroLayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IntroLayer.h; sourceTree = "<group>"; };
 		661E38D118BCDA85006EF8DA /* IntroLayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IntroLayer.m; sourceTree = "<group>"; };
-		661E38D318BCDA85006EF8DA /* grossini_dance_atlas.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = grossini_dance_atlas.png; path = Resources/grossini_dance_atlas.png; sourceTree = "<group>"; };
 		661E38DA18BCDE57006EF8DA /* FlappyBird.pvr.ccz */ = {isa = PBXFileReference; lastKnownFileType = file; name = FlappyBird.pvr.ccz; path = Resources/FlappyBird.pvr.ccz; sourceTree = "<group>"; };
-		661E38DB18BCDE57006EF8DA /* FlappyBirdOutLine.pvr.ccz */ = {isa = PBXFileReference; lastKnownFileType = file; name = FlappyBirdOutLine.pvr.ccz; path = Resources/FlappyBirdOutLine.pvr.ccz; sourceTree = "<group>"; };
 		661E38DC18BCDE57006EF8DA /* FlappyBird.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = FlappyBird.plist; path = Resources/FlappyBird.plist; sourceTree = "<group>"; };
-		661E38DD18BCDE57006EF8DA /* FlappyBirdOutline.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = FlappyBirdOutline.plist; path = Resources/FlappyBirdOutline.plist; sourceTree = "<group>"; };
 		661E38E218BCDED1006EF8DA /* Bird.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bird.h; sourceTree = "<group>"; };
 		661E38E618BCDED3006EF8DA /* TitleLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = TitleLayer.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		661E38E718BCDED3006EF8DA /* TitleLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = TitleLayer.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
@@ -535,10 +530,12 @@
 		661E38F318BCDEFB006EF8DA /* Title.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Title.m; sourceTree = "<group>"; };
 		6624ACF918BE3E0A00A3AEA8 /* BackgroundLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BackgroundLayer.h; sourceTree = "<group>"; };
 		6624ACFA18BE3E0A00A3AEA8 /* BackgroundLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BackgroundLayer.m; sourceTree = "<group>"; };
+		6624ACFC18BF5A1C00A3AEA8 /* GameLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameLayer.h; sourceTree = "<group>"; };
+		6624ACFD18BF5A1C00A3AEA8 /* GameLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameLayer.m; sourceTree = "<group>"; };
+		6660A3E418BF5D7400309F2F /* GameScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameScene.h; sourceTree = "<group>"; };
+		6660A3E518BF5D7400309F2F /* GameScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameScene.m; sourceTree = "<group>"; };
 		66EB55B218BD0FA800833542 /* GroundLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroundLayer.h; sourceTree = "<group>"; };
 		66EB55B318BD0FA800833542 /* GroundLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroundLayer.m; sourceTree = "<group>"; };
-		66EB55B518BE396400833542 /* GameScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameScene.h; sourceTree = "<group>"; };
-		66EB55B618BE396400833542 /* GameScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameScene.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -599,12 +596,16 @@
 		661E36DD18BCDA82006EF8DA /* Flappy Bird */ = {
 			isa = PBXGroup;
 			children = (
+				66EB55B218BD0FA800833542 /* GroundLayer.h */,
+				66EB55B318BD0FA800833542 /* GroundLayer.m */,
 				661E38F018BCDEFA006EF8DA /* GlobalVariable.h */,
 				661E38F118BCDEFA006EF8DA /* GlobalVariable.m */,
 				661E38F218BCDEFA006EF8DA /* Title.h */,
 				661E38F318BCDEFB006EF8DA /* Title.m */,
-				66EB55B518BE396400833542 /* GameScene.h */,
-				66EB55B618BE396400833542 /* GameScene.m */,
+				6660A3E418BF5D7400309F2F /* GameScene.h */,
+				6660A3E518BF5D7400309F2F /* GameScene.m */,
+				6624ACFC18BF5A1C00A3AEA8 /* GameLayer.h */,
+				6624ACFD18BF5A1C00A3AEA8 /* GameLayer.m */,
 				661E38EE18BCDEEE006EF8DA /* Bird.mm */,
 				661E38E218BCDED1006EF8DA /* Bird.h */,
 				661E38E618BCDED3006EF8DA /* TitleLayer.h */,
@@ -618,8 +619,6 @@
 				661E36DE18BCDA82006EF8DA /* Resources */,
 				661E36F618BCDA82006EF8DA /* libs */,
 				661E38C618BCDA85006EF8DA /* Supporting Files */,
-				66EB55B218BD0FA800833542 /* GroundLayer.h */,
-				66EB55B318BD0FA800833542 /* GroundLayer.m */,
 			);
 			path = "Flappy Bird";
 			sourceTree = "<group>";
@@ -628,9 +627,7 @@
 			isa = PBXGroup;
 			children = (
 				661E38DA18BCDE57006EF8DA /* FlappyBird.pvr.ccz */,
-				661E38DB18BCDE57006EF8DA /* FlappyBirdOutLine.pvr.ccz */,
 				661E38DC18BCDE57006EF8DA /* FlappyBird.plist */,
-				661E38DD18BCDE57006EF8DA /* FlappyBirdOutline.plist */,
 				661E36DF18BCDA82006EF8DA /* Default.png */,
 				661E36E118BCDA82006EF8DA /* Default@2x.png */,
 				661E36E318BCDA82006EF8DA /* Default-568h@2x.png */,
@@ -643,7 +640,6 @@
 				661E36F118BCDA82006EF8DA /* Icon@2x.png */,
 				661E36F318BCDA82006EF8DA /* Info.plist */,
 				661E36F418BCDA82006EF8DA /* iTunesArtwork */,
-				661E38D318BCDA85006EF8DA /* grossini_dance_atlas.png */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -1178,11 +1174,8 @@
 				661E36F218BCDA82006EF8DA /* Icon@2x.png in Resources */,
 				661E36F518BCDA82006EF8DA /* iTunesArtwork in Resources */,
 				661E384E18BCDA84006EF8DA /* ChangeLog in Resources */,
-				661E38D418BCDA85006EF8DA /* grossini_dance_atlas.png in Resources */,
 				661E38DE18BCDE57006EF8DA /* FlappyBird.pvr.ccz in Resources */,
-				661E38DF18BCDE57006EF8DA /* FlappyBirdOutLine.pvr.ccz in Resources */,
 				661E38E018BCDE57006EF8DA /* FlappyBird.plist in Resources */,
-				661E38E118BCDE57006EF8DA /* FlappyBirdOutline.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1338,8 +1331,9 @@
 				661E38F418BCDEFB006EF8DA /* GlobalVariable.m in Sources */,
 				661E38F518BCDEFB006EF8DA /* Title.m in Sources */,
 				66EB55B418BD0FA800833542 /* GroundLayer.m in Sources */,
-				66EB55B718BE396400833542 /* GameScene.m in Sources */,
 				6624ACFB18BE3E0A00A3AEA8 /* BackgroundLayer.m in Sources */,
+				6624ACFE18BF5A1C00A3AEA8 /* GameLayer.m in Sources */,
+				6660A3E618BF5D7400309F2F /* GameScene.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

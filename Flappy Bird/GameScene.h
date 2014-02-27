@@ -1,5 +1,5 @@
 //
-//  Ready.h
+//  GameScence.h
 //  Flappy Bird
 //
 //  Created by newpolaris on 2/27/14.
@@ -9,13 +9,12 @@
 #import <Foundation/Foundation.h>
 #import "cocos2d.h"
 
-@class Bird;
+@class GameLayer;
+@class HUDLayer;
 
 @interface GameScene : CCScene
 
-@property (nonatomic, weak) Bird* bird;
-@property (nonatomic, weak) CCSprite* readyLabel;
-@property (nonatomic, weak) CCSprite* tutorialLabel;
-@property (nonatomic) int moveSpeed;
+@property (nonatomic, weak) GameLayer *gameLayer;
+@property (nonatomic, weak) HUDLayer *hudLayer;
 
 @end
