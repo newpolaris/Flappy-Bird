@@ -28,7 +28,7 @@ enum {
     
     GroundLayer *groundLayer = [GroundLayer node];
     [self addChild:groundLayer z:kGround];
-    [self setMoveSpeed:groundLayer.moveSpeed];
+    [self setScreenSpeed:groundLayer.moveSpeed];
     
     CGSize winSize = [[CCDirector sharedDirector] winSize];
     
@@ -47,15 +47,21 @@ enum {
     _readyLabel.position = ccp(winSize.width/2, winSize.height*0.7);
     [self addChild:_readyLabel];
     
+    _impactTime = 0;
+    
     return self;
 }
 
-// [[UIApplication sharedApplication] beginIgnoringInteractionEvents];
-
 - (BOOL)ccTouchBegan:(UITouch *)touch withEvent:(UIEvent *)event
 {
+    static const float flyUp = 20;
+    
     [self removeChild:_tutorialLabel];
     [self removeChild:_readyLabel];
+    
+    _impactTime = 4;
+    // 더하는 것 보다 이게 튀는 효과로 바꿔주는 역활을 수행함.
+    _velocity = flyUp;
     
     return YES;
 }
@@ -67,8 +73,11 @@ enum {
                                                               priority:0
                                                        swallowsTouches:YES];
     
-    // 배경 움직임과 충돌을 체크할 때 사용하는 메인 스케쥴
+    // 배경 움직임과 충돌을 체크할 때 사용하는 메인 스케쥴?
     [self scheduleUpdate];
+    
+    // 점수를 위한 스케쥴
+    [self schedule:@selector(updateBirdPosition:) interval:0.01f];
     
     // 점수를 위한 스케쥴
     // [self schedule:@selector(updateScore:) interval:0.01f];
@@ -79,6 +88,23 @@ enum {
 
 -(void)update:(ccTime)dt
 {
+}
+
+-(void)updateBirdPosition:(ccTime)dt
+{
+    static const float gravity = -98*12;
+    
+    if (_impactTime > 0)
+    {
+        // 속도 가속도 보다 이게 통통 튀는 느낌을 주는 듯.
+        _birdHeight += dt*300;
+        _impactTime -= dt;
+    }
+    
+    _birdHeight += _velocity * dt;
+    _velocity += gravity * dt;
+    
+    _bird.position = ccp(_bird.position.x, _birdHeight);
 }
 
 @end

@@ -8,6 +8,7 @@
 
 #import "Bird.h"
 #import "CCAnimation.h"
+#import "GlobalVariable.h"
 
 @implementation Bird
 
@@ -27,11 +28,12 @@
         [frames addObject:[[CCSpriteFrameCache sharedSpriteFrameCache]
                           spriteFrameByName:object]];
     
-    CCAnimation *animation = [CCAnimation animationWithSpriteFrames:frames delay:0.2];
+    CCAnimation *animation = [CCAnimation animationWithSpriteFrames:frames delay:0.09];
     
     [self runAction:[CCRepeatForever actionWithAction
                      :[CCAnimate actionWithAnimation:animation]]];
     
+    [self setScale:gScale];
     return self;
 }
 @end

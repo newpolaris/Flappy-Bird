@@ -27,7 +27,6 @@
     
     CCSprite* bird = [Bird node];
     bird.anchorPoint = ccp(0, 0.5);
-    bird.scale = gScale;
     
     float xGap = (winSize.width
                   - [bird boundingBox].size.width
