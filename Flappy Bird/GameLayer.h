@@ -10,12 +10,18 @@
 #import "cocos2d.h"
 
 @class Bird;
+@class GroundLayer;
 
 @interface GameLayer: CCLayer
+{
+    CCArray *pipeArray; // 3개의 Pipe 쌍을 돌아가면서 사용.
+}
 
 @property (nonatomic, weak) Bird* bird;
 @property (nonatomic, weak) CCSprite* readyLabel;
 @property (nonatomic, weak) CCSprite* tutorialLabel;
+@property (nonatomic, weak) GroundLayer *groundLayer;
+@property (nonatomic) BOOL play;
 @property (nonatomic) int screenSpeed;
 
 @property (nonatomic) int birdHeight;

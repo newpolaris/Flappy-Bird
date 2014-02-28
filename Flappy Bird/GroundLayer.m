@@ -15,7 +15,7 @@
     self = [super init];
     if (!self) return nil;
     
-    _moveSpeed = -100;
+    _moveSpeed = -130;
     
     // 백그라운드 앞의 땅을 설정한다.
     _ground1 = [CCSprite spriteWithSpriteFrameName:@"ground.png"];

@@ -178,6 +178,7 @@
 		6624ACFB18BE3E0A00A3AEA8 /* BackgroundLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 6624ACFA18BE3E0A00A3AEA8 /* BackgroundLayer.m */; };
 		6624ACFE18BF5A1C00A3AEA8 /* GameLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 6624ACFD18BF5A1C00A3AEA8 /* GameLayer.m */; };
 		6660A3E618BF5D7400309F2F /* GameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 6660A3E518BF5D7400309F2F /* GameScene.m */; };
+		6660A3E918BF82EF00309F2F /* Pipe.m in Sources */ = {isa = PBXBuildFile; fileRef = 6660A3E818BF82EE00309F2F /* Pipe.m */; };
 		66EB55B418BD0FA800833542 /* GroundLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 66EB55B318BD0FA800833542 /* GroundLayer.m */; };
 /* End PBXBuildFile section */
 
@@ -534,6 +535,8 @@
 		6624ACFD18BF5A1C00A3AEA8 /* GameLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameLayer.m; sourceTree = "<group>"; };
 		6660A3E418BF5D7400309F2F /* GameScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameScene.h; sourceTree = "<group>"; };
 		6660A3E518BF5D7400309F2F /* GameScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameScene.m; sourceTree = "<group>"; };
+		6660A3E718BF82EE00309F2F /* Pipe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Pipe.h; sourceTree = "<group>"; };
+		6660A3E818BF82EE00309F2F /* Pipe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Pipe.m; sourceTree = "<group>"; };
 		66EB55B218BD0FA800833542 /* GroundLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroundLayer.h; sourceTree = "<group>"; };
 		66EB55B318BD0FA800833542 /* GroundLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroundLayer.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -606,6 +609,8 @@
 				6660A3E518BF5D7400309F2F /* GameScene.m */,
 				6624ACFC18BF5A1C00A3AEA8 /* GameLayer.h */,
 				6624ACFD18BF5A1C00A3AEA8 /* GameLayer.m */,
+				6660A3E718BF82EE00309F2F /* Pipe.h */,
+				6660A3E818BF82EE00309F2F /* Pipe.m */,
 				661E38EE18BCDEEE006EF8DA /* Bird.mm */,
 				661E38E218BCDED1006EF8DA /* Bird.h */,
 				661E38E618BCDED3006EF8DA /* TitleLayer.h */,
@@ -1334,6 +1339,7 @@
 				6624ACFB18BE3E0A00A3AEA8 /* BackgroundLayer.m in Sources */,
 				6624ACFE18BF5A1C00A3AEA8 /* GameLayer.m in Sources */,
 				6660A3E618BF5D7400309F2F /* GameScene.m in Sources */,
+				6660A3E918BF82EF00309F2F /* Pipe.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
