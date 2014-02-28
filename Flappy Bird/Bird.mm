@@ -36,4 +36,18 @@
     [self setScale:gScale];
     return self;
 }
+
+- (void)createBox2dObject:(b2World *)world
+{
+    b2BodyDef birdBodyDef;
+    birdBodyDef.type = b2_dynamicBody;
+    birdBodyDef.position.Set(self.position.x/PTM_RATIO,
+                             self.position.y/PTM_RATIO);
+    
+    birdBodyDef.userData = (__bridge void*)self;
+    birdBodyDef.fixedRotation = true;
+    
+    _body = world->CreateBody(&birdBodyDef);
+}
+
 @end

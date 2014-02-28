@@ -8,7 +8,6 @@
 // -----------------------------------------------------------------------
 
 // Import the interfaces
-#import "Bird.h"
 #import "Title.h"
 #import "GroundLayer.h"
 #import "BackgroundLayer.h"

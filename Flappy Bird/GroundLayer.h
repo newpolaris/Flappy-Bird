@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "cocos2d.h"
+#import "Box2D.h"
 
 @interface GroundLayer : CCLayer
 
@@ -16,5 +17,8 @@
 @property (nonatomic, weak) CCSprite *ground2;
 @property (nonatomic) int moveSpeed;
 @property (nonatomic) int height;
+@property (nonatomic, readwrite) b2Body *body;
+
+- (void)createBox2dObject:(b2World *)world;
 
 @end

@@ -9,3 +9,4 @@
 #import "GlobalVariable.h"
 
 float gScale;
+

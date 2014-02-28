@@ -142,12 +142,12 @@
 		661E38D218BCDA85006EF8DA /* IntroLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 661E38D118BCDA85006EF8DA /* IntroLayer.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		661E38DE18BCDE57006EF8DA /* FlappyBird.pvr.ccz in Resources */ = {isa = PBXBuildFile; fileRef = 661E38DA18BCDE57006EF8DA /* FlappyBird.pvr.ccz */; };
 		661E38E018BCDE57006EF8DA /* FlappyBird.plist in Resources */ = {isa = PBXBuildFile; fileRef = 661E38DC18BCDE57006EF8DA /* FlappyBird.plist */; };
-		661E38EC18BCDED4006EF8DA /* TitleLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 661E38E718BCDED3006EF8DA /* TitleLayer.m */; };
+		661E38EC18BCDED4006EF8DA /* TitleLayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 661E38E718BCDED3006EF8DA /* TitleLayer.mm */; };
 		661E38EF18BCDEEF006EF8DA /* Bird.mm in Sources */ = {isa = PBXBuildFile; fileRef = 661E38EE18BCDEEE006EF8DA /* Bird.mm */; };
 		661E38F418BCDEFB006EF8DA /* GlobalVariable.m in Sources */ = {isa = PBXBuildFile; fileRef = 661E38F118BCDEFA006EF8DA /* GlobalVariable.m */; };
-		661E38F518BCDEFB006EF8DA /* Title.m in Sources */ = {isa = PBXBuildFile; fileRef = 661E38F318BCDEFB006EF8DA /* Title.m */; };
+		661E38F518BCDEFB006EF8DA /* Title.mm in Sources */ = {isa = PBXBuildFile; fileRef = 661E38F318BCDEFB006EF8DA /* Title.mm */; };
 		6624ACFB18BE3E0A00A3AEA8 /* BackgroundLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 6624ACFA18BE3E0A00A3AEA8 /* BackgroundLayer.m */; };
-		6624ACFE18BF5A1C00A3AEA8 /* GameLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 6624ACFD18BF5A1C00A3AEA8 /* GameLayer.m */; };
+		6624ACFE18BF5A1C00A3AEA8 /* GameLayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 6624ACFD18BF5A1C00A3AEA8 /* GameLayer.mm */; };
 		66391CEC18C0DEBB00E9CC9C /* Box2DConfig.cmake in Resources */ = {isa = PBXBuildFile; fileRef = 66391C8918C0DEBB00E9CC9C /* Box2DConfig.cmake */; };
 		66391CED18C0DEBB00E9CC9C /* CMakeLists.txt in Resources */ = {isa = PBXBuildFile; fileRef = 66391C8A18C0DEBB00E9CC9C /* CMakeLists.txt */; };
 		66391CEE18C0DEBB00E9CC9C /* b2BroadPhase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 66391C8C18C0DEBB00E9CC9C /* b2BroadPhase.cpp */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -196,8 +196,11 @@
 		66391D1918C0DEBB00E9CC9C /* b2WheelJoint.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 66391CE718C0DEBB00E9CC9C /* b2WheelJoint.cpp */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		66391D1A18C0DEBB00E9CC9C /* b2Rope.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 66391CEA18C0DEBB00E9CC9C /* b2Rope.cpp */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		6660A3E618BF5D7400309F2F /* GameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 6660A3E518BF5D7400309F2F /* GameScene.m */; };
-		6660A3E918BF82EF00309F2F /* Pipe.m in Sources */ = {isa = PBXBuildFile; fileRef = 6660A3E818BF82EE00309F2F /* Pipe.m */; };
-		66EB55B418BD0FA800833542 /* GroundLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 66EB55B318BD0FA800833542 /* GroundLayer.m */; };
+		6660A3E918BF82EF00309F2F /* Pipe.mm in Sources */ = {isa = PBXBuildFile; fileRef = 6660A3E818BF82EE00309F2F /* Pipe.mm */; };
+		6699C58F18C0E60200E07F69 /* collision.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6699C58E18C0E60200E07F69 /* collision.plist */; };
+		6699C59218C0E66200E07F69 /* GB2ShapeCache.mm in Sources */ = {isa = PBXBuildFile; fileRef = 6699C59118C0E66200E07F69 /* GB2ShapeCache.mm */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		6699C59518C0E71800E07F69 /* MyContactListener.mm in Sources */ = {isa = PBXBuildFile; fileRef = 6699C59418C0E71800E07F69 /* MyContactListener.mm */; };
+		66EB55B418BD0FA800833542 /* GroundLayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 66EB55B318BD0FA800833542 /* GroundLayer.mm */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -485,16 +488,16 @@
 		661E38DC18BCDE57006EF8DA /* FlappyBird.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = FlappyBird.plist; path = Resources/FlappyBird.plist; sourceTree = "<group>"; };
 		661E38E218BCDED1006EF8DA /* Bird.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bird.h; sourceTree = "<group>"; };
 		661E38E618BCDED3006EF8DA /* TitleLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = TitleLayer.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
-		661E38E718BCDED3006EF8DA /* TitleLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = TitleLayer.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		661E38E718BCDED3006EF8DA /* TitleLayer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; lineEnding = 0; path = TitleLayer.mm; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		661E38EE18BCDEEE006EF8DA /* Bird.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Bird.mm; sourceTree = "<group>"; };
 		661E38F018BCDEFA006EF8DA /* GlobalVariable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GlobalVariable.h; sourceTree = "<group>"; };
 		661E38F118BCDEFA006EF8DA /* GlobalVariable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GlobalVariable.m; sourceTree = "<group>"; };
 		661E38F218BCDEFA006EF8DA /* Title.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Title.h; sourceTree = "<group>"; };
-		661E38F318BCDEFB006EF8DA /* Title.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Title.m; sourceTree = "<group>"; };
+		661E38F318BCDEFB006EF8DA /* Title.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Title.mm; sourceTree = "<group>"; };
 		6624ACF918BE3E0A00A3AEA8 /* BackgroundLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BackgroundLayer.h; sourceTree = "<group>"; };
 		6624ACFA18BE3E0A00A3AEA8 /* BackgroundLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BackgroundLayer.m; sourceTree = "<group>"; };
 		6624ACFC18BF5A1C00A3AEA8 /* GameLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameLayer.h; sourceTree = "<group>"; };
-		6624ACFD18BF5A1C00A3AEA8 /* GameLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameLayer.m; sourceTree = "<group>"; };
+		6624ACFD18BF5A1C00A3AEA8 /* GameLayer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = GameLayer.mm; sourceTree = "<group>"; };
 		66391C8818C0DEBB00E9CC9C /* Box2D.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Box2D.h; sourceTree = "<group>"; };
 		66391C8918C0DEBB00E9CC9C /* Box2DConfig.cmake */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Box2DConfig.cmake; sourceTree = "<group>"; };
 		66391C8A18C0DEBB00E9CC9C /* CMakeLists.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = CMakeLists.txt; sourceTree = "<group>"; };
@@ -591,9 +594,14 @@
 		6660A3E418BF5D7400309F2F /* GameScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameScene.h; sourceTree = "<group>"; };
 		6660A3E518BF5D7400309F2F /* GameScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameScene.m; sourceTree = "<group>"; };
 		6660A3E718BF82EE00309F2F /* Pipe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Pipe.h; sourceTree = "<group>"; };
-		6660A3E818BF82EE00309F2F /* Pipe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Pipe.m; sourceTree = "<group>"; };
+		6660A3E818BF82EE00309F2F /* Pipe.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Pipe.mm; sourceTree = "<group>"; };
+		6699C58E18C0E60200E07F69 /* collision.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = collision.plist; path = Resources/collision.plist; sourceTree = "<group>"; };
+		6699C59018C0E66200E07F69 /* GB2ShapeCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GB2ShapeCache.h; sourceTree = "<group>"; };
+		6699C59118C0E66200E07F69 /* GB2ShapeCache.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = GB2ShapeCache.mm; sourceTree = "<group>"; };
+		6699C59318C0E71800E07F69 /* MyContactListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyContactListener.h; path = ../MyContactListener.h; sourceTree = "<group>"; };
+		6699C59418C0E71800E07F69 /* MyContactListener.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = MyContactListener.mm; path = ../MyContactListener.mm; sourceTree = "<group>"; };
 		66EB55B218BD0FA800833542 /* GroundLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroundLayer.h; sourceTree = "<group>"; };
-		66EB55B318BD0FA800833542 /* GroundLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroundLayer.m; sourceTree = "<group>"; };
+		66EB55B318BD0FA800833542 /* GroundLayer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = GroundLayer.mm; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -654,22 +662,26 @@
 		661E36DD18BCDA82006EF8DA /* Flappy Bird */ = {
 			isa = PBXGroup;
 			children = (
+				6699C59318C0E71800E07F69 /* MyContactListener.h */,
+				6699C59418C0E71800E07F69 /* MyContactListener.mm */,
+				6699C59018C0E66200E07F69 /* GB2ShapeCache.h */,
+				6699C59118C0E66200E07F69 /* GB2ShapeCache.mm */,
 				66EB55B218BD0FA800833542 /* GroundLayer.h */,
-				66EB55B318BD0FA800833542 /* GroundLayer.m */,
+				66EB55B318BD0FA800833542 /* GroundLayer.mm */,
 				661E38F018BCDEFA006EF8DA /* GlobalVariable.h */,
 				661E38F118BCDEFA006EF8DA /* GlobalVariable.m */,
 				661E38F218BCDEFA006EF8DA /* Title.h */,
-				661E38F318BCDEFB006EF8DA /* Title.m */,
+				661E38F318BCDEFB006EF8DA /* Title.mm */,
 				6660A3E418BF5D7400309F2F /* GameScene.h */,
 				6660A3E518BF5D7400309F2F /* GameScene.m */,
 				6624ACFC18BF5A1C00A3AEA8 /* GameLayer.h */,
-				6624ACFD18BF5A1C00A3AEA8 /* GameLayer.m */,
+				6624ACFD18BF5A1C00A3AEA8 /* GameLayer.mm */,
 				6660A3E718BF82EE00309F2F /* Pipe.h */,
-				6660A3E818BF82EE00309F2F /* Pipe.m */,
+				6660A3E818BF82EE00309F2F /* Pipe.mm */,
 				661E38EE18BCDEEE006EF8DA /* Bird.mm */,
 				661E38E218BCDED1006EF8DA /* Bird.h */,
 				661E38E618BCDED3006EF8DA /* TitleLayer.h */,
-				661E38E718BCDED3006EF8DA /* TitleLayer.m */,
+				661E38E718BCDED3006EF8DA /* TitleLayer.mm */,
 				6624ACF918BE3E0A00A3AEA8 /* BackgroundLayer.h */,
 				6624ACFA18BE3E0A00A3AEA8 /* BackgroundLayer.m */,
 				661E38CA18BCDA85006EF8DA /* AppDelegate.h */,
@@ -686,6 +698,7 @@
 		661E36DE18BCDA82006EF8DA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				6699C58E18C0E60200E07F69 /* collision.plist */,
 				661E38DA18BCDE57006EF8DA /* FlappyBird.pvr.ccz */,
 				661E38DC18BCDE57006EF8DA /* FlappyBird.plist */,
 				661E36DF18BCDA82006EF8DA /* Default.png */,
@@ -1292,6 +1305,7 @@
 				661E38E018BCDE57006EF8DA /* FlappyBird.plist in Resources */,
 				66391CEC18C0DEBB00E9CC9C /* Box2DConfig.cmake in Resources */,
 				66391CED18C0DEBB00E9CC9C /* CMakeLists.txt in Resources */,
+				6699C58F18C0E60200E07F69 /* collision.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1413,15 +1427,15 @@
 				661E38C918BCDA85006EF8DA /* main.m in Sources */,
 				661E38CC18BCDA85006EF8DA /* AppDelegate.m in Sources */,
 				661E38D218BCDA85006EF8DA /* IntroLayer.m in Sources */,
-				661E38EC18BCDED4006EF8DA /* TitleLayer.m in Sources */,
+				661E38EC18BCDED4006EF8DA /* TitleLayer.mm in Sources */,
 				661E38EF18BCDEEF006EF8DA /* Bird.mm in Sources */,
 				661E38F418BCDEFB006EF8DA /* GlobalVariable.m in Sources */,
-				661E38F518BCDEFB006EF8DA /* Title.m in Sources */,
-				66EB55B418BD0FA800833542 /* GroundLayer.m in Sources */,
+				661E38F518BCDEFB006EF8DA /* Title.mm in Sources */,
+				66EB55B418BD0FA800833542 /* GroundLayer.mm in Sources */,
 				6624ACFB18BE3E0A00A3AEA8 /* BackgroundLayer.m in Sources */,
-				6624ACFE18BF5A1C00A3AEA8 /* GameLayer.m in Sources */,
+				6624ACFE18BF5A1C00A3AEA8 /* GameLayer.mm in Sources */,
 				6660A3E618BF5D7400309F2F /* GameScene.m in Sources */,
-				6660A3E918BF82EF00309F2F /* Pipe.m in Sources */,
+				6660A3E918BF82EF00309F2F /* Pipe.mm in Sources */,
 				66391CEE18C0DEBB00E9CC9C /* b2BroadPhase.cpp in Sources */,
 				66391CEF18C0DEBB00E9CC9C /* b2CollideCircle.cpp in Sources */,
 				66391CF018C0DEBB00E9CC9C /* b2CollideEdge.cpp in Sources */,
@@ -1467,6 +1481,8 @@
 				66391D1818C0DEBB00E9CC9C /* b2WeldJoint.cpp in Sources */,
 				66391D1918C0DEBB00E9CC9C /* b2WheelJoint.cpp in Sources */,
 				66391D1A18C0DEBB00E9CC9C /* b2Rope.cpp in Sources */,
+				6699C59218C0E66200E07F69 /* GB2ShapeCache.mm in Sources */,
+				6699C59518C0E71800E07F69 /* MyContactListener.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

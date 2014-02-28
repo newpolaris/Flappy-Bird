@@ -65,4 +65,17 @@
     [self scheduleUpdate];
 }
 
+- (void)createBox2dObject:(b2World *)world
+{
+    b2BodyDef groundBodyDef;
+    groundBodyDef.type = b2_dynamicBody;
+    groundBodyDef.position.Set(self.position.x/PTM_RATIO,
+                               self.position.y/PTM_RATIO);
+    
+    groundBodyDef.userData = (__bridge void*)self;
+    groundBodyDef.fixedRotation = true;
+    
+    _body = world->CreateBody(&groundBodyDef);
+}
+
 @end
