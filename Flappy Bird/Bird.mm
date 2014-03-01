@@ -28,7 +28,7 @@
         [frames addObject:[[CCSpriteFrameCache sharedSpriteFrameCache]
                           spriteFrameByName:object]];
     
-    CCAnimation *animation = [CCAnimation animationWithSpriteFrames:frames delay:0.09];
+    CCAnimation* animation = [CCAnimation animationWithSpriteFrames:frames delay:0.09];
     
     [self runAction:[CCRepeatForever actionWithAction
                      :[CCAnimate actionWithAnimation:animation]]];

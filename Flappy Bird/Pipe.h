@@ -13,8 +13,8 @@
 @interface Pipe : CCNode
 
 @property (nonatomic) int width;
-@property (nonatomic, readwrite) b2Body *body1;
-@property (nonatomic, readwrite) b2Body *body2;
+@property (nonatomic, readwrite) b2Body *bodyUp;
+@property (nonatomic, readwrite) b2Body *bodyDown;
 
 - (void)createBox2dObject:(b2World *)world;
 

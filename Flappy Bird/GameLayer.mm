@@ -11,13 +11,18 @@
 #import "BackgroundLayer.h"
 #import "Bird.h"
 #import "Pipe.h"
+#import "GlobalVariable.h"
+#import "GB2ShapeCache.h"
+#import "Box2D.h"
+#import "GLES-Render.h"
 
 @implementation GameLayer
 
 enum {
-    kBackground = 0,
+    kBackground = -5,
     kPipe,
     kGround,
+    kBird,
 };
 
 static const int kMaxPipe = 3;
@@ -29,33 +34,56 @@ static const int kMaxPipe = 3;
     
     [self addChild:[BackgroundLayer node] z:kBackground];
     
-    _groundLayer = [GroundLayer node];
-    [self addChild:_groundLayer z:kGround];
-    [self setScreenSpeed:_groundLayer.moveSpeed];
-    
     CGSize winSize = [[CCDirector sharedDirector] winSize];
-    
-    [self setBird:[Bird node]];
-    [self setBirdHeight:winSize.height/2];
-    _bird.position = ccp(winSize.width*0.3, _birdHeight);
-    
-    [self addChild:_bird];
     
     [self setTutorialLabel:[CCSprite spriteWithSpriteFrameName:@"tutorial.png"]];
     _tutorialLabel.anchorPoint = ccp(0, 0.5);
     _tutorialLabel.position = ccp(winSize.width/2, winSize.height/2);
+    _tutorialLabel.scale = gScale;
     [self addChild:_tutorialLabel];
     
     [self setReadyLabel:[CCSprite spriteWithSpriteFrameName:@"get_ready.png"]];
+    _readyLabel.scale = gScale;
     _readyLabel.position = ccp(winSize.width/2, winSize.height*0.7);
     [self addChild:_readyLabel];
     
     _impactTime = 0;
     _play = false;
     
+    [[GB2ShapeCache sharedShapeCache] addShapesWithFile:@"collision.plist"];
+
+    [self setupPhysicsWorld];
+    
+    [self initGround]; // 순서 상관 있음.
     [self initPipe];
+    [self initBird];
     
     return self;
+}
+
+- (void)initGround
+{
+    _groundLayer = [GroundLayer node];
+    [self addChild:_groundLayer z:kGround];
+    [self setScreenSpeed:_groundLayer.moveSpeed];
+    
+    [_groundLayer createBox2dObject:world];
+    [[GB2ShapeCache sharedShapeCache] addFixturesToBody:_groundLayer.body
+                                           forShapeName:@"ground"];
+}
+
+- (void)initBird
+{
+    CGSize winSize = [[CCDirector sharedDirector] winSize];
+    
+    [self setBird:[Bird node]];
+    [self setBirdHeight:winSize.height/2];
+    _bird.position = ccp(winSize.width*0.3, _birdHeight);
+    
+    [self addChild:_bird z:kBird];
+    [_bird createBox2dObject:world];
+    [[GB2ShapeCache sharedShapeCache] addFixturesToBody:_bird.body
+                                           forShapeName:@"bird_normal"];
 }
 
 - (void)initPipe
@@ -70,23 +98,43 @@ static const int kMaxPipe = 3;
     {
         const int delay = winSize.width*1.5;
         
-        // 총알 노드를 생성
         Pipe *pipe = [Pipe node];
         
         int pipeWidth = pipe.width;
         int pipeGap = (winSize.width + pipeWidth/2)/2;
         int xPos = delay + i*pipeGap;
     
-        // 총알의 위치는 플레이어 캐릭터의 앞에 위치.
         pipe.anchorPoint = ccp(0.5, 0.5);
         pipe.position = ccp(xPos, viewSize * 0.5 + _groundLayer.height);
         
         // 배치 노드에 넣는다.
         [self addChild:pipe z:kPipe];
+       
+        [pipe createBox2dObject:world];
+        [[GB2ShapeCache sharedShapeCache] addFixturesToBody:pipe.bodyUp
+                                               forShapeName:@"pipe_up"];
         
+        
+        [[GB2ShapeCache sharedShapeCache] addFixturesToBody:pipe.bodyDown
+                                               forShapeName:@"pipe_down"];
         // 충돌 등 계산을 하기 쉽게 하기 위하여 배열에 넣는다.
         [pipeArray addObject:pipe];
     }
+}
+
+- (void)setupPhysicsWorld
+{
+    b2Vec2 gravity = b2Vec2(0.0f, 0.0f);
+
+    world = new b2World(gravity);
+    
+    b2Draw *debugDraw = new GLESDebugDraw(PTM_RATIO);
+    debugDraw->SetFlags(GLESDebugDraw::e_shapeBit);
+    world->SetDebugDraw(debugDraw);
+    world->DrawDebugData();
+    
+    contactListener = new MyContactListener();
+    world->SetContactListener(contactListener);
 }
 
 - (BOOL)ccTouchBegan:(UITouch *)touch withEvent:(UIEvent *)event
@@ -100,7 +148,7 @@ static const int kMaxPipe = 3;
     }
     _play = true;
     
-    _impactTime = 5;
+    _impactTime = 0.8;
     _velocity = flyUp;
     
     return YES;
@@ -132,10 +180,55 @@ static const int kMaxPipe = 3;
     // [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"background_music.mp3" loop:YES];
 }
 
+-(void)collisionWithObject
+{
+    if (!_play) return;
+    
+    // [[SimpleAudioEngine sharedEngine] playEffect:@"explosion.wav"];
+
+    [self unschedule:@selector(updatePipe:)];
+    [self unschedule:@selector(bird:)];
+    
+    [[[CCDirector sharedDirector] touchDispatcher] setDispatchEvents:NO];
+    [_bird stopAllActions];
+    [_groundLayer unscheduleAllSelectors];
+    
+    /*
+     for (Bullet *bullet in bulletsArray) {
+        bullet.visible = NO;
+        [bullet removeFromParentAndCleanup:YES];
+     }
+
+     [self unschedule:@selector(updateScore:)];
+
+     CCCallBlock *allStop = [CCCallBlock actionWithBlock:^{
+         [[[CCDirector sharedDirector] touchDispatcher]
+            removeDelegate:self];
+         [[SimpleAudioEngine sharedEngine] stopBackgroundMusic];
+     }];
+
+     CCDelayTime *delay = [CCDelayTime actionWithDuration:2.0f];
+     [[[CCDirector sharedDirector] touchDispatcher] setDispatchEvents:NO];
+     CCCallBlock *block = [CCCallBlock actionWithBlock:^{
+         [[CCDirector sharedDirector] replaceScene:[MenuLayer scene]];
+     }];
+     */
+}
+
 -(void)update:(ccTime)dt
 {
-    // if (_birdHeight <= _groundLayer.height)
-    //     _birdHeight = _groundLayer.height;
+    world->Step(dt, 0, 0);
+    
+    for (b2Body *b = world->GetBodyList(); b; b=b->GetNext()) {
+        if (b->GetUserData() != NULL) {
+            CCSprite *sprite = (__bridge CCSprite*)b->GetUserData();
+            b2Vec2 b2Position = b2Vec2(sprite.position.x/PTM_RATIO,
+                                       sprite.position.y/PTM_RATIO);
+            
+            float b2Angle = -1 * CC_DEGREES_TO_RADIANS(sprite.rotation);
+            b->SetTransform(b2Position, b2Angle);
+        }
+    }
 }
 
 -(void)updatePipe:(ccTime)dt
@@ -157,13 +250,15 @@ static const int kMaxPipe = 3;
         int xLastPos = pipe.position.x + pipe.width;
         if (xLastPos <= 0)
         {
-            pipe.position = ccp(pos.x + pipeGap*2, pos.y);
+            pipe.position = ccp(pos.x + pipeGap*3, pos.y);
         }
     }
 }
 
 -(void)updateBirdPosition:(ccTime)dt
 {
+    if (!_play) return;
+    
     static const float gravity = -98*10;
     
     if (_impactTime > 0)
@@ -175,7 +270,44 @@ static const int kMaxPipe = 3;
     _birdHeight += _velocity * dt;
     _velocity += gravity * dt;
     
+    static const int maxDownFall = -1370;
+    if (_velocity <= maxDownFall)
+        _velocity = maxDownFall;
+    
+    int _birdBottom = _birdHeight + [_bird boundingBox].size.height/2;
+    
+    int winHeight = [CCDirector sharedDirector].winSize.height;
+    
+    if (_birdBottom <= _groundLayer.height) {
+        [self unschedule:@selector(updateBirdPosition:)];
+        [self collisionWithObject];
+    } else if (_birdHeight > winHeight) {
+        _birdHeight = winHeight;
+        [self collisionWithObject];
+    }
+    
+    if (_impactTime > 0)
+        _bird.rotation = -30;
+    else
+        _bird.rotation = min(-_velocity*0.05, 90);
+    
     _bird.position = ccp(_bird.position.x, _birdHeight);
+}
+
+-(void) draw
+{
+    // IMPORTANT:
+    // This is only for debug purposes
+    // It is recommend to disable it
+
+    [super draw];
+
+    // 2.
+    ccGLEnableVertexAttribs( kCCVertexAttribFlag_Position );
+
+    kmGLPushMatrix();
+    world->DrawDebugData();
+    kmGLPopMatrix();
 }
 
 @end

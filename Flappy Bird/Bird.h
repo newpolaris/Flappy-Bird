@@ -11,6 +11,8 @@
 #import "Box2D.h"
 
 @interface Bird : CCSprite
+{
+}
 
 @property (nonatomic, readwrite) b2Body *body;
 

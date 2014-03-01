@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 #import "cocos2d.h"
+#import "Box2D.h"
+#import "MyContactListener.h"
 
 @class Bird;
 @class GroundLayer;
@@ -15,6 +17,8 @@
 @interface GameLayer: CCLayer
 {
     CCArray *pipeArray; // 3개의 Pipe 쌍을 돌아가면서 사용.
+    b2World *world;
+    MyContactListener *contactListener;
 }
 
 @property (nonatomic, weak) Bird* bird;
@@ -27,5 +31,7 @@
 @property (nonatomic) int birdHeight;
 @property (nonatomic) float velocity;
 @property (nonatomic) float impactTime;
+
+-(void)collisionWithObject;
 
 @end

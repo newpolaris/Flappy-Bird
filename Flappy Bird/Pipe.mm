@@ -15,12 +15,18 @@
     self = [super init];
     if (!self) return nil;
     
-    static const int gap = 160;
+    int height = [[CCDirector sharedDirector] winSize].height;
+    
     CCSprite *pipeUp   = [CCSprite spriteWithSpriteFrameName:@"pipe_up.png"];
     CCSprite *pipeDown = [CCSprite spriteWithSpriteFrameName:@"pipe_down.png"];
     
-    pipeUp.position   = ccp(0, -gap*gScale);
-    pipeDown.position = ccp(0, +gap*gScale);
+    pipeUp.anchorPoint = ccp(0.5, 1);
+    pipeDown.anchorPoint = ccp(0.5, 0);
+    
+    int gap = height / gScale / 8;
+    
+    pipeUp.position   = ccp(0, -gap);
+    pipeDown.position = ccp(0, +gap);
     
     [self addChild:pipeDown];
     [self addChild:pipeUp];
@@ -42,7 +48,7 @@
     pipe1BodyDef.userData = (__bridge void*)self;
     pipe1BodyDef.fixedRotation = true;
     
-    _body1 = world->CreateBody(&pipe1BodyDef);
+    _bodyDown = world->CreateBody(&pipe1BodyDef);
     
     b2BodyDef pipe2BodyDef;
     pipe2BodyDef.type = b2_dynamicBody;
@@ -52,6 +58,6 @@
     pipe2BodyDef.userData = (__bridge void*)self;
     pipe2BodyDef.fixedRotation = true;
     
-    _body2 = world->CreateBody(&pipe2BodyDef);
+    _bodyUp = world->CreateBody(&pipe2BodyDef);
 }
 @end

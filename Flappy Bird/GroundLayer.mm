@@ -31,7 +31,7 @@
     
     // 가로 화면에 맞춰서 늘린다.
     [_ground2 setScale:gScale];
-    [_ground2 setPosition:ccp([_ground1 boundingBox].size.width, 0)];
+    [_ground2 setPosition:ccp([_ground1 boundingBox].size.width-10, 0)];
     
     [self addChild:_ground2];
     
@@ -48,9 +48,9 @@
     CGPoint currentPos = [_ground1 position];
     
     // 1번 이미지가 스크롤 되서 사라지고, 2번 이미지가 1번 이미지의 초기 위치에 오면 최초위치로 이동
-    if (currentPos.x <= -[_ground1 boundingBox].size.width) {
+    if (currentPos.x < -[_ground1 boundingBox].size.width+10) {
         [_ground1 setPosition:CGPointZero];
-        currentPos = ccp([_ground2 boundingBox].size.width, 0);
+        currentPos = ccp([_ground2 boundingBox].size.width-10, 0);
         [_ground2 setPosition:currentPos];
     // 현재 위치에서 groundScrollVel를 더한다.
     } else {
