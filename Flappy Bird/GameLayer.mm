@@ -12,9 +12,6 @@
 #import "Bird.h"
 #import "Pipe.h"
 #import "GlobalVariable.h"
-#import "GB2ShapeCache.h"
-#import "Box2D.h"
-#import "GLES-Render.h"
 
 @implementation GameLayer
 
@@ -50,10 +47,6 @@ static const int kMaxPipe = 3;
     _impactTime = 0;
     _play = false;
     
-    [[GB2ShapeCache sharedShapeCache] addShapesWithFile:@"collision.plist"];
-
-    [self setupPhysicsWorld];
-    
     [self initGround]; // 순서 상관 있음.
     [self initPipe];
     [self initBird];
@@ -66,10 +59,6 @@ static const int kMaxPipe = 3;
     _groundLayer = [GroundLayer node];
     [self addChild:_groundLayer z:kGround];
     [self setScreenSpeed:_groundLayer.moveSpeed];
-    
-    [_groundLayer createBox2dObject:world];
-    [[GB2ShapeCache sharedShapeCache] addFixturesToBody:_groundLayer.body
-                                           forShapeName:@"ground"];
 }
 
 - (void)initBird
@@ -81,9 +70,6 @@ static const int kMaxPipe = 3;
     _bird.position = ccp(winSize.width*0.3, _birdHeight);
     
     [self addChild:_bird z:kBird];
-    [_bird createBox2dObject:world];
-    [[GB2ShapeCache sharedShapeCache] addFixturesToBody:_bird.body
-                                           forShapeName:@"bird_normal"];
 }
 
 - (void)initPipe
@@ -110,36 +96,14 @@ static const int kMaxPipe = 3;
         // 배치 노드에 넣는다.
         [self addChild:pipe z:kPipe];
        
-        [pipe createBox2dObject:world];
-        [[GB2ShapeCache sharedShapeCache] addFixturesToBody:pipe.bodyUp
-                                               forShapeName:@"pipe_up"];
-        
-        
-        [[GB2ShapeCache sharedShapeCache] addFixturesToBody:pipe.bodyDown
-                                               forShapeName:@"pipe_down"];
         // 충돌 등 계산을 하기 쉽게 하기 위하여 배열에 넣는다.
         [pipeArray addObject:pipe];
     }
 }
 
-- (void)setupPhysicsWorld
-{
-    b2Vec2 gravity = b2Vec2(0.0f, 0.0f);
-
-    world = new b2World(gravity);
-    
-    b2Draw *debugDraw = new GLESDebugDraw(PTM_RATIO);
-    debugDraw->SetFlags(GLESDebugDraw::e_shapeBit);
-    world->SetDebugDraw(debugDraw);
-    world->DrawDebugData();
-    
-    contactListener = new MyContactListener();
-    world->SetContactListener(contactListener);
-}
-
 - (BOOL)ccTouchBegan:(UITouch *)touch withEvent:(UIEvent *)event
 {
-    static const float flyUp = 30;
+    static const float flyUp = 30*gScale;
     
     if (!_play)
     {
@@ -148,7 +112,7 @@ static const int kMaxPipe = 3;
     }
     _play = true;
     
-    _impactTime = 0.8;
+    _impactTime = 0.6;
     _velocity = flyUp;
     
     return YES;
@@ -217,18 +181,20 @@ static const int kMaxPipe = 3;
 
 -(void)update:(ccTime)dt
 {
-    world->Step(dt, 0, 0);
+}
+
+-(bool)isCollision:(Pipe*)pipe
+{
+    CGRect up = pipe.pipeUp.boundingBox;
+    up.origin = [pipe.pipeUp.parent convertToWorldSpace:up.origin];
     
-    for (b2Body *b = world->GetBodyList(); b; b=b->GetNext()) {
-        if (b->GetUserData() != NULL) {
-            CCSprite *sprite = (__bridge CCSprite*)b->GetUserData();
-            b2Vec2 b2Position = b2Vec2(sprite.position.x/PTM_RATIO,
-                                       sprite.position.y/PTM_RATIO);
-            
-            float b2Angle = -1 * CC_DEGREES_TO_RADIANS(sprite.rotation);
-            b->SetTransform(b2Position, b2Angle);
-        }
-    }
+    CGRect down = pipe.pipeDown.boundingBox;
+    down.origin = [pipe.pipeDown.parent convertToWorldSpace:down.origin];
+    
+    CGRect bird = _bird.boundingBox;
+    
+    return CGRectIntersectsRect(up, _bird.boundingBox)
+        || CGRectIntersectsRect(down, _bird.boundingBox);
 }
 
 -(void)updatePipe:(ccTime)dt
@@ -247,6 +213,11 @@ static const int kMaxPipe = 3;
         
         int pipeGap = (winSize.width + pipe.width/2)/2;
         
+        if ([self isCollision:pipe])
+        {
+            [self collisionWithObject];
+        }
+        
         int xLastPos = pipe.position.x + pipe.width;
         if (xLastPos <= 0)
         {
@@ -259,55 +230,48 @@ static const int kMaxPipe = 3;
 {
     if (!_play) return;
     
-    static const float gravity = -98*10;
+    static const float gravity = -98*7;
+    
+    int oldHeight = _birdHeight;
     
     if (_impactTime > 0)
     {
-        _birdHeight += dt*350;
+        _birdHeight += dt*150*gScale;
         _impactTime -= dt;
     }
     
-    _birdHeight += _velocity * dt;
+    _birdHeight += _velocity * gScale * dt;
     _velocity += gravity * dt;
     
-    static const int maxDownFall = -1370;
+    static const int maxDownFall = -600*gScale;
     if (_velocity <= maxDownFall)
         _velocity = maxDownFall;
+    
     
     int _birdBottom = _birdHeight + [_bird boundingBox].size.height/2;
     
     int winHeight = [CCDirector sharedDirector].winSize.height;
     
+    
+    static const float factor = 100;
+    int realV = -(_birdHeight -oldHeight)*factor/winHeight/dt;
+    if (realV >= 90)
+        realV = 90;
+    else if (realV < -35)
+        realV = -35;
+    
+    _bird.rotation = realV;
     if (_birdBottom <= _groundLayer.height) {
         [self unschedule:@selector(updateBirdPosition:)];
         [self collisionWithObject];
-    } else if (_birdHeight > winHeight) {
+        _birdHeight = _groundLayer.height;
+      } else if (_birdHeight > winHeight) {
         _birdHeight = winHeight;
         [self collisionWithObject];
     }
     
-    if (_impactTime > 0)
-        _bird.rotation = -30;
-    else
-        _bird.rotation = min(-_velocity*0.05, 90);
-    
     _bird.position = ccp(_bird.position.x, _birdHeight);
-}
 
--(void) draw
-{
-    // IMPORTANT:
-    // This is only for debug purposes
-    // It is recommend to disable it
-
-    [super draw];
-
-    // 2.
-    ccGLEnableVertexAttribs( kCCVertexAttribFlag_Position );
-
-    kmGLPushMatrix();
-    world->DrawDebugData();
-    kmGLPopMatrix();
 }
 
 @end

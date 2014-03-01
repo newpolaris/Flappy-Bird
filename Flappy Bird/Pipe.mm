@@ -17,47 +17,25 @@
     
     int height = [[CCDirector sharedDirector] winSize].height;
     
-    CCSprite *pipeUp   = [CCSprite spriteWithSpriteFrameName:@"pipe_up.png"];
-    CCSprite *pipeDown = [CCSprite spriteWithSpriteFrameName:@"pipe_down.png"];
+    _pipeUp   = [CCSprite spriteWithSpriteFrameName:@"pipe_up.png"];
+    _pipeDown = [CCSprite spriteWithSpriteFrameName:@"pipe_down.png"];
+    _pipeUp.scale = gScale;
+    _pipeDown.scale = gScale;
     
-    pipeUp.anchorPoint = ccp(0.5, 1);
-    pipeDown.anchorPoint = ccp(0.5, 0);
+    _pipeUp.anchorPoint = ccp(0.5, 1);
+    _pipeDown.anchorPoint = ccp(0.5, 0);
     
-    int gap = height / gScale / 8;
+    int gap = height / 8;
     
-    pipeUp.position   = ccp(0, -gap);
-    pipeDown.position = ccp(0, +gap);
+    _pipeUp.position   = ccp(0, -gap);
+    _pipeDown.position = ccp(0, +gap);
     
-    [self addChild:pipeDown];
-    [self addChild:pipeUp];
+    [self addChild:_pipeDown];
+    [self addChild:_pipeUp];
     
-    [self setWidth:pipeUp.contentSize.width*gScale];
-    
-    [self setScale:gScale];
+    [self setWidth:_pipeUp.contentSize.width*gScale];
     
     return self;
 }
 
-- (void)createBox2dObject:(b2World *)world
-{
-    b2BodyDef pipe1BodyDef;
-    pipe1BodyDef.type = b2_dynamicBody;
-    pipe1BodyDef.position.Set(self.position.x/PTM_RATIO,
-                              self.position.y/PTM_RATIO);
-    
-    pipe1BodyDef.userData = (__bridge void*)self;
-    pipe1BodyDef.fixedRotation = true;
-    
-    _bodyDown = world->CreateBody(&pipe1BodyDef);
-    
-    b2BodyDef pipe2BodyDef;
-    pipe2BodyDef.type = b2_dynamicBody;
-    pipe2BodyDef.position.Set(self.position.x/PTM_RATIO,
-                              self.position.y/PTM_RATIO);
-    
-    pipe2BodyDef.userData = (__bridge void*)self;
-    pipe2BodyDef.fixedRotation = true;
-    
-    _bodyUp = world->CreateBody(&pipe2BodyDef);
-}
 @end

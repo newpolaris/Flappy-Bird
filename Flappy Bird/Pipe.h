@@ -8,14 +8,11 @@
 
 #import <Foundation/Foundation.h>
 #import "cocos2d.h"
-#import "Box2D.h"
 
 @interface Pipe : CCNode
 
 @property (nonatomic) int width;
-@property (nonatomic, readwrite) b2Body *bodyUp;
-@property (nonatomic, readwrite) b2Body *bodyDown;
-
-- (void)createBox2dObject:(b2World *)world;
+@property (nonatomic, weak) CCSprite *pipeUp;
+@property (nonatomic, weak) CCSprite *pipeDown;
 
 @end

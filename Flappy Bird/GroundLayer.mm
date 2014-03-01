@@ -15,11 +15,11 @@
     self = [super init];
     if (!self) return nil;
     
-    _moveSpeed = -130;
+    _moveSpeed = -80*gScale;
     
     // 백그라운드 앞의 땅을 설정한다.
     _ground1 = [CCSprite spriteWithSpriteFrameName:@"ground.png"];
-    _ground1.anchorPoint = CGPointZero;
+    _ground1.anchorPoint = ccp(0, 0.3);
     
     // 가로 화면에 맞춰서 늘린다.
     [_ground1 setScale:gScale];
@@ -27,7 +27,7 @@
     [self addChild:_ground1];
     
     _ground2 = [CCSprite spriteWithSpriteFrameName:@"ground.png"];
-    _ground2.anchorPoint = CGPointZero;
+    _ground2.anchorPoint = ccp(0, 0.3);
     
     // 가로 화면에 맞춰서 늘린다.
     [_ground2 setScale:gScale];
@@ -35,7 +35,7 @@
     
     [self addChild:_ground2];
     
-    _height = [_ground2 boundingBox].size.height;
+    _height = [_ground2 boundingBox].size.height*0.7;
     
     return self;
 }
@@ -63,19 +63,6 @@
 - (void)onEnter {
     [super onEnter];
     [self scheduleUpdate];
-}
-
-- (void)createBox2dObject:(b2World *)world
-{
-    b2BodyDef groundBodyDef;
-    groundBodyDef.type = b2_dynamicBody;
-    groundBodyDef.position.Set(self.position.x/PTM_RATIO,
-                               self.position.y/PTM_RATIO);
-    
-    groundBodyDef.userData = (__bridge void*)self;
-    groundBodyDef.fixedRotation = true;
-    
-    _body = world->CreateBody(&groundBodyDef);
 }
 
 @end
