@@ -191,8 +191,6 @@ static const int kMaxPipe = 3;
     CGRect down = pipe.pipeDown.boundingBox;
     down.origin = [pipe.pipeDown.parent convertToWorldSpace:down.origin];
     
-    CGRect bird = _bird.boundingBox;
-    
     return CGRectIntersectsRect(up, _bird.boundingBox)
         || CGRectIntersectsRect(down, _bird.boundingBox);
 }
@@ -236,14 +234,14 @@ static const int kMaxPipe = 3;
     
     if (_impactTime > 0)
     {
-        _birdHeight += dt*150*gScale;
+        _birdHeight += dt*120*gScale;
         _impactTime -= dt;
     }
     
     _birdHeight += _velocity * gScale * dt;
     _velocity += gravity * dt;
     
-    static const int maxDownFall = -600*gScale;
+    static const int maxDownFall = -700*gScale;
     if (_velocity <= maxDownFall)
         _velocity = maxDownFall;
     
