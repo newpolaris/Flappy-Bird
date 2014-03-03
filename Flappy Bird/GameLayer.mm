@@ -12,14 +12,18 @@
 #import "Bird.h"
 #import "Pipe.h"
 #import "GlobalVariable.h"
+#import "ResultLayer.h"
+#import "TitleLayer.h"
 
 @implementation GameLayer
 
 enum {
-    kBackground = -5,
+    kBackground = -1,
     kPipe,
     kGround,
     kBird,
+    kColorLayer,
+    kResult,
 };
 
 static const int kMaxPipe = 3;
@@ -46,6 +50,7 @@ static const int kMaxPipe = 3;
     
     _impactTime = 0;
     _play = false;
+    _gameOver = false;
     
     [self initGround]; // 순서 상관 있음.
     [self initPipe];
@@ -103,19 +108,61 @@ static const int kMaxPipe = 3;
 
 - (BOOL)ccTouchBegan:(UITouch *)touch withEvent:(UIEvent *)event
 {
-    static const float flyUp = 30*gScale;
+    CGSize winSize = [[CCDirector sharedDirector] winSize];
+    float flyUp = 120;
     
-    if (!_play)
+    if (!_gameOver)
     {
-        [self removeChild:_tutorialLabel];
-        [self removeChild:_readyLabel];
+        if (!_play)
+        {
+            [self removeChild:_tutorialLabel];
+            [self removeChild:_readyLabel];
+        }
+        _play = true;
+        
+        _impactTime = 0.0;
+        _velocity = flyUp;
     }
-    _play = true;
-    
-    _impactTime = 0.6;
-    _velocity = flyUp;
     
     return YES;
+}
+
+- (void)addResult
+{
+    CCSprite *menuOk = [CCSprite spriteWithSpriteFrameName:@"ok.png"];
+    CCSprite *menuOkSelected = [CCSprite spriteWithSpriteFrameName:@"ok.png"];
+    menuOkSelected.color = ccc3(128, 128, 128);
+
+    CCMenuItem *menuItemOk = [CCMenuItemImage itemWithNormalSprite:menuOk
+                                                    selectedSprite:menuOkSelected
+                                                             block:^(id sender) {
+                                                                 [[CCDirector sharedDirector] replaceScene:[TitleLayer node]];
+                                                             }];
+    
+    menuItemOk.scale = gScale;
+    
+    CCSprite *menuShare= [CCSprite spriteWithSpriteFrameName:@"score.png"];
+    CCSprite *menuShareSelected = [CCSprite spriteWithSpriteFrameName:@"score.png"];
+    menuShareSelected.color = ccc3(128, 128, 128);
+
+    CCMenuItem *menuItemShare = [CCMenuItemImage itemWithNormalSprite:menuShare
+                                                       selectedSprite:menuShareSelected
+                                                                block:^(id sender) {
+                                                                 [[CCDirector sharedDirector] replaceScene:[TitleLayer node]];
+                                                                }];
+    menuItemShare.scale = gScale;
+    
+    CCMenu *menu = [CCMenu menuWithItems: menuItemOk, menuItemShare, nil];
+    
+    CGSize winSize = [[CCDirector sharedDirector] winSize];
+    float padding = (winSize.width - [menuItemOk boundingBox].size.width*2)/3;
+    
+    // 수평으로 배치.
+    [menu alignItemsHorizontallyWithPadding:padding/2];
+    [menu setPosition:ccp(winSize.width/2, winSize.height*0.5)];
+    
+    // 만들어진 메뉴를 배경 sprite 위에 표시합니다.
+    [self addChild:menu z:2];
 }
 
 - (void)onEnter
@@ -144,43 +191,179 @@ static const int kMaxPipe = 3;
     // [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"background_music.mp3" loop:YES];
 }
 
+-(CCSequence*)earthquakeEffect
+{
+    static float oneFrame = 2.0 / 24.0;
+    static CGPoint viewMove[] = {
+        CGPointMake(+2.0, -4.0),
+        CGPointMake(-4.0, +6.0),
+        CGPointMake(+4.0, -4.0),
+        CGPointMake(-4.0, +4.0),
+        CGPointMake(+4.0, +2.0),
+        CGPointMake(-5.0, -4.0),
+        CGPointMake(+2.0, +4.0),
+        CGPointMake(+1.0, +2.0)
+    };
+    
+    id delayTimeAction = [CCDelayTime actionWithDuration:oneFrame];
+    
+    NSMutableArray *earthquake = [NSMutableArray array];
+    
+    for (int i = 0; i < sizeof(viewMove)/sizeof(viewMove[0]); i++)
+    {
+        CGPoint pt = viewMove[i];
+        CCCallBlock *run = [CCCallBlock actionWithBlock:^{
+            // 카메라 move
+            float centerX, centerY, centerZ;
+            float eyeX, eyeY, eyeZ;
+            
+            [self.camera centerX:&centerX centerY:&centerY centerZ:&centerZ];
+            [self.camera eyeX:&eyeX eyeY:&eyeY eyeZ:&eyeZ];
+            
+            [self.camera setCenterX:centerX+gScale*pt.x centerY:centerY+gScale*pt.y centerZ:centerZ];
+            [self.camera setEyeX:centerX+gScale*pt.x eyeY:eyeY+gScale*pt.y eyeZ:eyeZ];
+        }];
+        
+        [earthquake addObject:run];
+        [earthquake addObject:delayTimeAction];
+    }
+    
+    return [CCSequence actionWithArray:earthquake];
+}
+
+-(CCSequence*)TintByWhite
+{
+    float waiting = 0.5;
+    
+    CCLayerColor* colorLayer = [CCLayerColor layerWithColor:ccc4(255, 255, 255, 128)];
+    id opaque = [CCFadeOut actionWithDuration:waiting];
+    
+    CCCallBlock *changeColor = [CCCallBlock actionWithBlock:^{
+        // 화면 전체를 하얀색에서 정상색으로 되돌리기
+        colorLayer.scale = 1.2;
+        [self addChild:colorLayer z:kColorLayer];
+        [colorLayer runAction:opaque];
+    }];
+    
+    CCDelayTime *delay = [CCDelayTime actionWithDuration:waiting];
+    CCCallBlock *removeLayer = [CCCallBlock actionWithBlock:^{
+        [self removeChild:colorLayer];
+    }];
+    
+    return [CCSequence actions:changeColor, delay, removeLayer, nil];
+}
+
 -(void)collisionWithObject
 {
-    if (!_play) return;
+    if (_gameOver) return;
+    
+    _gameOver = YES;
     
     // [[SimpleAudioEngine sharedEngine] playEffect:@"explosion.wav"];
-
+    
     [self unschedule:@selector(updatePipe:)];
     [self unschedule:@selector(bird:)];
     
     [[[CCDirector sharedDirector] touchDispatcher] setDispatchEvents:NO];
     [_bird stopAllActions];
     [_groundLayer unscheduleAllSelectors];
+
+    CCSpawn *parllel = [CCSpawn actions:[self TintByWhite], [self earthquakeEffect], nil];
+    [self runAction:parllel];
     
+    
+    // [[[CCDirector sharedDirector] touchDispatcher] removeDelegate:self];
+    
+    // _gameOverLabel = [CCSprite spriteWithSpriteFrameName:@"game over.png"];
+    // [self addChild:_gameOverLabel];
+    
+    CCSprite *menuOk = [CCSprite spriteWithSpriteFrameName:@"ok.png"];
+    CCSprite *menuOkSelected = [CCSprite spriteWithSpriteFrameName:@"ok.png"];
+    menuOkSelected.color = ccc3(128, 128, 128);
+
+    CCMenuItem *menuItemOk = [CCMenuItemImage itemWithNormalSprite:menuOk
+                                                    selectedSprite:menuOkSelected
+                                                             block:^(id sender) {
+                                                                 [[CCDirector sharedDirector] replaceScene:[TitleLayer node]];
+                                                             }];
+    
+    menuItemOk.scale = gScale;
+    
+    CCSprite *menuShare= [CCSprite spriteWithSpriteFrameName:@"score.png"];
+    CCSprite *menuShareSelected = [CCSprite spriteWithSpriteFrameName:@"score.png"];
+    menuShareSelected.color = ccc3(128, 128, 128);
+
+    CCMenuItem *menuItemShare = [CCMenuItemImage itemWithNormalSprite:menuShare
+                                                       selectedSprite:menuShareSelected
+                                                                block:^(id sender) {
+                                                                    [[CCDirector sharedDirector] replaceScene:[TitleLayer node]];
+                                                                }];
+    menuItemShare.scale = gScale;
+    
+    CCMenu *menu = [CCMenu menuWithItems: menuItemOk, menuItemShare, nil];
+    
+    CGSize winSize = [[CCDirector sharedDirector] winSize];
+    float padding = (winSize.width - [menuItemOk boundingBox].size.width*2)/3;
+    
+    // 수평으로 배치.
+    [menu alignItemsHorizontallyWithPadding:padding/2];
+    [menu setPosition:ccp(winSize.width/2, winSize.height*0.5)];
+    
+    // 만들어진 메뉴를 배경 sprite 위에 표시합니다.
+    [self addChild:menu z:2];
+
     /*
      for (Bullet *bullet in bulletsArray) {
         bullet.visible = NO;
         [bullet removeFromParentAndCleanup:YES];
      }
+     */
 
-     [self unschedule:@selector(updateScore:)];
-
+     /*
      CCCallBlock *allStop = [CCCallBlock actionWithBlock:^{
          [[[CCDirector sharedDirector] touchDispatcher]
             removeDelegate:self];
          [[SimpleAudioEngine sharedEngine] stopBackgroundMusic];
      }];
 
-     CCDelayTime *delay = [CCDelayTime actionWithDuration:2.0f];
-     [[[CCDirector sharedDirector] touchDispatcher] setDispatchEvents:NO];
      CCCallBlock *block = [CCCallBlock actionWithBlock:^{
          [[CCDirector sharedDirector] replaceScene:[MenuLayer scene]];
      }];
      */
-}
-
--(void)update:(ccTime)dt
-{
+    
+    // 떨어지는 시간까지 딜레이
+    CCDelayTime *delay = [CCDelayTime actionWithDuration:1.0f];
+    
+    // 떨어지고 난뒤에 Touch 활성화.
+    CCCallBlock *enableTouch = [CCCallBlock actionWithBlock:^{
+        [[[CCDirector sharedDirector] touchDispatcher] setDispatchEvents:NO];
+    }];
+    
+        [[[CCDirector sharedDirector] touchDispatcher] setDispatchEvents:YES];
+    CCCallBlock *showMenu = [CCCallBlock actionWithBlock:^{
+    }];
+    
+    // [self addChild:[ResultLayer node] z:kResult];
+    
+    /*
+    CCCallBlock *fadeInGameOver = [CCCallBlock actionWithBlock:^{
+        _GameOverLabel.visible = true;
+        id fadeIn = [CCFadeIn actionWithDuration:1.0]; // fading in
+        [_GameOverLabel runAction:fadeIn];
+    }];
+    
+    CCCallBlock *showGameMenu = [CCCallBlock ]
+    // 액션을 순서대로 준비.
+    CCSequence *seq = [CCSequence actions:delay,
+                       enableTouch,
+                       fadeInGameOver,
+                       showGameMenu,
+                       showOKandShare,
+                       nil];
+    
+    // 액션 실행
+    [self runAction:seq];
+     */
 }
 
 -(bool)isCollision:(Pipe*)pipe
@@ -228,28 +411,21 @@ static const int kMaxPipe = 3;
 {
     if (!_play) return;
     
-    static const float gravity = -98*7;
+    static const float gravity = -98*4;
     
     int oldHeight = _birdHeight;
     
-    if (_impactTime > 0)
-    {
-        _birdHeight += dt*120*gScale;
-        _impactTime -= dt;
-    }
+    int winHeight = [CCDirector sharedDirector].winSize.height;
     
-    _birdHeight += _velocity * gScale * dt;
+    _birdHeight += _velocity * winHeight * dt / 170;
     _velocity += gravity * dt;
     
-    static const int maxDownFall = -700*gScale;
+    static const int maxDownFall = -winHeight/2;
     if (_velocity <= maxDownFall)
         _velocity = maxDownFall;
     
     
     int _birdBottom = _birdHeight + [_bird boundingBox].size.height/2;
-    
-    int winHeight = [CCDirector sharedDirector].winSize.height;
-    
     
     static const float factor = 100;
     int realV = -(_birdHeight -oldHeight)*factor/winHeight/dt;
@@ -269,7 +445,6 @@ static const int kMaxPipe = 3;
     }
     
     _bird.position = ccp(_bird.position.x, _birdHeight);
-
 }
 
 @end

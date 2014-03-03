@@ -19,7 +19,7 @@
     
     // 전체 백그라운드를 설정한다.
     CCSprite* background = [CCSprite spriteWithSpriteFrameName:@"background.png"];
-    background.anchorPoint = CGPointZero;
+    background.anchorPoint = ccp(0.1, 0);
     
     // window size get
     CGSize winSize = [[CCDirector sharedDirector] winSize];
@@ -29,7 +29,8 @@
     gScale = scale;
     
     // 가로 화면에 맞춰서 늘린다.
-    background.scale = gScale;
+    // 지진 효과를 위한 약간의 여유분. 20%
+    background.scale = gScale*1.2;
     
     [self addChild:background];
     
