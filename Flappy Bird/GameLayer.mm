@@ -14,6 +14,7 @@
 #import "GlobalVariable.h"
 #import "ResultLayer.h"
 #import "TitleLayer.h"
+#import "SimpleAudioEngine.h"
 
 @implementation GameLayer
 
@@ -122,6 +123,7 @@ static const int kMaxPipe = 3;
         
         _impactTime = 0.0;
         _velocity = flyUp;
+        [[SimpleAudioEngine sharedEngine] playEffect:@"sfx_wing.wav"];
     }
     
     return YES;
@@ -179,10 +181,10 @@ static const int kMaxPipe = 3;
     // 점수를 위한 스케쥴
     
     // 새 위치 업데이트
-    [self schedule:@selector(updateBirdPosition:)];
+    [self schedule:@selector(updateBirdPosition:) interval:1.0/60.0];
     
     // Pipe 움직이고 새롭게 갱신.
-    [self schedule:@selector(updatePipe:)];
+    [self schedule:@selector(updatePipe:) interval:1.0/60.0];
     
     // 점수를 위한 스케쥴
     // [self schedule:@selector(updateScore:) interval:0.01f];
@@ -259,8 +261,6 @@ static const int kMaxPipe = 3;
     
     _gameOver = YES;
     
-    // [[SimpleAudioEngine sharedEngine] playEffect:@"explosion.wav"];
-    
     [self unschedule:@selector(updatePipe:)];
     [self unschedule:@selector(bird:)];
     
@@ -268,7 +268,23 @@ static const int kMaxPipe = 3;
     [_bird stopAllActions];
     [_groundLayer unscheduleAllSelectors];
 
-    CCSpawn *parllel = [CCSpawn actions:[self TintByWhite], [self earthquakeEffect], nil];
+    CCCallBlock *playHit = [CCCallBlock actionWithBlock:^{
+        [[SimpleAudioEngine sharedEngine] playEffect:@"sfx_hit.wav"];
+    }];
+    CCDelayTime *delaySound = [CCDelayTime actionWithDuration:0.5];
+    CCCallBlock *playDie = [CCCallBlock actionWithBlock:^{
+        [[SimpleAudioEngine sharedEngine] playEffect:@"sfx_die.wav"];
+    }];
+    
+    CCSpawn *parllel = [CCSpawn actions:[self TintByWhite],
+                                        [self earthquakeEffect],
+                                        [CCSequence actions:playHit, delaySound, playDie, nil],
+                                         nil];
+    
+                        
+    
+    
+    
     [self runAction:parllel];
     
     
@@ -411,13 +427,13 @@ static const int kMaxPipe = 3;
 {
     if (!_play) return;
     
-    static const float gravity = -98*4;
+    static const float gravity = -98*4.6;
     
     int oldHeight = _birdHeight;
     
     int winHeight = [CCDirector sharedDirector].winSize.height;
     
-    _birdHeight += _velocity * winHeight * dt / 170;
+    _birdHeight += _velocity * winHeight * dt / 150;
     _velocity += gravity * dt;
     
     static const int maxDownFall = -winHeight/2;

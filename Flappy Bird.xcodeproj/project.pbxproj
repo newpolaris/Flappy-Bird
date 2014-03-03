@@ -152,6 +152,11 @@
 		6660A3E918BF82EF00309F2F /* Pipe.mm in Sources */ = {isa = PBXBuildFile; fileRef = 6660A3E818BF82EE00309F2F /* Pipe.mm */; };
 		6699C58F18C0E60200E07F69 /* collision.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6699C58E18C0E60200E07F69 /* collision.plist */; };
 		66D3F0C418C306C3000BF68D /* ResultLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 66D3F0C318C306C3000BF68D /* ResultLayer.m */; };
+		66D3F0CA18C4D05B000BF68D /* sfx_hit.wav in Resources */ = {isa = PBXBuildFile; fileRef = 66D3F0C518C4D05B000BF68D /* sfx_hit.wav */; };
+		66D3F0CB18C4D05B000BF68D /* sfx_point.wav in Resources */ = {isa = PBXBuildFile; fileRef = 66D3F0C618C4D05B000BF68D /* sfx_point.wav */; };
+		66D3F0CC18C4D05B000BF68D /* sfx_swooshing.wav in Resources */ = {isa = PBXBuildFile; fileRef = 66D3F0C718C4D05B000BF68D /* sfx_swooshing.wav */; };
+		66D3F0CD18C4D05B000BF68D /* sfx_wing.wav in Resources */ = {isa = PBXBuildFile; fileRef = 66D3F0C818C4D05B000BF68D /* sfx_wing.wav */; };
+		66D3F0CE18C4D05B000BF68D /* sfx_die.wav in Resources */ = {isa = PBXBuildFile; fileRef = 66D3F0C918C4D05B000BF68D /* sfx_die.wav */; };
 		66EB55B418BD0FA800833542 /* GroundLayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 66EB55B318BD0FA800833542 /* GroundLayer.mm */; };
 /* End PBXBuildFile section */
 
@@ -456,6 +461,11 @@
 		6699C58E18C0E60200E07F69 /* collision.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = collision.plist; path = Resources/collision.plist; sourceTree = "<group>"; };
 		66D3F0C218C306C2000BF68D /* ResultLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResultLayer.h; sourceTree = "<group>"; };
 		66D3F0C318C306C3000BF68D /* ResultLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResultLayer.m; sourceTree = "<group>"; };
+		66D3F0C518C4D05B000BF68D /* sfx_hit.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = sfx_hit.wav; sourceTree = "<group>"; };
+		66D3F0C618C4D05B000BF68D /* sfx_point.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = sfx_point.wav; sourceTree = "<group>"; };
+		66D3F0C718C4D05B000BF68D /* sfx_swooshing.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = sfx_swooshing.wav; sourceTree = "<group>"; };
+		66D3F0C818C4D05B000BF68D /* sfx_wing.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = sfx_wing.wav; sourceTree = "<group>"; };
+		66D3F0C918C4D05B000BF68D /* sfx_die.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = sfx_die.wav; sourceTree = "<group>"; };
 		66EB55B218BD0FA800833542 /* GroundLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroundLayer.h; sourceTree = "<group>"; };
 		66EB55B318BD0FA800833542 /* GroundLayer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = GroundLayer.mm; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -552,6 +562,11 @@
 		661E36DE18BCDA82006EF8DA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				66D3F0C518C4D05B000BF68D /* sfx_hit.wav */,
+				66D3F0C618C4D05B000BF68D /* sfx_point.wav */,
+				66D3F0C718C4D05B000BF68D /* sfx_swooshing.wav */,
+				66D3F0C818C4D05B000BF68D /* sfx_wing.wav */,
+				66D3F0C918C4D05B000BF68D /* sfx_die.wav */,
 				6699C58E18C0E60200E07F69 /* collision.plist */,
 				661E38DA18BCDE57006EF8DA /* FlappyBird.pvr.ccz */,
 				661E38DC18BCDE57006EF8DA /* FlappyBird.plist */,
@@ -999,6 +1014,11 @@
 				661E38DE18BCDE57006EF8DA /* FlappyBird.pvr.ccz in Resources */,
 				661E38E018BCDE57006EF8DA /* FlappyBird.plist in Resources */,
 				6699C58F18C0E60200E07F69 /* collision.plist in Resources */,
+				66D3F0CA18C4D05B000BF68D /* sfx_hit.wav in Resources */,
+				66D3F0CB18C4D05B000BF68D /* sfx_point.wav in Resources */,
+				66D3F0CC18C4D05B000BF68D /* sfx_swooshing.wav in Resources */,
+				66D3F0CD18C4D05B000BF68D /* sfx_wing.wav in Resources */,
+				66D3F0CE18C4D05B000BF68D /* sfx_die.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

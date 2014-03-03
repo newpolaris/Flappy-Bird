@@ -10,6 +10,7 @@
 
 #import "AppDelegate.h"
 #import "IntroLayer.h"
+#import "SimpleAudioEngine.h"
 
 @implementation MyNavigationController
 
@@ -139,6 +140,13 @@
 	// make main window visible
 	[window_ makeKeyAndVisible];
 	
+    // Load sound effects
+    [[SimpleAudioEngine sharedEngine] preloadEffect:@"sfx_hit.wav"];
+    [[SimpleAudioEngine sharedEngine] preloadEffect:@"sfx_point.wav"];
+    [[SimpleAudioEngine sharedEngine] preloadEffect:@"sfx_swooshing.wav"];
+    [[SimpleAudioEngine sharedEngine] preloadEffect:@"sfx_wing.wav"];
+    [[SimpleAudioEngine sharedEngine] preloadEffect:@"sfx_die.wav"];
+    
 	return YES;
 }
 
