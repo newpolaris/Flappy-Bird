@@ -157,6 +157,7 @@
 		66D3F0CD18C4D05B000BF68D /* sfx_wing.wav in Resources */ = {isa = PBXBuildFile; fileRef = 66D3F0C818C4D05B000BF68D /* sfx_wing.wav */; };
 		66D3F0CE18C4D05B000BF68D /* sfx_die.wav in Resources */ = {isa = PBXBuildFile; fileRef = 66D3F0C918C4D05B000BF68D /* sfx_die.wav */; };
 		66D3F0D118C64219000BF68D /* GetReady.m in Sources */ = {isa = PBXBuildFile; fileRef = 66D3F0D018C64218000BF68D /* GetReady.m */; };
+		66D3F0D418C64C12000BF68D /* ResultBoard.m in Sources */ = {isa = PBXBuildFile; fileRef = 66D3F0D318C64C11000BF68D /* ResultBoard.m */; };
 		66EB55B418BD0FA800833542 /* GroundLayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 66EB55B318BD0FA800833542 /* GroundLayer.mm */; };
 /* End PBXBuildFile section */
 
@@ -466,6 +467,8 @@
 		66D3F0C918C4D05B000BF68D /* sfx_die.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = sfx_die.wav; sourceTree = "<group>"; };
 		66D3F0CF18C64217000BF68D /* GetReady.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetReady.h; sourceTree = "<group>"; };
 		66D3F0D018C64218000BF68D /* GetReady.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetReady.m; sourceTree = "<group>"; };
+		66D3F0D218C64C10000BF68D /* ResultBoard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResultBoard.h; sourceTree = "<group>"; };
+		66D3F0D318C64C11000BF68D /* ResultBoard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResultBoard.m; sourceTree = "<group>"; };
 		66EB55B218BD0FA800833542 /* GroundLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroundLayer.h; sourceTree = "<group>"; };
 		66EB55B318BD0FA800833542 /* GroundLayer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = GroundLayer.mm; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -528,6 +531,8 @@
 		661E36DD18BCDA82006EF8DA /* Flappy Bird */ = {
 			isa = PBXGroup;
 			children = (
+				66D3F0D218C64C10000BF68D /* ResultBoard.h */,
+				66D3F0D318C64C11000BF68D /* ResultBoard.m */,
 				66EB55B218BD0FA800833542 /* GroundLayer.h */,
 				66EB55B318BD0FA800833542 /* GroundLayer.mm */,
 				661E38F018BCDEFA006EF8DA /* GlobalVariable.h */,
@@ -1150,6 +1155,7 @@
 				6660A3E618BF5D7400309F2F /* GameScene.mm in Sources */,
 				6660A3E918BF82EF00309F2F /* Pipe.mm in Sources */,
 				66D3F0D118C64219000BF68D /* GetReady.m in Sources */,
+				66D3F0D418C64C12000BF68D /* ResultBoard.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

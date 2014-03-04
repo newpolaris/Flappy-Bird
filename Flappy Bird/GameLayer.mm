@@ -35,8 +35,6 @@ static const int kMaxPipe = 3;
     
     [self addChild:[BackgroundLayer node] z:kBackground];
     
-    _impactTime = 0;
-    _play = false;
     _gameOver = false;
     
     self.touchEnabled = false;
@@ -98,16 +96,11 @@ static const int kMaxPipe = 3;
 
 - (BOOL)ccTouchBegan:(UITouch *)touch withEvent:(UIEvent *)event
 {
-    float flyUp = 120;
+    // 위로의 수직 상승 속도.
+    static const float flyUp = 120;
     
-    if (!_gameOver)
-    {
-        _play = true;
-        
-        _impactTime = 0.0;
-        _velocity = flyUp;
-        [[SimpleAudioEngine sharedEngine] playEffect:@"sfx_wing.wav"];
-    }
+    _velocity = flyUp;
+    [[SimpleAudioEngine sharedEngine] playEffect:@"sfx_wing.wav"];
     
     return YES;
 }
@@ -175,8 +168,6 @@ static const int kMaxPipe = 3;
 
 -(void)updateScore:(ccTime)dt
 {
-    if (!_play) return;
-    
     _gone -= dt*_screenSpeed;
     
     int newScore = _gone / _pipeGap;
@@ -260,7 +251,7 @@ static const int kMaxPipe = 3;
     [self unschedule:@selector(bird:)];
     [self unschedule:@selector(updateScore:)];
     
-    [[[CCDirector sharedDirector] touchDispatcher] setDispatchEvents:NO];
+    [[[CCDirector sharedDirector] touchDispatcher] removeDelegate:self];
     [_bird stopAllActions];
     [_groundLayer unscheduleAllSelectors];
 
@@ -331,11 +322,6 @@ static const int kMaxPipe = 3;
 {
     CGSize winSize = [[CCDirector sharedDirector] winSize];
     
-    // 떨어지고 난뒤에 Touch 활성화.
-    CCCallBlock *enableTouch = [CCCallBlock actionWithBlock:^{
-        [[[CCDirector sharedDirector] touchDispatcher] setDispatchEvents:YES];
-    }];
-    
     // 떨어지는 시간까지 딜레이
     CCDelayTime *delay = [CCDelayTime actionWithDuration:1.0f];
     
@@ -380,7 +366,6 @@ static const int kMaxPipe = 3;
     }];
     
     CCSequence *seq = [CCSequence actions:delay,
-                       enableTouch,
                        fadeInGameOver,
                        delayGameOver,
                        showResultBoard,
@@ -405,9 +390,6 @@ static const int kMaxPipe = 3;
 
 -(void)updatePipe:(ccTime)dt
 {
-    if (!_play)
-        return;
-    
     CGSize winSize = [[CCDirector sharedDirector] winSize];
     
     for (int i = 0; i < kMaxPipe; i++)
@@ -434,8 +416,6 @@ static const int kMaxPipe = 3;
 
 -(void)updateBirdPosition:(ccTime)dt
 {
-    if (!_play) return;
-    
     static const float gravity = -98*4.6;
     
     int oldHeight = _birdHeight;
