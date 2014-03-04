@@ -11,7 +11,6 @@
 
 @interface ResultLayer : CCLayer;
 
-@property (nonatomic, weak) CCSprite *gameOverLabel;
 @property (nonatomic, weak) CCNode *resultNode;
 @property (nonatomic, weak) CCNode *OKandShare;
 

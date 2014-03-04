@@ -67,7 +67,7 @@ enum {
     
     // TODO: 아이패드, 아이폰5에선 오차 발생
     // 노가다를 통한 y축 설정. 땅 부분의 위의 잔디에서 약간만 떨어진 위치 아래에 로고 박히게
-    _copyright.position = ccp(winSize.width/2, winSize.height*0.18);
+    _copyright.position = ccp(winSize.width/2, ground.height - [_copyright boundingBox].size.height*2);
     [self addChild:_copyright z:1];
     
     CCSprite *startMenuNormal = [CCSprite spriteWithSpriteFrameName:@"start.png"];
@@ -96,7 +96,7 @@ enum {
     
     // 수평으로 배치.
     [menu alignItemsHorizontallyWithPadding:padding/2];
-    [menu setPosition:ccp(winSize.width/2, groundHeight*1.2)];
+    [menu setPosition:ccp(winSize.width/2, groundHeight*1.3)];
     
     // 만들어진 메뉴를 배경 sprite 위에 표시합니다.
     [self addChild:menu z:2];

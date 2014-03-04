@@ -151,7 +151,6 @@
 		6660A3E618BF5D7400309F2F /* GameScene.mm in Sources */ = {isa = PBXBuildFile; fileRef = 6660A3E518BF5D7400309F2F /* GameScene.mm */; };
 		6660A3E918BF82EF00309F2F /* Pipe.mm in Sources */ = {isa = PBXBuildFile; fileRef = 6660A3E818BF82EE00309F2F /* Pipe.mm */; };
 		6699C58F18C0E60200E07F69 /* collision.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6699C58E18C0E60200E07F69 /* collision.plist */; };
-		66D3F0C418C306C3000BF68D /* ResultLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 66D3F0C318C306C3000BF68D /* ResultLayer.m */; };
 		66D3F0CA18C4D05B000BF68D /* sfx_hit.wav in Resources */ = {isa = PBXBuildFile; fileRef = 66D3F0C518C4D05B000BF68D /* sfx_hit.wav */; };
 		66D3F0CB18C4D05B000BF68D /* sfx_point.wav in Resources */ = {isa = PBXBuildFile; fileRef = 66D3F0C618C4D05B000BF68D /* sfx_point.wav */; };
 		66D3F0CC18C4D05B000BF68D /* sfx_swooshing.wav in Resources */ = {isa = PBXBuildFile; fileRef = 66D3F0C718C4D05B000BF68D /* sfx_swooshing.wav */; };
@@ -459,8 +458,6 @@
 		6660A3E718BF82EE00309F2F /* Pipe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Pipe.h; sourceTree = "<group>"; };
 		6660A3E818BF82EE00309F2F /* Pipe.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Pipe.mm; sourceTree = "<group>"; };
 		6699C58E18C0E60200E07F69 /* collision.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = collision.plist; path = Resources/collision.plist; sourceTree = "<group>"; };
-		66D3F0C218C306C2000BF68D /* ResultLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResultLayer.h; sourceTree = "<group>"; };
-		66D3F0C318C306C3000BF68D /* ResultLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResultLayer.m; sourceTree = "<group>"; };
 		66D3F0C518C4D05B000BF68D /* sfx_hit.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = sfx_hit.wav; sourceTree = "<group>"; };
 		66D3F0C618C4D05B000BF68D /* sfx_point.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = sfx_point.wav; sourceTree = "<group>"; };
 		66D3F0C718C4D05B000BF68D /* sfx_swooshing.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = sfx_swooshing.wav; sourceTree = "<group>"; };
@@ -538,8 +535,6 @@
 				6660A3E518BF5D7400309F2F /* GameScene.mm */,
 				6624ACFC18BF5A1C00A3AEA8 /* GameLayer.h */,
 				6624ACFD18BF5A1C00A3AEA8 /* GameLayer.mm */,
-				66D3F0C218C306C2000BF68D /* ResultLayer.h */,
-				66D3F0C318C306C3000BF68D /* ResultLayer.m */,
 				6660A3E718BF82EE00309F2F /* Pipe.h */,
 				6660A3E818BF82EE00309F2F /* Pipe.mm */,
 				661E38E218BCDED1006EF8DA /* Bird.h */,
@@ -1149,7 +1144,6 @@
 				6624ACFE18BF5A1C00A3AEA8 /* GameLayer.mm in Sources */,
 				6660A3E618BF5D7400309F2F /* GameScene.mm in Sources */,
 				6660A3E918BF82EF00309F2F /* Pipe.mm in Sources */,
-				66D3F0C418C306C3000BF68D /* ResultLayer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

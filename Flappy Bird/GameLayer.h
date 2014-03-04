@@ -21,9 +21,13 @@
 @property (nonatomic, weak) CCSprite* readyLabel;
 @property (nonatomic, weak) CCSprite* tutorialLabel;
 @property (nonatomic, weak) GroundLayer *groundLayer;
-@property (atomic) BOOL play;
-@property (atomic) BOOL gameOver;
+@property (nonatomic) BOOL play;
+@property (nonatomic) BOOL gameOver;
 @property (nonatomic) int screenSpeed;
+@property (nonatomic) int delayPipeStart;
+@property (nonatomic) int pipeGap;
+@property (nonatomic) int score;
+@property (nonatomic) int gone;
 
 @property (nonatomic) int birdHeight;
 @property (nonatomic) float velocity;
