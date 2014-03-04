@@ -18,8 +18,6 @@
 }
 
 @property (nonatomic, weak) Bird* bird;
-@property (nonatomic, weak) CCSprite* readyLabel;
-@property (nonatomic, weak) CCSprite* tutorialLabel;
 @property (nonatomic, weak) GroundLayer *groundLayer;
 @property (nonatomic) BOOL play;
 @property (nonatomic) BOOL gameOver;

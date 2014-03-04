@@ -8,6 +8,7 @@
 
 #import "GameScene.h"
 #import "GameLayer.h"
+#import "GetReady.h"
 
 @implementation GameScene
 
@@ -24,6 +25,8 @@
         
         // 게임 레이어의 HUD에 HUD레이어 전달
         // self.gameLayer.hud = _hudLayer;
+        
+        [self addChild:[GetReady node]];
     }
     return self;
 }

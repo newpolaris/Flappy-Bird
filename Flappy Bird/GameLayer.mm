@@ -35,22 +35,11 @@ static const int kMaxPipe = 3;
     
     [self addChild:[BackgroundLayer node] z:kBackground];
     
-    CGSize winSize = [[CCDirector sharedDirector] winSize];
-    
-    [self setTutorialLabel:[CCSprite spriteWithSpriteFrameName:@"tutorial.png"]];
-    _tutorialLabel.anchorPoint = ccp(0, 0.5);
-    _tutorialLabel.position = ccp(winSize.width/2, winSize.height/2);
-    _tutorialLabel.scale = gScale;
-    [self addChild:_tutorialLabel];
-    
-    [self setReadyLabel:[CCSprite spriteWithSpriteFrameName:@"get_ready.png"]];
-    _readyLabel.scale = gScale;
-    _readyLabel.position = ccp(winSize.width/2, winSize.height*0.7);
-    [self addChild:_readyLabel];
-    
     _impactTime = 0;
     _play = false;
     _gameOver = false;
+    
+    self.touchEnabled = false;
     
     [self initGround]; // 순서 상관 있음.
     [self initPipe];
@@ -113,11 +102,6 @@ static const int kMaxPipe = 3;
     
     if (!_gameOver)
     {
-        if (!_play)
-        {
-            [self removeChild:_tutorialLabel];
-            [self removeChild:_readyLabel];
-        }
         _play = true;
         
         _impactTime = 0.0;

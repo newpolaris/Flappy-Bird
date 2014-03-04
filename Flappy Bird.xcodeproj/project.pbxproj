@@ -156,6 +156,7 @@
 		66D3F0CC18C4D05B000BF68D /* sfx_swooshing.wav in Resources */ = {isa = PBXBuildFile; fileRef = 66D3F0C718C4D05B000BF68D /* sfx_swooshing.wav */; };
 		66D3F0CD18C4D05B000BF68D /* sfx_wing.wav in Resources */ = {isa = PBXBuildFile; fileRef = 66D3F0C818C4D05B000BF68D /* sfx_wing.wav */; };
 		66D3F0CE18C4D05B000BF68D /* sfx_die.wav in Resources */ = {isa = PBXBuildFile; fileRef = 66D3F0C918C4D05B000BF68D /* sfx_die.wav */; };
+		66D3F0D118C64219000BF68D /* GetReady.m in Sources */ = {isa = PBXBuildFile; fileRef = 66D3F0D018C64218000BF68D /* GetReady.m */; };
 		66EB55B418BD0FA800833542 /* GroundLayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 66EB55B318BD0FA800833542 /* GroundLayer.mm */; };
 /* End PBXBuildFile section */
 
@@ -463,6 +464,8 @@
 		66D3F0C718C4D05B000BF68D /* sfx_swooshing.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = sfx_swooshing.wav; sourceTree = "<group>"; };
 		66D3F0C818C4D05B000BF68D /* sfx_wing.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = sfx_wing.wav; sourceTree = "<group>"; };
 		66D3F0C918C4D05B000BF68D /* sfx_die.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = sfx_die.wav; sourceTree = "<group>"; };
+		66D3F0CF18C64217000BF68D /* GetReady.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetReady.h; sourceTree = "<group>"; };
+		66D3F0D018C64218000BF68D /* GetReady.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetReady.m; sourceTree = "<group>"; };
 		66EB55B218BD0FA800833542 /* GroundLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroundLayer.h; sourceTree = "<group>"; };
 		66EB55B318BD0FA800833542 /* GroundLayer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = GroundLayer.mm; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -533,6 +536,8 @@
 				661E38F318BCDEFB006EF8DA /* Title.mm */,
 				6660A3E418BF5D7400309F2F /* GameScene.h */,
 				6660A3E518BF5D7400309F2F /* GameScene.mm */,
+				66D3F0CF18C64217000BF68D /* GetReady.h */,
+				66D3F0D018C64218000BF68D /* GetReady.m */,
 				6624ACFC18BF5A1C00A3AEA8 /* GameLayer.h */,
 				6624ACFD18BF5A1C00A3AEA8 /* GameLayer.mm */,
 				6660A3E718BF82EE00309F2F /* Pipe.h */,
@@ -1144,6 +1149,7 @@
 				6624ACFE18BF5A1C00A3AEA8 /* GameLayer.mm in Sources */,
 				6660A3E618BF5D7400309F2F /* GameScene.mm in Sources */,
 				6660A3E918BF82EF00309F2F /* Pipe.mm in Sources */,
+				66D3F0D118C64219000BF68D /* GetReady.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
