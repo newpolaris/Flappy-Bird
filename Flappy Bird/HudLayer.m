@@ -61,7 +61,7 @@
     int xPosition = [_resumeMenu boundingBox].size.width;
     
     menu.anchorPoint = ccp(0, 0.5);
-    menu.position = ccp(xPosition, winSize.height*0.8);
+    menu.position = ccp(xPosition, winSize.height*0.85);
     
     // 시작은 resume을 끄고 pause를 활성화 시킨다.
     _resumeMenu.visible = false;
@@ -71,13 +71,12 @@
 
 - (void)initScore
 {
-    scoreLabel = [CCLabelBMFont labelWithString:@"0"
-                                        fntFile:@"fontLarge.png"
-                                          width:30
-                                      alignment:kCCTextAlignmentCenter];
-    
     CGSize winSize = [[CCDirector sharedDirector] winSize];
-    scoreLabel.position = ccp(winSize.width*0.5, 0.8);
+    
+    scoreLabel = [CCLabelBMFont labelWithString:@"0" fntFile:@"font.fnt"];
+    scoreLabel.anchorPoint = ccp(0.5, 0.5);
+    scoreLabel.position = ccp(winSize.width*0.5, winSize.height*0.85);
+    scoreLabel.scale = gScale;
     
     [self addChild:scoreLabel];
 }

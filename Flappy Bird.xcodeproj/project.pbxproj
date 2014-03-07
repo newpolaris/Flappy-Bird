@@ -148,11 +148,11 @@
 		6624ACFE18BF5A1C00A3AEA8 /* GameLayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 6624ACFD18BF5A1C00A3AEA8 /* GameLayer.mm */; };
 		6660A3E618BF5D7400309F2F /* GameScene.mm in Sources */ = {isa = PBXBuildFile; fileRef = 6660A3E518BF5D7400309F2F /* GameScene.mm */; };
 		6660A3E918BF82EF00309F2F /* Pipe.mm in Sources */ = {isa = PBXBuildFile; fileRef = 6660A3E818BF82EE00309F2F /* Pipe.mm */; };
+		6661532218CA1F0C00288624 /* fontSmall.png in Resources */ = {isa = PBXBuildFile; fileRef = 6661532018CA1F0C00288624 /* fontSmall.png */; };
+		6661532318CA1F0C00288624 /* fontSmall.fnt in Resources */ = {isa = PBXBuildFile; fileRef = 6661532118CA1F0C00288624 /* fontSmall.fnt */; };
 		6699C58F18C0E60200E07F69 /* collision.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6699C58E18C0E60200E07F69 /* collision.plist */; };
-		66A568E018C9FF1900C340A8 /* fontLarge.png in Resources */ = {isa = PBXBuildFile; fileRef = 66A568DC18C9FF1900C340A8 /* fontLarge.png */; };
-		66A568E118C9FF1900C340A8 /* font.png in Resources */ = {isa = PBXBuildFile; fileRef = 66A568DD18C9FF1900C340A8 /* font.png */; };
-		66A568E218C9FF1900C340A8 /* fontLarge.fnt in Resources */ = {isa = PBXBuildFile; fileRef = 66A568DE18C9FF1900C340A8 /* fontLarge.fnt */; };
-		66A568E318C9FF1900C340A8 /* font.fnt in Resources */ = {isa = PBXBuildFile; fileRef = 66A568DF18C9FF1900C340A8 /* font.fnt */; };
+		66A568E818CA039600C340A8 /* font.png in Resources */ = {isa = PBXBuildFile; fileRef = 66A568E418CA039600C340A8 /* font.png */; };
+		66A568EA18CA039600C340A8 /* font.fnt in Resources */ = {isa = PBXBuildFile; fileRef = 66A568E618CA039600C340A8 /* font.fnt */; };
 		66D3F0CA18C4D05B000BF68D /* sfx_hit.wav in Resources */ = {isa = PBXBuildFile; fileRef = 66D3F0C518C4D05B000BF68D /* sfx_hit.wav */; };
 		66D3F0CB18C4D05B000BF68D /* sfx_point.wav in Resources */ = {isa = PBXBuildFile; fileRef = 66D3F0C618C4D05B000BF68D /* sfx_point.wav */; };
 		66D3F0CC18C4D05B000BF68D /* sfx_swooshing.wav in Resources */ = {isa = PBXBuildFile; fileRef = 66D3F0C718C4D05B000BF68D /* sfx_swooshing.wav */; };
@@ -462,11 +462,11 @@
 		6660A3E518BF5D7400309F2F /* GameScene.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = GameScene.mm; sourceTree = "<group>"; };
 		6660A3E718BF82EE00309F2F /* Pipe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Pipe.h; sourceTree = "<group>"; };
 		6660A3E818BF82EE00309F2F /* Pipe.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Pipe.mm; sourceTree = "<group>"; };
+		6661532018CA1F0C00288624 /* fontSmall.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = fontSmall.png; path = Resources/fontSmall.png; sourceTree = "<group>"; };
+		6661532118CA1F0C00288624 /* fontSmall.fnt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = fontSmall.fnt; path = Resources/fontSmall.fnt; sourceTree = "<group>"; };
 		6699C58E18C0E60200E07F69 /* collision.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = collision.plist; path = Resources/collision.plist; sourceTree = "<group>"; };
-		66A568DC18C9FF1900C340A8 /* fontLarge.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = fontLarge.png; path = Resources/fontLarge.png; sourceTree = "<group>"; };
-		66A568DD18C9FF1900C340A8 /* font.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = font.png; path = Resources/font.png; sourceTree = "<group>"; };
-		66A568DE18C9FF1900C340A8 /* fontLarge.fnt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = fontLarge.fnt; path = Resources/fontLarge.fnt; sourceTree = "<group>"; };
-		66A568DF18C9FF1900C340A8 /* font.fnt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = font.fnt; path = Resources/font.fnt; sourceTree = "<group>"; };
+		66A568E418CA039600C340A8 /* font.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = font.png; path = Resources/font.png; sourceTree = "<group>"; };
+		66A568E618CA039600C340A8 /* font.fnt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = font.fnt; path = Resources/font.fnt; sourceTree = "<group>"; };
 		66D3F0C518C4D05B000BF68D /* sfx_hit.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = sfx_hit.wav; sourceTree = "<group>"; };
 		66D3F0C618C4D05B000BF68D /* sfx_point.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = sfx_point.wav; sourceTree = "<group>"; };
 		66D3F0C718C4D05B000BF68D /* sfx_swooshing.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = sfx_swooshing.wav; sourceTree = "<group>"; };
@@ -580,10 +580,10 @@
 		661E36DE18BCDA82006EF8DA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				66A568DC18C9FF1900C340A8 /* fontLarge.png */,
-				66A568DD18C9FF1900C340A8 /* font.png */,
-				66A568DE18C9FF1900C340A8 /* fontLarge.fnt */,
-				66A568DF18C9FF1900C340A8 /* font.fnt */,
+				6661532018CA1F0C00288624 /* fontSmall.png */,
+				6661532118CA1F0C00288624 /* fontSmall.fnt */,
+				66A568E418CA039600C340A8 /* font.png */,
+				66A568E618CA039600C340A8 /* font.fnt */,
 				66D3F0D518C7747F000BF68D /* FlappyBird.plist */,
 				66D3F0D618C7747F000BF68D /* FlappyBird.png */,
 				66D3F0C518C4D05B000BF68D /* sfx_hit.wav */,
@@ -1041,10 +1041,10 @@
 				66D3F0CE18C4D05B000BF68D /* sfx_die.wav in Resources */,
 				66D3F0D718C7747F000BF68D /* FlappyBird.plist in Resources */,
 				66D3F0D818C7747F000BF68D /* FlappyBird.png in Resources */,
-				66A568E018C9FF1900C340A8 /* fontLarge.png in Resources */,
-				66A568E118C9FF1900C340A8 /* font.png in Resources */,
-				66A568E218C9FF1900C340A8 /* fontLarge.fnt in Resources */,
-				66A568E318C9FF1900C340A8 /* font.fnt in Resources */,
+				66A568E818CA039600C340A8 /* font.png in Resources */,
+				66A568EA18CA039600C340A8 /* font.fnt in Resources */,
+				6661532218CA1F0C00288624 /* fontSmall.png in Resources */,
+				6661532318CA1F0C00288624 /* fontSmall.fnt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

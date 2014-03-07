@@ -14,8 +14,8 @@
 enum eSceneOrder
 {
     kGameLayer = 0,
-    kHudLayer,
-    kGetReadyLayer
+    kGetReadyLayer,
+    kHudLayer
 };
 
 @implementation GameScene
