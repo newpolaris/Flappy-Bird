@@ -8,12 +8,12 @@
 
 #import <Foundation/Foundation.h>
 #import "cocos2d.h"
+#import "GameLayer.h"
 
-@interface GetReady : CCLayer {
-    
-}
+@interface GetReady : CCLayer;
 
-@property (nonatomic, weak) CCSprite* readyLabel;
-@property (nonatomic, weak) CCSprite* tutorialLabel;
+@property (nonatomic, weak) GameLayer *gameLayer;
+@property (nonatomic, weak) CCSprite *readyLabel;
+@property (nonatomic, weak) CCSprite *tutorialLabel;
 
 @end

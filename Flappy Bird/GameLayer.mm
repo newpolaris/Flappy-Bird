@@ -14,6 +14,7 @@
 #import "GlobalVariable.h"
 #import "TitleLayer.h"
 #import "SimpleAudioEngine.h"
+#import "HudLayer.h"
 
 @implementation GameLayer
 
@@ -33,11 +34,11 @@ static const int kMaxPipe = 3;
     self = [super init];
     if (!self) return nil;
     
-    [self addChild:[BackgroundLayer node] z:kBackground];
-    
     _gameOver = false;
+    _winSize = [[CCDirector sharedDirector] winSize];
+    _pipeUpDownGap = _winSize.height / 4;
     
-    self.touchEnabled = false;
+    [self addChild:[BackgroundLayer node] z:kBackground];
     
     [self initGround]; // 순서 상관 있음.
     [self initPipe];
@@ -68,9 +69,7 @@ static const int kMaxPipe = 3;
 
 - (void)initPipe
 {
-    CGSize winSize = [[CCDirector sharedDirector] winSize];
-    int viewSize = winSize.height - _groundLayer.height;
-    _delayPipeStart = winSize.width*1.5;
+    _delayPipeStart = _winSize.width*1.5;
 
     pipeArray = [[CCArray alloc] initWithCapacity:kMaxPipe];
     
@@ -78,13 +77,14 @@ static const int kMaxPipe = 3;
     for (int i = 0; i < kMaxPipe; i++)
     {
         Pipe *pipe = [Pipe node];
+        [pipe setPipeGap:_pipeUpDownGap];
         
         int pipeWidth = pipe.width;
-        _pipeGap = (winSize.width + pipeWidth/2)/2;
+        _pipeGap = (_winSize.width + pipeWidth/2)/2;
         int xPos = _delayPipeStart + i*_pipeGap;
     
         pipe.anchorPoint = ccp(0.5, 0.5);
-        pipe.position = ccp(xPos, viewSize * 0.5 + _groundLayer.height);
+        pipe.position = ccp(xPos, [self nextPipePosY]);
         
         // 배치 노드에 넣는다.
         [self addChild:pipe z:kPipe];
@@ -94,10 +94,37 @@ static const int kMaxPipe = 3;
     }
 }
 
+- (void)activateSchedule
+{
+    // 새 위치 업데이트
+    [self schedule:@selector(updateBirdPosition:)];
+    
+    // Pipe 움직이고 새롭게 갱신.
+    [self schedule:@selector(updatePipe:)];
+    
+    // 점수를 위한 스케쥴
+    [self schedule:@selector(updateScore:) interval:0.1];
+    
+}
+
+- (void)unactivateSchedule
+{
+    [self unschedule:@selector(updatePipe:)];
+    [self unschedule:@selector(bird:)];
+    [self unschedule:@selector(updateScore:)];
+}
+
+- (int)nextPipePosY
+{
+    // *2가 넉넉하나 좁아보이므로 1.5로 정함.
+    int viewSize = _winSize.height - _groundLayer.height - _pipeUpDownGap*1.5;
+    return arc4random_uniform(viewSize) + _groundLayer.height + _pipeUpDownGap;
+}
+
 - (BOOL)ccTouchBegan:(UITouch *)touch withEvent:(UIEvent *)event
 {
     // 위로의 수직 상승 속도.
-    static const float flyUp = 120;
+    static const float flyUp = 140;
     
     _velocity = flyUp;
     [[SimpleAudioEngine sharedEngine] playEffect:@"sfx_wing.wav"];
@@ -111,23 +138,26 @@ static const int kMaxPipe = 3;
     CCSprite *menuOkSelected = [CCSprite spriteWithSpriteFrameName:@"ok.png"];
     menuOkSelected.color = ccc3(128, 128, 128);
 
-    CCMenuItem *menuItemOk = [CCMenuItemImage itemWithNormalSprite:menuOk
-                                                    selectedSprite:menuOkSelected
-                                                             block:^(id sender) {
-                                                                 [[CCDirector sharedDirector] replaceScene:[TitleLayer node]];
-                                                             }];
+    CCMenuItem *menuItemOk = [CCMenuItemImage
+                              itemWithNormalSprite:menuOk
+                              selectedSprite:menuOkSelected
+                              block:^(id sender) {
+                                  [[CCDirector sharedDirector] replaceScene:[TitleLayer node]];
+                              }];
     
     menuItemOk.scale = gScale;
     
-    CCSprite *menuShare= [CCSprite spriteWithSpriteFrameName:@"score.png"];
-    CCSprite *menuShareSelected = [CCSprite spriteWithSpriteFrameName:@"score.png"];
+    CCSprite *menuShare= [CCSprite spriteWithSpriteFrameName:@"share.png"];
+    CCSprite *menuShareSelected = [CCSprite spriteWithSpriteFrameName:@"share.png"];
     menuShareSelected.color = ccc3(128, 128, 128);
 
-    CCMenuItem *menuItemShare = [CCMenuItemImage itemWithNormalSprite:menuShare
-                                                       selectedSprite:menuShareSelected
-                                                                block:^(id sender) {
-                                                                 [[CCDirector sharedDirector] replaceScene:[TitleLayer node]];
-                                                                }];
+    CCMenuItem *menuItemShare = [CCMenuItemImage
+                                 itemWithNormalSprite:menuShare
+                                 selectedSprite:menuShareSelected
+                                 block:^(id sender) {
+                                     [[CCDirector sharedDirector] replaceScene:[TitleLayer node]];
+                                 }];
+    
     menuItemShare.scale = gScale;
     
     CCMenu *menu = [CCMenu menuWithItems: menuItemOk, menuItemShare, nil];
@@ -150,20 +180,6 @@ static const int kMaxPipe = 3;
     [[[CCDirector sharedDirector] touchDispatcher] addTargetedDelegate:self
                                                               priority:0
                                                        swallowsTouches:YES];
-    
-    // 배경 움직임과 충돌을 체크할 때 사용하는 메인 스케쥴?
-    [self scheduleUpdate];
-    
-    // 점수를 위한 스케쥴
-    
-    // 새 위치 업데이트
-    [self schedule:@selector(updateBirdPosition:)];
-    
-    // Pipe 움직이고 새롭게 갱신.
-    [self schedule:@selector(updatePipe:)];
-    
-    // 점수를 위한 스케쥴
-    [self schedule:@selector(updateScore:) interval:0.3f];
 }
 
 -(void)updateScore:(ccTime)dt
@@ -174,8 +190,8 @@ static const int kMaxPipe = 3;
     if (newScore > _score)
     {
         _score = newScore;
-        // Draw _score
         [[SimpleAudioEngine sharedEngine] playEffect:@"sfx_point.wav"];
+        [_hud scoreRenew:newScore];
     }
 }
 
@@ -187,10 +203,10 @@ static const int kMaxPipe = 3;
         CGPointMake(-4.0, +6.0),
         CGPointMake(+4.0, -4.0),
         CGPointMake(-4.0, +4.0),
-        CGPointMake(+4.0, +2.0),
-        CGPointMake(-5.0, -4.0),
+        CGPointMake(+4.0, +1.0),
+        CGPointMake(-5.0, -5.0),
         CGPointMake(+2.0, +4.0),
-        CGPointMake(+1.0, +2.0)
+        CGPointMake(+1.0, -2.0)
     };
     
     id delayTimeAction = [CCDelayTime actionWithDuration:oneFrame];
@@ -247,9 +263,7 @@ static const int kMaxPipe = 3;
     
     _gameOver = YES;
     
-    [self unschedule:@selector(updatePipe:)];
-    [self unschedule:@selector(bird:)];
-    [self unschedule:@selector(updateScore:)];
+    [self unactivateSchedule];
     
     [[[CCDirector sharedDirector] touchDispatcher] removeDelegate:self];
     [_bird stopAllActions];
@@ -384,8 +398,13 @@ static const int kMaxPipe = 3;
     CGRect down = pipe.pipeDown.boundingBox;
     down.origin = [pipe.pipeDown.parent convertToWorldSpace:down.origin];
     
+#if USE_BIRD_BOUNDING_BOX
     return CGRectIntersectsRect(up, _bird.boundingBox)
         || CGRectIntersectsRect(down, _bird.boundingBox);
+#else
+    return CGRectContainsPoint(up, _bird.position)
+        || CGRectContainsPoint(down, _bird.position);
+#endif
 }
 
 -(void)updatePipe:(ccTime)dt
@@ -399,8 +418,6 @@ static const int kMaxPipe = 3;
         pos.x += dt*_screenSpeed;
         pipe.position = pos;
         
-        int pipeGap = (winSize.width + pipe.width/2)/2;
-        
         if ([self isCollision:pipe])
         {
             [self collisionWithObject];
@@ -409,7 +426,8 @@ static const int kMaxPipe = 3;
         int xLastPos = pipe.position.x + pipe.width;
         if (xLastPos <= 0)
         {
-            pipe.position = ccp(pos.x + pipeGap*3, pos.y);
+            int pipeGap = (winSize.width + pipe.width/2)/2;
+            pipe.position = ccp(pos.x + pipeGap*3, [self nextPipePosY]);
         }
     }
 }
@@ -422,7 +440,7 @@ static const int kMaxPipe = 3;
     
     int winHeight = [CCDirector sharedDirector].winSize.height;
     
-    _birdHeight += _velocity * winHeight * dt / 150;
+    _birdHeight += _velocity * winHeight * dt / 160;
     _velocity += gravity * dt;
     
     static const int maxDownFall = -winHeight/2;

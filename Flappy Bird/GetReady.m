@@ -46,6 +46,8 @@
 
 - (BOOL)ccTouchBegan:(UITouch *)touch withEvent:(UIEvent *)event
 {
+    [_gameLayer activateSchedule];
+    
     CCCallBlock *disableTouch = [CCCallBlock actionWithBlock:^{
         [[[CCDirector sharedDirector] touchDispatcher] removeDelegate:self];
     }];

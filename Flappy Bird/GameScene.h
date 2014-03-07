@@ -9,12 +9,5 @@
 #import <Foundation/Foundation.h>
 #import "cocos2d.h"
 
-@class GameLayer;
-@class HUDLayer;
-
 @interface GameScene : CCScene
-
-@property (nonatomic, weak) GameLayer *gameLayer;
-@property (nonatomic, weak) HUDLayer *hudLayer;
-
 @end

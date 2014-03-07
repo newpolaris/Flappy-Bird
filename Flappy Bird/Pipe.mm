@@ -11,11 +11,10 @@
 
 @implementation Pipe
 
-- (id)init {
+- (id)init
+{
     self = [super init];
     if (!self) return nil;
-    
-    int height = [[CCDirector sharedDirector] winSize].height;
     
     _pipeUp   = [CCSprite spriteWithSpriteFrameName:@"pipe_up.png"];
     _pipeDown = [CCSprite spriteWithSpriteFrameName:@"pipe_down.png"];
@@ -25,17 +24,18 @@
     _pipeUp.anchorPoint = ccp(0.5, 1);
     _pipeDown.anchorPoint = ccp(0.5, 0);
     
-    int gap = height / 8;
-    
-    _pipeUp.position   = ccp(0, -gap);
-    _pipeDown.position = ccp(0, +gap);
-    
     [self addChild:_pipeDown];
     [self addChild:_pipeUp];
     
     [self setWidth:_pipeUp.contentSize.width*gScale];
     
     return self;
+}
+
+- (void)setPipeGap:(int)gap
+{
+    _pipeUp.position   = ccp(0, -gap/2);
+    _pipeDown.position = ccp(0, +gap/2);
 }
 
 @end

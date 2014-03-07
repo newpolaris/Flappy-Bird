@@ -26,7 +26,6 @@
 // -----------------------------------------------------------------------
 
 + (TitleLayer *)scene;
-- (id)init;
 
 @property (nonatomic, weak) Title *title;
 @property (nonatomic, weak) CCSprite *start;

@@ -9,6 +9,14 @@
 #import "GameScene.h"
 #import "GameLayer.h"
 #import "GetReady.h"
+#import "HudLayer.h"
+
+enum eSceneOrder
+{
+    kGameLayer = 0,
+    kHudLayer,
+    kGetReadyLayer
+};
 
 @implementation GameScene
 
@@ -17,16 +25,21 @@
     self = [super init];
     if (self) {
         // HUD 레이어 추가하기
-        // _hudLayer = [HUDLayer node];
-        // [self addChild:_hudLayer z:1];
+        HudLayer *hudLayer = [HudLayer node];
+        [self addChild:hudLayer z:kHudLayer];
+        
         // Game 레이어 추가하기
-        _gameLayer = [GameLayer node];
-        [self addChild:_gameLayer z:0];
+        GameLayer *gameLayer = [GameLayer node];
+        [self addChild:gameLayer z:kGameLayer];
         
         // 게임 레이어의 HUD에 HUD레이어 전달
-        // self.gameLayer.hud = _hudLayer;
+        gameLayer.hud = hudLayer;
         
-        [self addChild:[GetReady node]];
+        GetReady *ready = [GetReady node];
+        [self addChild:ready z:kGetReadyLayer];
+        
+        // GetReady 레이어에 GameLayer
+        ready.gameLayer = gameLayer;
     }
     return self;
 }

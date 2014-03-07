@@ -11,6 +11,7 @@
 
 @class Bird;
 @class GroundLayer;
+@class HudLayer;
 
 @interface GameLayer: CCLayer
 {
@@ -18,6 +19,7 @@
 }
 
 @property (nonatomic, weak) Bird* bird;
+@property (nonatomic, weak) HudLayer *hud;
 @property (nonatomic, weak) GroundLayer *groundLayer;
 @property (nonatomic) BOOL play;
 @property (nonatomic) BOOL gameOver;
@@ -26,11 +28,13 @@
 @property (nonatomic) int pipeGap;
 @property (nonatomic) int score;
 @property (nonatomic) int gone;
+@property (nonatomic) CGSize winSize;
+@property (nonatomic) int  pipeUpDownGap;
 
 @property (nonatomic) int birdHeight;
 @property (nonatomic) float velocity;
 @property (nonatomic) float impactTime;
 
--(void)collisionWithObject;
+- (void)activateSchedule;
 
 @end

@@ -140,8 +140,6 @@
 		661E38C918BCDA85006EF8DA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 661E38C818BCDA85006EF8DA /* main.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		661E38CC18BCDA85006EF8DA /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 661E38CB18BCDA85006EF8DA /* AppDelegate.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		661E38D218BCDA85006EF8DA /* IntroLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 661E38D118BCDA85006EF8DA /* IntroLayer.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		661E38DE18BCDE57006EF8DA /* FlappyBird.pvr.ccz in Resources */ = {isa = PBXBuildFile; fileRef = 661E38DA18BCDE57006EF8DA /* FlappyBird.pvr.ccz */; };
-		661E38E018BCDE57006EF8DA /* FlappyBird.plist in Resources */ = {isa = PBXBuildFile; fileRef = 661E38DC18BCDE57006EF8DA /* FlappyBird.plist */; };
 		661E38EC18BCDED4006EF8DA /* TitleLayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 661E38E718BCDED3006EF8DA /* TitleLayer.mm */; };
 		661E38EF18BCDEEF006EF8DA /* Bird.mm in Sources */ = {isa = PBXBuildFile; fileRef = 661E38EE18BCDEEE006EF8DA /* Bird.mm */; };
 		661E38F418BCDEFB006EF8DA /* GlobalVariable.m in Sources */ = {isa = PBXBuildFile; fileRef = 661E38F118BCDEFA006EF8DA /* GlobalVariable.m */; };
@@ -151,6 +149,10 @@
 		6660A3E618BF5D7400309F2F /* GameScene.mm in Sources */ = {isa = PBXBuildFile; fileRef = 6660A3E518BF5D7400309F2F /* GameScene.mm */; };
 		6660A3E918BF82EF00309F2F /* Pipe.mm in Sources */ = {isa = PBXBuildFile; fileRef = 6660A3E818BF82EE00309F2F /* Pipe.mm */; };
 		6699C58F18C0E60200E07F69 /* collision.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6699C58E18C0E60200E07F69 /* collision.plist */; };
+		66A568E018C9FF1900C340A8 /* fontLarge.png in Resources */ = {isa = PBXBuildFile; fileRef = 66A568DC18C9FF1900C340A8 /* fontLarge.png */; };
+		66A568E118C9FF1900C340A8 /* font.png in Resources */ = {isa = PBXBuildFile; fileRef = 66A568DD18C9FF1900C340A8 /* font.png */; };
+		66A568E218C9FF1900C340A8 /* fontLarge.fnt in Resources */ = {isa = PBXBuildFile; fileRef = 66A568DE18C9FF1900C340A8 /* fontLarge.fnt */; };
+		66A568E318C9FF1900C340A8 /* font.fnt in Resources */ = {isa = PBXBuildFile; fileRef = 66A568DF18C9FF1900C340A8 /* font.fnt */; };
 		66D3F0CA18C4D05B000BF68D /* sfx_hit.wav in Resources */ = {isa = PBXBuildFile; fileRef = 66D3F0C518C4D05B000BF68D /* sfx_hit.wav */; };
 		66D3F0CB18C4D05B000BF68D /* sfx_point.wav in Resources */ = {isa = PBXBuildFile; fileRef = 66D3F0C618C4D05B000BF68D /* sfx_point.wav */; };
 		66D3F0CC18C4D05B000BF68D /* sfx_swooshing.wav in Resources */ = {isa = PBXBuildFile; fileRef = 66D3F0C718C4D05B000BF68D /* sfx_swooshing.wav */; };
@@ -158,7 +160,10 @@
 		66D3F0CE18C4D05B000BF68D /* sfx_die.wav in Resources */ = {isa = PBXBuildFile; fileRef = 66D3F0C918C4D05B000BF68D /* sfx_die.wav */; };
 		66D3F0D118C64219000BF68D /* GetReady.m in Sources */ = {isa = PBXBuildFile; fileRef = 66D3F0D018C64218000BF68D /* GetReady.m */; };
 		66D3F0D418C64C12000BF68D /* ResultBoard.m in Sources */ = {isa = PBXBuildFile; fileRef = 66D3F0D318C64C11000BF68D /* ResultBoard.m */; };
-		66EB55B418BD0FA800833542 /* GroundLayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 66EB55B318BD0FA800833542 /* GroundLayer.mm */; };
+		66D3F0D718C7747F000BF68D /* FlappyBird.plist in Resources */ = {isa = PBXBuildFile; fileRef = 66D3F0D518C7747F000BF68D /* FlappyBird.plist */; };
+		66D3F0D818C7747F000BF68D /* FlappyBird.png in Resources */ = {isa = PBXBuildFile; fileRef = 66D3F0D618C7747F000BF68D /* FlappyBird.png */; };
+		66D3F0DB18C774EE000BF68D /* HudLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 66D3F0DA18C774EE000BF68D /* HudLayer.m */; };
+		66EB55B418BD0FA800833542 /* GroundLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 66EB55B318BD0FA800833542 /* GroundLayer.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -441,8 +446,6 @@
 		661E38CB18BCDA85006EF8DA /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		661E38D018BCDA85006EF8DA /* IntroLayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IntroLayer.h; sourceTree = "<group>"; };
 		661E38D118BCDA85006EF8DA /* IntroLayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IntroLayer.m; sourceTree = "<group>"; };
-		661E38DA18BCDE57006EF8DA /* FlappyBird.pvr.ccz */ = {isa = PBXFileReference; lastKnownFileType = file; name = FlappyBird.pvr.ccz; path = Resources/FlappyBird.pvr.ccz; sourceTree = "<group>"; };
-		661E38DC18BCDE57006EF8DA /* FlappyBird.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = FlappyBird.plist; path = Resources/FlappyBird.plist; sourceTree = "<group>"; };
 		661E38E218BCDED1006EF8DA /* Bird.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bird.h; sourceTree = "<group>"; };
 		661E38E618BCDED3006EF8DA /* TitleLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = TitleLayer.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		661E38E718BCDED3006EF8DA /* TitleLayer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; lineEnding = 0; path = TitleLayer.mm; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
@@ -460,6 +463,10 @@
 		6660A3E718BF82EE00309F2F /* Pipe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Pipe.h; sourceTree = "<group>"; };
 		6660A3E818BF82EE00309F2F /* Pipe.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Pipe.mm; sourceTree = "<group>"; };
 		6699C58E18C0E60200E07F69 /* collision.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = collision.plist; path = Resources/collision.plist; sourceTree = "<group>"; };
+		66A568DC18C9FF1900C340A8 /* fontLarge.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = fontLarge.png; path = Resources/fontLarge.png; sourceTree = "<group>"; };
+		66A568DD18C9FF1900C340A8 /* font.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = font.png; path = Resources/font.png; sourceTree = "<group>"; };
+		66A568DE18C9FF1900C340A8 /* fontLarge.fnt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = fontLarge.fnt; path = Resources/fontLarge.fnt; sourceTree = "<group>"; };
+		66A568DF18C9FF1900C340A8 /* font.fnt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = font.fnt; path = Resources/font.fnt; sourceTree = "<group>"; };
 		66D3F0C518C4D05B000BF68D /* sfx_hit.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = sfx_hit.wav; sourceTree = "<group>"; };
 		66D3F0C618C4D05B000BF68D /* sfx_point.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = sfx_point.wav; sourceTree = "<group>"; };
 		66D3F0C718C4D05B000BF68D /* sfx_swooshing.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = sfx_swooshing.wav; sourceTree = "<group>"; };
@@ -469,8 +476,12 @@
 		66D3F0D018C64218000BF68D /* GetReady.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetReady.m; sourceTree = "<group>"; };
 		66D3F0D218C64C10000BF68D /* ResultBoard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResultBoard.h; sourceTree = "<group>"; };
 		66D3F0D318C64C11000BF68D /* ResultBoard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResultBoard.m; sourceTree = "<group>"; };
+		66D3F0D518C7747F000BF68D /* FlappyBird.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = FlappyBird.plist; path = Resources/FlappyBird.plist; sourceTree = "<group>"; };
+		66D3F0D618C7747F000BF68D /* FlappyBird.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = FlappyBird.png; path = Resources/FlappyBird.png; sourceTree = "<group>"; };
+		66D3F0D918C774EE000BF68D /* HudLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HudLayer.h; sourceTree = "<group>"; };
+		66D3F0DA18C774EE000BF68D /* HudLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HudLayer.m; sourceTree = "<group>"; };
 		66EB55B218BD0FA800833542 /* GroundLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroundLayer.h; sourceTree = "<group>"; };
-		66EB55B318BD0FA800833542 /* GroundLayer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = GroundLayer.mm; sourceTree = "<group>"; };
+		66EB55B318BD0FA800833542 /* GroundLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroundLayer.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -534,13 +545,15 @@
 				66D3F0D218C64C10000BF68D /* ResultBoard.h */,
 				66D3F0D318C64C11000BF68D /* ResultBoard.m */,
 				66EB55B218BD0FA800833542 /* GroundLayer.h */,
-				66EB55B318BD0FA800833542 /* GroundLayer.mm */,
+				66EB55B318BD0FA800833542 /* GroundLayer.m */,
 				661E38F018BCDEFA006EF8DA /* GlobalVariable.h */,
 				661E38F118BCDEFA006EF8DA /* GlobalVariable.m */,
 				661E38F218BCDEFA006EF8DA /* Title.h */,
 				661E38F318BCDEFB006EF8DA /* Title.mm */,
 				6660A3E418BF5D7400309F2F /* GameScene.h */,
 				6660A3E518BF5D7400309F2F /* GameScene.mm */,
+				66D3F0D918C774EE000BF68D /* HudLayer.h */,
+				66D3F0DA18C774EE000BF68D /* HudLayer.m */,
 				66D3F0CF18C64217000BF68D /* GetReady.h */,
 				66D3F0D018C64218000BF68D /* GetReady.m */,
 				6624ACFC18BF5A1C00A3AEA8 /* GameLayer.h */,
@@ -567,14 +580,18 @@
 		661E36DE18BCDA82006EF8DA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				66A568DC18C9FF1900C340A8 /* fontLarge.png */,
+				66A568DD18C9FF1900C340A8 /* font.png */,
+				66A568DE18C9FF1900C340A8 /* fontLarge.fnt */,
+				66A568DF18C9FF1900C340A8 /* font.fnt */,
+				66D3F0D518C7747F000BF68D /* FlappyBird.plist */,
+				66D3F0D618C7747F000BF68D /* FlappyBird.png */,
 				66D3F0C518C4D05B000BF68D /* sfx_hit.wav */,
 				66D3F0C618C4D05B000BF68D /* sfx_point.wav */,
 				66D3F0C718C4D05B000BF68D /* sfx_swooshing.wav */,
 				66D3F0C818C4D05B000BF68D /* sfx_wing.wav */,
 				66D3F0C918C4D05B000BF68D /* sfx_die.wav */,
 				6699C58E18C0E60200E07F69 /* collision.plist */,
-				661E38DA18BCDE57006EF8DA /* FlappyBird.pvr.ccz */,
-				661E38DC18BCDE57006EF8DA /* FlappyBird.plist */,
 				661E36DF18BCDA82006EF8DA /* Default.png */,
 				661E36E118BCDA82006EF8DA /* Default@2x.png */,
 				661E36E318BCDA82006EF8DA /* Default-568h@2x.png */,
@@ -1016,14 +1033,18 @@
 				661E36F218BCDA82006EF8DA /* Icon@2x.png in Resources */,
 				661E36F518BCDA82006EF8DA /* iTunesArtwork in Resources */,
 				661E384E18BCDA84006EF8DA /* ChangeLog in Resources */,
-				661E38DE18BCDE57006EF8DA /* FlappyBird.pvr.ccz in Resources */,
-				661E38E018BCDE57006EF8DA /* FlappyBird.plist in Resources */,
 				6699C58F18C0E60200E07F69 /* collision.plist in Resources */,
 				66D3F0CA18C4D05B000BF68D /* sfx_hit.wav in Resources */,
 				66D3F0CB18C4D05B000BF68D /* sfx_point.wav in Resources */,
 				66D3F0CC18C4D05B000BF68D /* sfx_swooshing.wav in Resources */,
 				66D3F0CD18C4D05B000BF68D /* sfx_wing.wav in Resources */,
 				66D3F0CE18C4D05B000BF68D /* sfx_die.wav in Resources */,
+				66D3F0D718C7747F000BF68D /* FlappyBird.plist in Resources */,
+				66D3F0D818C7747F000BF68D /* FlappyBird.png in Resources */,
+				66A568E018C9FF1900C340A8 /* fontLarge.png in Resources */,
+				66A568E118C9FF1900C340A8 /* font.png in Resources */,
+				66A568E218C9FF1900C340A8 /* fontLarge.fnt in Resources */,
+				66A568E318C9FF1900C340A8 /* font.fnt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1149,13 +1170,14 @@
 				661E38EF18BCDEEF006EF8DA /* Bird.mm in Sources */,
 				661E38F418BCDEFB006EF8DA /* GlobalVariable.m in Sources */,
 				661E38F518BCDEFB006EF8DA /* Title.mm in Sources */,
-				66EB55B418BD0FA800833542 /* GroundLayer.mm in Sources */,
+				66EB55B418BD0FA800833542 /* GroundLayer.m in Sources */,
 				6624ACFB18BE3E0A00A3AEA8 /* BackgroundLayer.m in Sources */,
 				6624ACFE18BF5A1C00A3AEA8 /* GameLayer.mm in Sources */,
 				6660A3E618BF5D7400309F2F /* GameScene.mm in Sources */,
 				6660A3E918BF82EF00309F2F /* Pipe.mm in Sources */,
 				66D3F0D118C64219000BF68D /* GetReady.m in Sources */,
 				66D3F0D418C64C12000BF68D /* ResultBoard.m in Sources */,
+				66D3F0DB18C774EE000BF68D /* HudLayer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
