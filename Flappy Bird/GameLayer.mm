@@ -79,9 +79,9 @@ static const int kMaxPipe = 3;
         Pipe *pipe = [Pipe node];
         [pipe setPipeGap:_pipeUpDownGap];
         
-        int pipeWidth = pipe.width;
+        float pipeWidth = pipe.width;
         _pipeGap = (_winSize.width + pipeWidth/2)/2;
-        int xPos = _delayPipeStart + i*_pipeGap;
+        float xPos = _delayPipeStart + i*_pipeGap;
     
         pipe.anchorPoint = ccp(0.5, 0.5);
         pipe.position = ccp(xPos, [self nextPipePosY]);
@@ -103,7 +103,7 @@ static const int kMaxPipe = 3;
     [self schedule:@selector(updatePipe:)];
     
     // 점수를 위한 스케쥴
-    [self schedule:@selector(updateScore:) interval:0.1];
+    [self schedule:@selector(updateScore:) interval:0.01];
     
 }
 
@@ -145,8 +145,8 @@ static const int kMaxPipe = 3;
 {
     _gone -= dt*_screenSpeed;
     
-    int newScore = _gone / _pipeGap;
-    if (newScore > _score)
+    float newScore = _gone / _pipeGap;
+    if ((int)newScore > (int)_score)
     {
         _score = newScore;
         [[SimpleAudioEngine sharedEngine] playEffect:@"sfx_point.wav"];
@@ -368,25 +368,24 @@ static const int kMaxPipe = 3;
 
 -(void)updatePipe:(ccTime)dt
 {
-    CGSize winSize = [[CCDirector sharedDirector] winSize];
-    
     for (int i = 0; i < kMaxPipe; i++)
     {
         Pipe* pipe = (Pipe*)[pipeArray objectAtIndex:i];
         CGPoint pos = pipe.position;
+        
         pos.x += dt*_screenSpeed;
+        
         pipe.position = pos;
         
-        if ([self isCollision:pipe])
+        if (false) // [self isCollision:pipe])
         {
             [self collisionWithObject];
         }
         
-        int xLastPos = pipe.position.x + pipe.width;
-        if (xLastPos <= 0)
+        float xLastPos = pipe.position.x + pipe.width;
+        if (xLastPos < 0)
         {
-            int pipeGap = (winSize.width + pipe.width/2)/2;
-            pipe.position = ccp(pos.x + pipeGap*3, [self nextPipePosY]);
+            pipe.position = ccp(pos.x + _pipeGap*3, [self nextPipePosY]);
         }
     }
 }
@@ -395,29 +394,27 @@ static const int kMaxPipe = 3;
 {
     static const float gravity = -98*4.6;
     
-    int oldHeight = _birdHeight;
+    float oldHeight = _birdHeight;
     
     int winHeight = [CCDirector sharedDirector].winSize.height;
     
     _birdHeight += _velocity * winHeight * dt / 160;
     _velocity += gravity * dt;
     
-    static const int maxDownFall = -winHeight/2;
+    static const float maxDownFall = -winHeight/2;
     if (_velocity <= maxDownFall)
         _velocity = maxDownFall;
     
     
-    int _birdBottom = _birdHeight + [_bird boundingBox].size.height/2;
-    
     static const float factor = 100;
-    int realV = -(_birdHeight -oldHeight)*factor/winHeight/dt;
+    float realV = -(_birdHeight -oldHeight)*factor/winHeight/dt;
     if (realV >= 90)
         realV = 90;
     else if (realV < -35)
         realV = -35;
     
     _bird.rotation = realV;
-    if (_birdBottom <= _groundLayer.height) {
+    if (_birdHeight <= _groundLayer.height) {
         [self unschedule:@selector(updateBirdPosition:)];
         [self collisionWithObject];
         _birdHeight = _groundLayer.height;

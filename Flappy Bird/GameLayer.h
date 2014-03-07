@@ -25,13 +25,13 @@
 @property (nonatomic) BOOL gameOver;
 @property (nonatomic) int screenSpeed;
 @property (nonatomic) int delayPipeStart;
-@property (nonatomic) int pipeGap;
+@property (nonatomic) float pipeGap;
 @property (nonatomic) int score;
-@property (nonatomic) int gone;
+@property (nonatomic) float gone;
 @property (nonatomic) CGSize winSize;
 @property (nonatomic) int  pipeUpDownGap;
 
-@property (nonatomic) int birdHeight;
+@property (nonatomic) float birdHeight;
 @property (nonatomic) float velocity;
 @property (nonatomic) float impactTime;
 
