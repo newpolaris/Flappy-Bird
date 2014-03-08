@@ -18,15 +18,16 @@
     if (!self) return nil;
     
     CGSize winSize = [[CCDirector sharedDirector] winSize];
+    float scale = [MySingleton shared].scale;
     
     [self setTutorialLabel:[CCSprite spriteWithSpriteFrameName:@"tutorial.png"]];
     _tutorialLabel.anchorPoint = ccp(0, 0.5);
     _tutorialLabel.position = ccp(winSize.width/2, winSize.height/2);
-    _tutorialLabel.scale = gScale;
+    _tutorialLabel.scale = scale;
     [self addChild:_tutorialLabel];
     
     [self setReadyLabel:[CCSprite spriteWithSpriteFrameName:@"get_ready.png"]];
-    _readyLabel.scale = gScale;
+    _readyLabel.scale = scale;
     _readyLabel.position = ccp(winSize.width/2, winSize.height*0.7);
     [self addChild:_readyLabel];
     

@@ -16,6 +16,8 @@
 @interface GameLayer: CCLayer
 {
     CCArray *pipeArray; // 3개의 Pipe 쌍을 돌아가면서 사용.
+    CGSize winSize;
+    float gScale;
 }
 
 @property (nonatomic, weak) Bird* bird;
@@ -28,7 +30,6 @@
 @property (nonatomic) float pipeGap;
 @property (nonatomic) int score;
 @property (nonatomic) float gone;
-@property (nonatomic) CGSize winSize;
 @property (nonatomic) int  pipeUpDownGap;
 
 @property (nonatomic) float birdHeight;

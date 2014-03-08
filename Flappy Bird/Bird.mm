@@ -33,7 +33,7 @@
     [self runAction:[CCRepeatForever actionWithAction
                      :[CCAnimate actionWithAnimation:animation]]];
     
-    [self setScale:gScale];
+    [self setScale:[MySingleton shared].scale];
     return self;
 }
 

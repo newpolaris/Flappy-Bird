@@ -35,8 +35,9 @@ static const int kMaxPipe = 3;
     if (!self) return nil;
     
     _gameOver = false;
-    _winSize = [[CCDirector sharedDirector] winSize];
-    _pipeUpDownGap = _winSize.height / 4;
+    winSize = [[CCDirector sharedDirector] winSize];
+    gScale = [MySingleton shared].scale;
+    _pipeUpDownGap = winSize.height / 4;
     
     [self addChild:[BackgroundLayer node] z:kBackground];
     
@@ -56,8 +57,6 @@ static const int kMaxPipe = 3;
 
 - (void)initBird
 {
-    CGSize winSize = [[CCDirector sharedDirector] winSize];
-    
     [self setBird:[Bird node]];
     [self setBirdHeight:winSize.height/2];
     _bird.position = ccp(winSize.width*0.3, _birdHeight);
@@ -69,7 +68,7 @@ static const int kMaxPipe = 3;
 
 - (void)initPipe
 {
-    _delayPipeStart = _winSize.width*1.5;
+    _delayPipeStart = winSize.width*1.5;
 
     pipeArray = [[CCArray alloc] initWithCapacity:kMaxPipe];
     
@@ -80,13 +79,12 @@ static const int kMaxPipe = 3;
         [pipe setPipeGap:_pipeUpDownGap];
         
         float pipeWidth = pipe.width;
-        _pipeGap = (_winSize.width + pipeWidth/2)/2;
+        _pipeGap = (winSize.width + pipeWidth/2)/2;
         float xPos = _delayPipeStart + i*_pipeGap;
     
         pipe.anchorPoint = ccp(0.5, 0.5);
         pipe.position = ccp(xPos, [self nextPipePosY]);
         
-        // 배치 노드에 넣는다.
         [self addChild:pipe z:kPipe];
        
         // 충돌 등 계산을 하기 쉽게 하기 위하여 배열에 넣는다.
@@ -103,7 +101,7 @@ static const int kMaxPipe = 3;
     [self schedule:@selector(updatePipe:)];
     
     // 점수를 위한 스케쥴
-    [self schedule:@selector(updateScore:) interval:0.01];
+    [self schedule:@selector(updateScore:) interval:0.05];
     
 }
 
@@ -117,7 +115,7 @@ static const int kMaxPipe = 3;
 - (int)nextPipePosY
 {
     // *2가 넉넉하나 좁아보이므로 1.5로 정함.
-    int viewSize = _winSize.height - _groundLayer.height - _pipeUpDownGap*1.5;
+    int viewSize = winSize.height - _groundLayer.height - _pipeUpDownGap*1.5;
     return arc4random_uniform(viewSize) + _groundLayer.height + _pipeUpDownGap;
 }
 
@@ -280,7 +278,6 @@ static const int kMaxPipe = 3;
     
     CCMenu *menu = [CCMenu menuWithItems: menuItemOk, menuItemShare, nil];
     
-    CGSize winSize = [[CCDirector sharedDirector] winSize];
     float padding = (winSize.width - [menuItemOk boundingBox].size.width*2)/3;
     
     // 수평으로 배치.
@@ -293,8 +290,6 @@ static const int kMaxPipe = 3;
 // 만들어진 메뉴를 배경 sprite 위에 표시합니다.
 -(void)resultMenuShow
 {
-    CGSize winSize = [[CCDirector sharedDirector] winSize];
-    
     // 떨어지는 시간까지 딜레이
     CCDelayTime *delay = [CCDelayTime actionWithDuration:1.0f];
     
@@ -377,7 +372,7 @@ static const int kMaxPipe = 3;
         
         pipe.position = pos;
         
-        if (false) // [self isCollision:pipe])
+        if ([self isCollision:pipe])
         {
             [self collisionWithObject];
         }

@@ -11,10 +11,9 @@
 #import "Title.h"
 #import "GroundLayer.h"
 #import "BackgroundLayer.h"
-#import "GlobalVariable.h"
 #import "GameScene.h"
-
 #import "TitleLayer.h"
+#import "GlobalVariable.h"
 
 // -----------------------------------------------------------------------
 #pragma mark - TitleLayer
@@ -55,7 +54,10 @@ enum {
     CGSize winSize = [[CCDirector sharedDirector] winSize];
     
     // 전체 백그라운드를 설정한다.
-    [self addChild:[BackgroundLayer node] z:kBackground tag:kBackground];
+    BackgroundLayer *backgroundLayer = [BackgroundLayer node];
+    [self addChild:backgroundLayer z:kBackground tag:kBackground];
+    
+    float gScale = [MySingleton shared].scale;
     
     GroundLayer *ground =[GroundLayer node];
     int groundHeight = [ground height];
@@ -65,8 +67,6 @@ enum {
     _copyright.anchorPoint = ccp(0.5, 0);
     [_copyright setScale:gScale];
     
-    // TODO: 아이패드, 아이폰5에선 오차 발생
-    // 노가다를 통한 y축 설정. 땅 부분의 위의 잔디에서 약간만 떨어진 위치 아래에 로고 박히게
     _copyright.position = ccp(winSize.width/2, ground.height - [_copyright boundingBox].size.height*2);
     [self addChild:_copyright z:1];
     

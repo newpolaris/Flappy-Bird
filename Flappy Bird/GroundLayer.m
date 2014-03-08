@@ -15,22 +15,23 @@
     self = [super init];
     if (!self) return nil;
     
-    _moveSpeed = -65*gScale;
+    float scale = [MySingleton shared].scale;
+    
+    _moveSpeed = -65*scale;
     
     // 백그라운드 앞의 땅을 설정한다.
     _ground1 = [CCSprite spriteWithSpriteFrameName:@"ground.png"];
     _ground1.anchorPoint = ccp(0, 0.3);
     
     // 가로 화면에 맞춰서 늘린다.
-    [_ground1 setScale:gScale];
-    
+    [_ground1 setScale:scale];
     [self addChild:_ground1];
     
     _ground2 = [CCSprite spriteWithSpriteFrameName:@"ground.png"];
     _ground2.anchorPoint = ccp(0, 0.3);
     
     // 가로 화면에 맞춰서 늘린다.
-    [_ground2 setScale:gScale];
+    [_ground2 setScale:scale];
     [_ground2 setPosition:ccp([_ground1 boundingBox].size.width-10, 0)];
     
     [self addChild:_ground2];

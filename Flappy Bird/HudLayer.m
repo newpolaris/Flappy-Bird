@@ -27,6 +27,8 @@
     CCSprite *resume = [CCSprite spriteWithSpriteFrameName:@"resume.png"];
     CCSprite *resumeSelected = [CCSprite spriteWithSpriteFrameName:@"resume.png"];
     
+    float scale = [MySingleton shared].scale;
+    
     resumeSelected.color = ccc3(128, 128, 128);
 
     _resumeMenu = [CCMenuItemImage
@@ -37,7 +39,7 @@
                        _pauseMenu.visible = true;
                        [[CCDirector sharedDirector] resume];
                    }];
-    _resumeMenu.scale = gScale;
+    _resumeMenu.scale = scale;
     
     CCSprite *pause  = [CCSprite spriteWithSpriteFrameName:@"pause.png"];
     CCSprite *pauseSelected  = [CCSprite spriteWithSpriteFrameName:@"pause.png"];
@@ -52,7 +54,7 @@
                        _pauseMenu.visible = false;
                       [[CCDirector sharedDirector] pause];
                   }];
-    _pauseMenu.scale = gScale;
+    _pauseMenu.scale = scale;
     
     CCMenu *menu = [CCMenu menuWithItems: _resumeMenu, _pauseMenu, nil];
     
@@ -72,11 +74,12 @@
 - (void)initScore
 {
     CGSize winSize = [[CCDirector sharedDirector] winSize];
+    float scale = [MySingleton shared].scale;
     
     scoreLabel = [CCLabelBMFont labelWithString:@"0" fntFile:@"font.fnt"];
     scoreLabel.anchorPoint = ccp(0.5, 0.5);
     scoreLabel.position = ccp(winSize.width*0.5, winSize.height*0.85);
-    scoreLabel.scale = gScale;
+    scoreLabel.scale = scale;
     
     [self addChild:scoreLabel];
 }

@@ -31,13 +31,13 @@
 	return scene;
 }
 
-//
--(id) init
+-(id)init
 {
 	if( (self=[super init])) {
 		
 		// ask director for the window size
 		CGSize size = [[CCDirector sharedDirector] winSize];
+        
 		
 		CCSprite *background;
 		
@@ -59,6 +59,7 @@
 -(void) onEnter
 {
 	[super onEnter];
-	[[CCDirector sharedDirector] replaceScene:[CCTransitionFade transitionWithDuration:1.0 scene:[TitleLayer scene]]];
+	[[CCDirector sharedDirector] replaceScene:
+        [CCTransitionFade transitionWithDuration:1.0 scene:[TitleLayer scene]]];
 }
 @end
