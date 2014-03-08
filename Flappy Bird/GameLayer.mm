@@ -34,25 +34,15 @@ static const int kMaxPipe = 3;
     self = [super init];
     if (!self) return nil;
     
-    _gameOver = false;
+    state = kAlive;
     winSize = [[CCDirector sharedDirector] winSize];
     gScale = [MySingleton shared].scale;
     _pipeUpDownGap = winSize.height / 4;
     
-    [self addChild:[BackgroundLayer node] z:kBackground];
-    
-    [self initGround]; // 순서 상관 있음.
     [self initPipe];
     [self initBird];
     
     return self;
-}
-
-- (void)initGround
-{
-    _groundLayer = [GroundLayer node];
-    [self addChild:_groundLayer z:kGround];
-    [self setScreenSpeed:_groundLayer.moveSpeed];
 }
 
 - (void)initBird
@@ -115,8 +105,8 @@ static const int kMaxPipe = 3;
 - (int)nextPipePosY
 {
     // *2가 넉넉하나 좁아보이므로 1.5로 정함.
-    int viewSize = winSize.height - _groundLayer.height - _pipeUpDownGap*1.5;
-    return arc4random_uniform(viewSize) + _groundLayer.height + _pipeUpDownGap;
+    int viewSize = winSize.height - _ground.height - _pipeUpDownGap*1.5;
+    return arc4random_uniform(viewSize) + _ground.height + _pipeUpDownGap;
 }
 
 - (BOOL)ccTouchBegan:(UITouch *)touch withEvent:(UIEvent *)event
@@ -141,7 +131,8 @@ static const int kMaxPipe = 3;
 
 -(void)updateScore:(ccTime)dt
 {
-    _gone -= dt*_screenSpeed;
+
+    _gone -= dt*_ground.moveSpeed;
     
     float newScore = _gone / _pipeGap;
     if ((int)newScore > (int)_score)
@@ -216,15 +207,11 @@ static const int kMaxPipe = 3;
 
 -(void)collisionWithObject
 {
-    if (_gameOver) return;
-    
-    _gameOver = YES;
-    
     [self unactivateSchedule];
     
     [[[CCDirector sharedDirector] touchDispatcher] removeDelegate:self];
     [_bird stopAllActions];
-    [_groundLayer unscheduleAllSelectors];
+    [_ground unscheduleAllSelectors];
 
     // Sound Effect Play.
     CCCallBlock *playHit = [CCCallBlock actionWithBlock:^{
@@ -232,7 +219,8 @@ static const int kMaxPipe = 3;
     }];
     CCDelayTime *delaySound = [CCDelayTime actionWithDuration:0.5];
     CCCallBlock *playDie = [CCCallBlock actionWithBlock:^{
-        [[SimpleAudioEngine sharedEngine] playEffect:@"sfx_die.wav"];
+        if (state == kKIA)
+            [[SimpleAudioEngine sharedEngine] playEffect:@"sfx_die.wav"];
     }];
     
     // Disappear
@@ -327,7 +315,7 @@ static const int kMaxPipe = 3;
     // Ok & Share
     CCMenu *resultMenu = [self getResultMenuItem];
     resultMenu.anchorPoint = ccp(0.5, 0);
-    resultMenu.position = ccp(winSize.width/2, _groundLayer.height * 1.3);
+    resultMenu.position = ccp(winSize.width/2, _ground.height * 1.3);
     
     CCCallBlock *showResultWindow = [CCCallBlock actionWithBlock:^{
         [self addChild:resultMenu z:kResult];
@@ -368,7 +356,7 @@ static const int kMaxPipe = 3;
         Pipe* pipe = (Pipe*)[pipeArray objectAtIndex:i];
         CGPoint pos = pipe.position;
         
-        pos.x += dt*_screenSpeed;
+        pos.x += dt*_ground.moveSpeed;
         
         pipe.position = pos;
         
@@ -409,13 +397,18 @@ static const int kMaxPipe = 3;
         realV = -35;
     
     _bird.rotation = realV;
-    if (_birdHeight <= _groundLayer.height) {
+    if (_birdHeight <= _ground.height) {
         [self unschedule:@selector(updateBirdPosition:)];
-        [self collisionWithObject];
-        _birdHeight = _groundLayer.height;
+        if (state != kKIA)
+        {
+            state = kGroundHit;
+            [self collisionWithObject];
+        }
+        _birdHeight = _ground.height;
       } else if (_birdHeight > winHeight) {
-        _birdHeight = winHeight;
-        [self collisionWithObject];
+          _birdHeight = winHeight;
+          state = kKIA;
+          [self collisionWithObject];
     }
     
     _bird.position = ccp(_bird.position.x, _birdHeight);
