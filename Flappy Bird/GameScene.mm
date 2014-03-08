@@ -19,9 +19,9 @@ enum eSceneOrder
     kBackgroundLayer = 0,
     kGroundLayer,
     kGameLayer,
-    kGetReadyLayer,
     kHudLayer,
-    kResultLayer
+    kResultLayer,
+    kGetReadyLayer,
 };
 
 @implementation GameScene

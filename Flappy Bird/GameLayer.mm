@@ -278,7 +278,11 @@ static const int kMaxPipe = 3;
         
         if ([self isCollision:pipe])
         {
-            [self collisionWithObject];
+            if (state == kAlive)
+            {
+                state = kKIA;
+                [self collisionWithObject];
+            }
         }
         
         float xLastPos = pipe.position.x + pipe.width;
@@ -315,7 +319,7 @@ static const int kMaxPipe = 3;
     _bird.rotation = realV;
     if (_birdHeight <= groundHeight) {
         [self unschedule:@selector(updateBirdPosition:)];
-        if (state != kKIA)
+        if (state == kAlive)
         {
             state = kGroundHit;
             [self collisionWithObject];
@@ -323,8 +327,11 @@ static const int kMaxPipe = 3;
         _birdHeight = groundHeight;
       } else if (_birdHeight > winHeight) {
           _birdHeight = winHeight;
-          state = kKIA;
-          [self collisionWithObject];
+          if (state == kAlive)
+          {
+              state = kKIA;
+              [self collisionWithObject];
+          }
     }
     
     _bird.position = ccp(_bird.position.x, _birdHeight);
