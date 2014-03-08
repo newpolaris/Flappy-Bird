@@ -10,11 +10,13 @@
 #import "cocos2d.h"
 
 @interface GroundLayer : CCLayer
+{
+    // 땅 움직임을 표현할 때 사용할 2개의 sprite
+    CCSprite *ground1;
+    CCSprite *ground2;
+}
 
-// 땅 움직임을 표현할 때 사용할 2개의 sprite
-@property (nonatomic, weak) CCSprite *ground1;
-@property (nonatomic, weak) CCSprite *ground2;
-@property (nonatomic) int moveSpeed;
-@property (nonatomic) int height;
+@property (nonatomic, readonly) int moveSpeed;
+@property (nonatomic, readonly) int height;
 
 @end

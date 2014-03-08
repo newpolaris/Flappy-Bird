@@ -22,6 +22,11 @@
  *
  */
 @interface TitleLayer : CCLayer
+{
+    CGSize winSize;
+    float gScale;
+    float groundHeight;
+}
 
 // -----------------------------------------------------------------------
 

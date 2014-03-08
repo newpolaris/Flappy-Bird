@@ -153,6 +153,7 @@
 		6699C58F18C0E60200E07F69 /* collision.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6699C58E18C0E60200E07F69 /* collision.plist */; };
 		66A568E818CA039600C340A8 /* font.png in Resources */ = {isa = PBXBuildFile; fileRef = 66A568E418CA039600C340A8 /* font.png */; };
 		66A568EA18CA039600C340A8 /* font.fnt in Resources */ = {isa = PBXBuildFile; fileRef = 66A568E618CA039600C340A8 /* font.fnt */; };
+		66AD4B1D18CAF2F600588B7D /* ResultLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 66AD4B1C18CAF2F500588B7D /* ResultLayer.m */; };
 		66D3F0CA18C4D05B000BF68D /* sfx_hit.wav in Resources */ = {isa = PBXBuildFile; fileRef = 66D3F0C518C4D05B000BF68D /* sfx_hit.wav */; };
 		66D3F0CB18C4D05B000BF68D /* sfx_point.wav in Resources */ = {isa = PBXBuildFile; fileRef = 66D3F0C618C4D05B000BF68D /* sfx_point.wav */; };
 		66D3F0CC18C4D05B000BF68D /* sfx_swooshing.wav in Resources */ = {isa = PBXBuildFile; fileRef = 66D3F0C718C4D05B000BF68D /* sfx_swooshing.wav */; };
@@ -467,6 +468,8 @@
 		6699C58E18C0E60200E07F69 /* collision.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = collision.plist; path = Resources/collision.plist; sourceTree = "<group>"; };
 		66A568E418CA039600C340A8 /* font.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = font.png; path = Resources/font.png; sourceTree = "<group>"; };
 		66A568E618CA039600C340A8 /* font.fnt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = font.fnt; path = Resources/font.fnt; sourceTree = "<group>"; };
+		66AD4B1B18CAF2F300588B7D /* ResultLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResultLayer.h; sourceTree = "<group>"; };
+		66AD4B1C18CAF2F500588B7D /* ResultLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResultLayer.m; sourceTree = "<group>"; };
 		66D3F0C518C4D05B000BF68D /* sfx_hit.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = sfx_hit.wav; sourceTree = "<group>"; };
 		66D3F0C618C4D05B000BF68D /* sfx_point.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = sfx_point.wav; sourceTree = "<group>"; };
 		66D3F0C718C4D05B000BF68D /* sfx_swooshing.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = sfx_swooshing.wav; sourceTree = "<group>"; };
@@ -558,6 +561,8 @@
 				66D3F0D018C64218000BF68D /* GetReady.m */,
 				6624ACFC18BF5A1C00A3AEA8 /* GameLayer.h */,
 				6624ACFD18BF5A1C00A3AEA8 /* GameLayer.mm */,
+				66AD4B1B18CAF2F300588B7D /* ResultLayer.h */,
+				66AD4B1C18CAF2F500588B7D /* ResultLayer.m */,
 				6660A3E718BF82EE00309F2F /* Pipe.h */,
 				6660A3E818BF82EE00309F2F /* Pipe.mm */,
 				661E38E218BCDED1006EF8DA /* Bird.h */,
@@ -1178,6 +1183,7 @@
 				66D3F0D118C64219000BF68D /* GetReady.m in Sources */,
 				66D3F0D418C64C12000BF68D /* ResultBoard.m in Sources */,
 				66D3F0DB18C774EE000BF68D /* HudLayer.m in Sources */,
+				66AD4B1D18CAF2F600588B7D /* ResultLayer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -12,6 +12,7 @@
 @class Bird;
 @class GroundLayer;
 @class HudLayer;
+@class ResultLayer;
 
 enum BirdState {
     kAlive = 0,
@@ -26,11 +27,13 @@ typedef enum BirdState BirdState;
     CCArray *pipeArray; // 3개의 Pipe 쌍을 돌아가면서 사용.
     CGSize winSize;
     float gScale;
+    float groundHeight;
     BirdState state;
 }
 
 @property (nonatomic, weak) HudLayer *hud;  // Hud layer의 포인터.
 @property (nonatomic, weak) GroundLayer *ground; // Ground layer의 포인터.
+@property (nonatomic, weak) ResultLayer *result; // Result layer의 포인터.
 
 @property (nonatomic, weak) Bird* bird;
 

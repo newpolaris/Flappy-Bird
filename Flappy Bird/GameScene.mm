@@ -12,6 +12,7 @@
 #import "HudLayer.h"
 #import "GroundLayer.h"
 #import "BackgroundLayer.h"
+#import "ResultLayer.h"
 
 enum eSceneOrder
 {
@@ -19,7 +20,8 @@ enum eSceneOrder
     kGroundLayer,
     kGameLayer,
     kGetReadyLayer,
-    kHudLayer
+    kHudLayer,
+    kResultLayer
 };
 
 @implementation GameScene
@@ -28,15 +30,17 @@ enum eSceneOrder
 {
     self = [super init];
     if (self) {
+        
+        // Background 레이어 추가하기
+        [self addChild:[BackgroundLayer node] z:kBackgroundLayer];
+        
         // HUD 레이어 추가하기
         HudLayer *hudLayer = [HudLayer node];
         [self addChild:hudLayer z:kHudLayer];
         
-        // Ground 레이어 추가하기
-        GroundLayer *groundLayer = [GroundLayer node];
-        [self addChild:groundLayer z:kGroundLayer];
-        
-        [self addChild:[BackgroundLayer node] z:kBackgroundLayer];
+        // Result 레이어 추가하기
+        ResultLayer *resultLayer = [ResultLayer node];
+        [self addChild:resultLayer z:kResultLayer];
         
         // Game 레이어 추가하기
         GameLayer *gameLayer = [GameLayer node];
@@ -44,15 +48,16 @@ enum eSceneOrder
         
         // 게임 레이어의 HUD에 HUD레이어 전달
         gameLayer.hud = hudLayer;
-        
-        // 게임 레이어의 HUD에 Ground레이어 전다.
-        gameLayer.ground = groundLayer;
+        // 게임 레이어의 result 에 Result 레이어의 포인터 전달.
+        gameLayer.result = resultLayer;
         
         GetReady *ready = [GetReady node];
         [self addChild:ready z:kGetReadyLayer];
         
         // GetReady 레이어에 GameLayer
         ready.gameLayer = gameLayer;
+        
+        resultLayer.groundHeight = gameLayer.ground.height;
     }
     return self;
 }

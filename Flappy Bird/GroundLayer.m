@@ -17,26 +17,25 @@
     
     float scale = [MySingleton shared].scale;
     
-    _moveSpeed = -65*scale;
-    
     // 백그라운드 앞의 땅을 설정한다.
-    _ground1 = [CCSprite spriteWithSpriteFrameName:@"ground.png"];
-    _ground1.anchorPoint = ccp(0, 0.3);
+    ground1 = [CCSprite spriteWithSpriteFrameName:@"ground.png"];
+    ground1.anchorPoint = ccp(0, 0.3);
     
     // 가로 화면에 맞춰서 늘린다.
-    [_ground1 setScale:scale];
-    [self addChild:_ground1];
+    [ground1 setScale:scale];
+    [self addChild:ground1];
     
-    _ground2 = [CCSprite spriteWithSpriteFrameName:@"ground.png"];
-    _ground2.anchorPoint = ccp(0, 0.3);
+    ground2 = [CCSprite spriteWithSpriteFrameName:@"ground.png"];
+    ground2.anchorPoint = ccp(0, 0.3);
     
     // 가로 화면에 맞춰서 늘린다.
-    [_ground2 setScale:scale];
-    [_ground2 setPosition:ccp([_ground1 boundingBox].size.width-10, 0)];
+    [ground2 setScale:scale];
+    [ground2 setPosition:ccp([ground1 boundingBox].size.width-10, 0)];
     
-    [self addChild:_ground2];
+    [self addChild:ground2];
     
-    _height = [_ground2 boundingBox].size.height*0.7;
+    _moveSpeed = -65*scale;
+    _height = [ground2 boundingBox].size.height*0.7;
     
     return self;
 }
@@ -46,19 +45,19 @@
     CGPoint groundScrollVel = ccp(_moveSpeed, 0);
     
     // 현재 이미지1의 위치 값을 불러온다.
-    CGPoint currentPos = [_ground1 position];
+    CGPoint currentPos = [ground1 position];
     
     // 1번 이미지가 스크롤 되서 사라지고, 2번 이미지가 1번 이미지의 초기 위치에 오면 최초위치로 이동
-    if (currentPos.x < -[_ground1 boundingBox].size.width+10) {
-        [_ground1 setPosition:CGPointZero];
-        currentPos = ccp([_ground2 boundingBox].size.width-10, 0);
-        [_ground2 setPosition:currentPos];
+    if (currentPos.x < -[ground1 boundingBox].size.width+10) {
+        [ground1 setPosition:CGPointZero];
+        currentPos = ccp([ground2 boundingBox].size.width-10, 0);
+        [ground2 setPosition:currentPos];
     // 현재 위치에서 groundScrollVel를 더한다.
     } else {
-        _ground1.position = ccpAdd(ccpMult(groundScrollVel, dt),
-                                   _ground1.position);
-        _ground2.position = ccpAdd(ccpMult(groundScrollVel, dt),
-                                   _ground2.position);
+        ground1.position = ccpAdd(ccpMult(groundScrollVel, dt),
+                                   ground1.position);
+        ground2.position = ccpAdd(ccpMult(groundScrollVel, dt),
+                                   ground2.position);
     }
 }
 - (void)onEnter {

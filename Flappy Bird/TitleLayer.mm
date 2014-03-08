@@ -14,6 +14,7 @@
 #import "GameScene.h"
 #import "TitleLayer.h"
 #import "MySingleton.h"
+#import "Ground.h"
 
 // -----------------------------------------------------------------------
 #pragma mark - TitleLayer
@@ -23,7 +24,10 @@
 
 enum {
     kBackground = 0,
-    kGround = 1,
+    kGround,
+    kMenu,
+    kCopyright,
+    kTitle
 };
 
 // -----------------------------------------------------------------------
@@ -51,25 +55,47 @@ enum {
     // 스프라이트 프레임 캐쉬에 스프라이트를 저장한다.
     [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:@"FlappyBird.plist"];
     
-    CGSize winSize = [[CCDirector sharedDirector] winSize];
+    winSize = [[CCDirector sharedDirector] winSize];
+    gScale = [MySingleton shared].scale;
     
+    [self initBackground];
+    [self initGround];
+    [self initCopyright];
+    [self initMenu];
+    [self initTitle];
+    
+    // done
+	return self;
+}
+
+- (void)initBackground
+{
     // 전체 백그라운드를 설정한다.
     BackgroundLayer *backgroundLayer = [BackgroundLayer node];
-    [self addChild:backgroundLayer z:kBackground tag:kBackground];
+    [self addChild:backgroundLayer z:kBackground];
     
-    float gScale = [MySingleton shared].scale;
-    
+}
+
+- (void)initGround
+{
     GroundLayer *ground =[GroundLayer node];
-    int groundHeight = [ground height];
-    [self addChild:ground z:kGround tag:kGround];
-    
+    groundHeight = [ground height];
+    [self addChild:ground z:kGround];
+}
+
+- (void)initCopyright
+{
     _copyright = [CCSprite spriteWithSpriteFrameName:@"logo.png"];
     _copyright.anchorPoint = ccp(0.5, 0);
     [_copyright setScale:gScale];
     
-    _copyright.position = ccp(winSize.width/2, ground.height - [_copyright boundingBox].size.height*2);
-    [self addChild:_copyright z:1];
-    
+    _copyright.position = ccp(winSize.width/2,
+                              groundHeight - [_copyright boundingBox].size.height*2);
+    [self addChild:_copyright z:kCopyright];
+}
+
+- (void)initMenu
+{
     CCSprite *startMenuNormal = [CCSprite spriteWithSpriteFrameName:@"start.png"];
     CCSprite *startMenuSelect = [CCSprite spriteWithSpriteFrameName:@"start.png"];
     startMenuSelect.color = ccc3(128, 128, 128);
@@ -96,19 +122,20 @@ enum {
     
     // 수평으로 배치.
     [menu alignItemsHorizontallyWithPadding:padding/2];
-    [menu setPosition:ccp(winSize.width/2, groundHeight*1.3)];
+    menu.position = ccp(winSize.width/2, groundHeight*1.3);
     
     // 만들어진 메뉴를 배경 sprite 위에 표시합니다.
-    [self addChild:menu z:2];
+    [self addChild:menu z:kMenu];
 
+}
+
+- (void)initTitle
+{
     // 타이틀의 y축을 정한다. Ground 높이를 제외한 높이의 1/2 지점이 적당할 듯하다.
     _title = [Title node];
     float titleHeight = (winSize.height+groundHeight)/2;
     _title.position = ccp(0, titleHeight);
-    [self addChild:_title z:1];
-    
-    // done
-	return self;
+    [self addChild:_title z:kTitle];
 }
 
 @end

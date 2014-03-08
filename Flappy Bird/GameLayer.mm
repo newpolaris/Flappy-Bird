@@ -15,16 +15,15 @@
 #import "TitleLayer.h"
 #import "SimpleAudioEngine.h"
 #import "HudLayer.h"
+#import "ResultLayer.h"
 
 @implementation GameLayer
 
 enum {
-    kBackground = -1,
     kPipe,
     kGround,
     kBird,
     kColorLayer,
-    kResult,
 };
 
 static const int kMaxPipe = 3;
@@ -39,12 +38,25 @@ static const int kMaxPipe = 3;
     gScale = [MySingleton shared].scale;
     _pipeUpDownGap = winSize.height / 4;
     
+    [self initGround]; // 순서 조심.
     [self initPipe];
     [self initBird];
     
     return self;
 }
 
+- (void)initGround
+{
+    // Ground 레이어 추가하기
+    GroundLayer *groundLayer = [GroundLayer node];
+    [self addChild:groundLayer z:kGround];
+    
+    groundHeight = groundLayer.height;
+    
+    // 게임 레이어의 ground 에 Ground레이어 전다.
+    self.ground = groundLayer;
+    
+}
 - (void)initBird
 {
     [self setBird:[Bird node]];
@@ -105,8 +117,8 @@ static const int kMaxPipe = 3;
 - (int)nextPipePosY
 {
     // *2가 넉넉하나 좁아보이므로 1.5로 정함.
-    int viewSize = winSize.height - _ground.height - _pipeUpDownGap*1.5;
-    return arc4random_uniform(viewSize) + _ground.height + _pipeUpDownGap;
+    int viewSize = winSize.height - groundHeight - _pipeUpDownGap*1.5;
+    return arc4random_uniform(viewSize) + groundHeight + _pipeUpDownGap;
 }
 
 - (BOOL)ccTouchBegan:(UITouch *)touch withEvent:(UIEvent *)event
@@ -209,6 +221,8 @@ static const int kMaxPipe = 3;
 {
     [self unactivateSchedule];
     
+    _hud.visible = false;
+    
     [[[CCDirector sharedDirector] touchDispatcher] removeDelegate:self];
     [_bird stopAllActions];
     [_ground unscheduleAllSelectors];
@@ -223,114 +237,16 @@ static const int kMaxPipe = 3;
             [[SimpleAudioEngine sharedEngine] playEffect:@"sfx_die.wav"];
     }];
     
-    // Disappear
-    // Pause button & score
-    
     // Earthquake effect: Viewport move & TintByWhite
-    CCSpawn *parllel = [CCSpawn actions:[self TintByWhite],
+    CCSpawn *spawn = [CCSpawn actions:[self TintByWhite],
                                         [self earthquakeEffect],
                                         [CCSequence actions:playHit, delaySound, playDie, nil],
                                          nil];
     
-    [self runAction:parllel];
-    [self resultMenuShow];
+    [self runAction:spawn];
+    [_result runAction];
 }
 
--(CCMenu*)getResultMenuItem
-{
-    CCSprite *menuOk = [CCSprite spriteWithSpriteFrameName:@"ok.png"];
-    CCSprite *menuOkSelected = [CCSprite spriteWithSpriteFrameName:@"ok.png"];
-    menuOkSelected.color = ccc3(128, 128, 128);
-
-    CCMenuItem *menuItemOk = [CCMenuItemImage
-                              itemWithNormalSprite:menuOk
-                              selectedSprite:menuOkSelected
-                              block:^(id sender) {
-                                  [[CCDirector sharedDirector] replaceScene:[TitleLayer node]];
-                              }];
-    
-    menuItemOk.scale = gScale;
-    
-    CCSprite *menuShare= [CCSprite spriteWithSpriteFrameName:@"score.png"];
-    CCSprite *menuShareSelected = [CCSprite spriteWithSpriteFrameName:@"score.png"];
-    menuShareSelected.color = ccc3(128, 128, 128);
-
-    CCMenuItem *menuItemShare = [CCMenuItemImage
-                                 itemWithNormalSprite:menuShare
-                                 selectedSprite:menuShareSelected
-                                 block:^(id sender) {
-                                     [[CCDirector sharedDirector] replaceScene:[TitleLayer node]];
-                                 }];
-    
-    menuItemShare.scale = gScale;
-    
-    CCMenu *menu = [CCMenu menuWithItems: menuItemOk, menuItemShare, nil];
-    
-    float padding = (winSize.width - [menuItemOk boundingBox].size.width*2)/3;
-    
-    // 수평으로 배치.
-    [menu alignItemsHorizontallyWithPadding:padding/2];
-    [menu setPosition:ccp(winSize.width/2, winSize.height*0.5)];
-
-    return menu;
-}
-
-// 만들어진 메뉴를 배경 sprite 위에 표시합니다.
--(void)resultMenuShow
-{
-    // 떨어지는 시간까지 딜레이
-    CCDelayTime *delay = [CCDelayTime actionWithDuration:1.0f];
-    
-    CCSprite *gameOverLabel = [CCSprite spriteWithSpriteFrameName:@"game over.png"];
-    gameOverLabel.position = ccp(winSize.width/2, winSize.height * 0.7);
-    gameOverLabel.scale = gScale;
-    gameOverLabel.anchorPoint = ccp(0.5, 0.5);
-    gameOverLabel.visible = false;
-    float duration = 0.8;
-    CCFadeIn *fadeIn = [CCFadeIn actionWithDuration:duration];
-    [self addChild:gameOverLabel z:kResult];
-    
-    CCCallBlock *fadeInGameOver = [CCCallBlock actionWithBlock:^{
-        gameOverLabel.visible = true;
-        [gameOverLabel runAction:fadeIn];
-    }];
-    
-    CCDelayTime *delayGameOver = [CCDelayTime actionWithDuration:duration];
-    
-    CCCallBlock *showResultBoard = [CCCallBlock actionWithBlock:^{
-    }];
-    
-    /*
-    CCCallBlock *showResultWindow = [CCCallBlock actionWithBlock:^{
-        CGPoint startPos = resultMenu.position;
-        startPos.y += -winSize.height;
-        CCMoveBy *moveResult = [CCMoveBy actionWithDuration:0.7
-                                                   position:startPos];
-                                
-        [self addChild:resultMenu z:kResult];
-        [resultMenu runAction:moveResult];
-    }];
-     */
-    
-    // Ok & Share
-    CCMenu *resultMenu = [self getResultMenuItem];
-    resultMenu.anchorPoint = ccp(0.5, 0);
-    resultMenu.position = ccp(winSize.width/2, _ground.height * 1.3);
-    
-    CCCallBlock *showResultWindow = [CCCallBlock actionWithBlock:^{
-        [self addChild:resultMenu z:kResult];
-    }];
-    
-    CCSequence *seq = [CCSequence actions:delay,
-                       fadeInGameOver,
-                       delayGameOver,
-                       showResultBoard,
-                       showResultWindow,
-                       nil];
-    
-    // 액션 실행
-    [self runAction:seq];
-}
 
 -(bool)isCollision:(Pipe*)pipe
 {
@@ -397,14 +313,14 @@ static const int kMaxPipe = 3;
         realV = -35;
     
     _bird.rotation = realV;
-    if (_birdHeight <= _ground.height) {
+    if (_birdHeight <= groundHeight) {
         [self unschedule:@selector(updateBirdPosition:)];
         if (state != kKIA)
         {
             state = kGroundHit;
             [self collisionWithObject];
         }
-        _birdHeight = _ground.height;
+        _birdHeight = groundHeight;
       } else if (_birdHeight > winHeight) {
           _birdHeight = winHeight;
           state = kKIA;
