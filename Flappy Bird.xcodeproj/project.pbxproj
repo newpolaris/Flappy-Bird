@@ -142,7 +142,7 @@
 		661E38D218BCDA85006EF8DA /* IntroLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 661E38D118BCDA85006EF8DA /* IntroLayer.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		661E38EC18BCDED4006EF8DA /* TitleLayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 661E38E718BCDED3006EF8DA /* TitleLayer.mm */; };
 		661E38EF18BCDEEF006EF8DA /* Bird.mm in Sources */ = {isa = PBXBuildFile; fileRef = 661E38EE18BCDEEE006EF8DA /* Bird.mm */; };
-		661E38F418BCDEFB006EF8DA /* GlobalVariable.m in Sources */ = {isa = PBXBuildFile; fileRef = 661E38F118BCDEFA006EF8DA /* GlobalVariable.m */; };
+		661E38F418BCDEFB006EF8DA /* MySingleton.m in Sources */ = {isa = PBXBuildFile; fileRef = 661E38F118BCDEFA006EF8DA /* MySingleton.m */; };
 		661E38F518BCDEFB006EF8DA /* Title.mm in Sources */ = {isa = PBXBuildFile; fileRef = 661E38F318BCDEFB006EF8DA /* Title.mm */; };
 		6624ACFB18BE3E0A00A3AEA8 /* BackgroundLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 6624ACFA18BE3E0A00A3AEA8 /* BackgroundLayer.m */; };
 		6624ACFE18BF5A1C00A3AEA8 /* GameLayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 6624ACFD18BF5A1C00A3AEA8 /* GameLayer.mm */; };
@@ -450,8 +450,8 @@
 		661E38E618BCDED3006EF8DA /* TitleLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = TitleLayer.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		661E38E718BCDED3006EF8DA /* TitleLayer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; lineEnding = 0; path = TitleLayer.mm; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		661E38EE18BCDEEE006EF8DA /* Bird.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Bird.mm; sourceTree = "<group>"; };
-		661E38F018BCDEFA006EF8DA /* GlobalVariable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GlobalVariable.h; sourceTree = "<group>"; };
-		661E38F118BCDEFA006EF8DA /* GlobalVariable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GlobalVariable.m; sourceTree = "<group>"; };
+		661E38F018BCDEFA006EF8DA /* MySingleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MySingleton.h; sourceTree = "<group>"; };
+		661E38F118BCDEFA006EF8DA /* MySingleton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MySingleton.m; sourceTree = "<group>"; };
 		661E38F218BCDEFA006EF8DA /* Title.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Title.h; sourceTree = "<group>"; };
 		661E38F318BCDEFB006EF8DA /* Title.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Title.mm; sourceTree = "<group>"; };
 		6624ACF918BE3E0A00A3AEA8 /* BackgroundLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BackgroundLayer.h; sourceTree = "<group>"; };
@@ -546,8 +546,8 @@
 				66D3F0D318C64C11000BF68D /* ResultBoard.m */,
 				66EB55B218BD0FA800833542 /* GroundLayer.h */,
 				66EB55B318BD0FA800833542 /* GroundLayer.m */,
-				661E38F018BCDEFA006EF8DA /* GlobalVariable.h */,
-				661E38F118BCDEFA006EF8DA /* GlobalVariable.m */,
+				661E38F018BCDEFA006EF8DA /* MySingleton.h */,
+				661E38F118BCDEFA006EF8DA /* MySingleton.m */,
 				661E38F218BCDEFA006EF8DA /* Title.h */,
 				661E38F318BCDEFB006EF8DA /* Title.mm */,
 				6660A3E418BF5D7400309F2F /* GameScene.h */,
@@ -1168,7 +1168,7 @@
 				661E38D218BCDA85006EF8DA /* IntroLayer.m in Sources */,
 				661E38EC18BCDED4006EF8DA /* TitleLayer.mm in Sources */,
 				661E38EF18BCDEEF006EF8DA /* Bird.mm in Sources */,
-				661E38F418BCDEFB006EF8DA /* GlobalVariable.m in Sources */,
+				661E38F418BCDEFB006EF8DA /* MySingleton.m in Sources */,
 				661E38F518BCDEFB006EF8DA /* Title.mm in Sources */,
 				66EB55B418BD0FA800833542 /* GroundLayer.m in Sources */,
 				6624ACFB18BE3E0A00A3AEA8 /* BackgroundLayer.m in Sources */,

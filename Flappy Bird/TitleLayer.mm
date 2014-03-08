@@ -13,7 +13,7 @@
 #import "BackgroundLayer.h"
 #import "GameScene.h"
 #import "TitleLayer.h"
-#import "GlobalVariable.h"
+#import "MySingleton.h"
 
 // -----------------------------------------------------------------------
 #pragma mark - TitleLayer

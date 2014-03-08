@@ -8,7 +8,7 @@
 
 #import "Title.h"
 #import "Bird.h"
-#import "GlobalVariable.h"
+#import "MySingleton.h"
 
 @implementation Title
 

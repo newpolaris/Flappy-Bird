@@ -1,5 +1,5 @@
 //
-//  GlobalVariable.h
+//  MySingleton.h
 //  Flappy Bird
 //
 //  Created by newpolaris on 2/25/14.

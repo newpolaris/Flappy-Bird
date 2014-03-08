@@ -7,7 +7,7 @@
 //
 
 #import "GetReady.h"
-#import "GlobalVariable.h"
+#import "MySingleton.h"
 
 
 @implementation GetReady

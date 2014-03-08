@@ -7,7 +7,7 @@
 //
 
 #import "BackgroundLayer.h"
-#import "GlobalVariable.h"
+#import "MySingleton.h"
 
 @implementation BackgroundLayer
 

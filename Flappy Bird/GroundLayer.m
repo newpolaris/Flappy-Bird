@@ -7,7 +7,7 @@
 //
 
 #import "GroundLayer.h"
-#import "GlobalVariable.h"
+#import "MySingleton.h"
 
 @implementation GroundLayer
 

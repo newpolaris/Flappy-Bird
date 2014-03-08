@@ -8,7 +8,7 @@
 
 #import "Bird.h"
 #import "CCAnimation.h"
-#import "GlobalVariable.h"
+#import "MySingleton.h"
 
 @implementation Bird
 
@@ -16,11 +16,9 @@
     self = [super initWithSpriteFrameName:@"bird_normal.png"];
     if (!self) return nil;
     
-    NSArray *birdSpriteNames = [NSArray arrayWithObjects:
-                               @"bird_normal.png",
+    NSArray *birdSpriteNames = @[@"bird_normal.png",
                                @"bird_up_0.png",
-                               @"bird_up_1.png",
-                               nil];
+                               @"bird_up_1.png"];
     
     NSMutableArray *frames = [[NSMutableArray alloc] init];
     

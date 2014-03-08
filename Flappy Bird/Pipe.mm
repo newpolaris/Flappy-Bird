@@ -7,7 +7,7 @@
 //
 
 #import "Pipe.h"
-#import "GlobalVariable.h"
+#import "MySingleton.h"
 
 @implementation Pipe
 

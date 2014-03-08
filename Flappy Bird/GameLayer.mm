@@ -11,7 +11,7 @@
 #import "BackgroundLayer.h"
 #import "Bird.h"
 #import "Pipe.h"
-#import "GlobalVariable.h"
+#import "MySingleton.h"
 #import "TitleLayer.h"
 #import "SimpleAudioEngine.h"
 #import "HudLayer.h"

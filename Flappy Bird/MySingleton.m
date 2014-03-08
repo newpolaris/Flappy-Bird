@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 newpolaris. All rights reserved.
 //
 
-#import "GlobalVariable.h"
+#import "MySingleton.h"
 #import "cocos2d.h"
 
 @implementation MySingleton

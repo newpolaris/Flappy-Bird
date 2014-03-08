@@ -7,7 +7,7 @@
 //
 
 #import "HudLayer.h"
-#import "GlobalVariable.h"
+#import "MySingleton.h"
 
 @implementation HudLayer
 
