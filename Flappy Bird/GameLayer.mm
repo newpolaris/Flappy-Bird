@@ -251,8 +251,8 @@ static const int kMaxPipe = 3;
     if (pastBestScore < self.score)
         [self setHightScore:self.score];
     
-    // [_result setScore:self.score best:pastBestScore];
-    [_result setScore:80 best:pastBestScore];
+    [_result setScore:self.score best:pastBestScore];
+    // [_result setScore:80 best:pastBestScore];
     [_result runAction];
 }
 
@@ -369,7 +369,7 @@ static const int kMaxPipe = 3;
 {
     if ([TWTweetComposeViewController canSendTweet]) {
         TWTweetComposeViewController *twtCntrlr = [[TWTweetComposeViewController alloc] init];
-        NSString *text = [NSString stringWithFormat:@"Just scored %d !!!", self.score];
+        NSString *text = [NSString stringWithFormat:@"Just scored %d", self.score];
         [twtCntrlr setInitialText:text];
         [twtCntrlr addImage:[self takeScreenShot]];
         

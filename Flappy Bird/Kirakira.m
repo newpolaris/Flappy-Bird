@@ -16,9 +16,7 @@
 {
     self = [super initWithSpriteFrameName:@"blast.png"];
     if (!self) return nil;
-    
-    // self.visible = false;
-    
+    self.visible = false;
     return self;
 }
 
