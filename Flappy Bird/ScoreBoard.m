@@ -45,7 +45,7 @@
     [self addChild:what];
     
     kirakira = [Kirakira node];
-    kirakira.position = ccp(size.width*0.25, size.height*0.5);
+    kirakira.position = ccp(size.width*0.3, size.height*0.5);
     [self addChild:kirakira];
     
     //
