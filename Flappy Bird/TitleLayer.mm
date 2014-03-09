@@ -65,6 +65,8 @@ enum {
     [self initMenu];
     [self initTitle];
     
+    [[AppController sharedAppDelegate] showAds];
+    
     // done
 	return self;
 }
@@ -104,6 +106,7 @@ enum {
     CCMenuItem *startMenu = [CCMenuItemImage itemWithNormalSprite:startMenuNormal
                                selectedSprite:startMenuSelect
                                         block:^(id sender) {
+        [[AppController sharedAppDelegate] hideAds];
         [[CCDirector sharedDirector] replaceScene:[GameScene node]];
                                         }];
     startMenu.scale = gScale;
@@ -115,6 +118,7 @@ enum {
     CCMenuItem *scoreMenu = [CCMenuItemImage itemWithNormalSprite:scoreMenuNormal
                                                    selectedSprite:scoreMenuSelect
                                                             block:^(id sender) {
+        [[AppController sharedAppDelegate] hideAds];
                                                             }];
     scoreMenu.scale = gScale;
     

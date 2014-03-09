@@ -197,6 +197,7 @@
 
 -(void) applicationDidEnterBackground:(UIApplication*)application
 {
+    [self hideAds];
     [[NSUserDefaults standardUserDefaults] synchronize];
     
 	if( [navController_ visibleViewController] == director_ )
