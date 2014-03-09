@@ -46,5 +46,6 @@ typedef enum BirdState BirdState;
 @property (nonatomic) float velocity;   // 올라가거나 떨어지는 속도
 
 - (void)activateSchedule;
+- (void)tweet;
 
 @end

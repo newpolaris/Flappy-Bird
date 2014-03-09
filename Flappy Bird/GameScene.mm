@@ -58,6 +58,7 @@ enum eSceneOrder
         ready.gameLayer = gameLayer;
         
         resultLayer.groundHeight = gameLayer.ground.height;
+        resultLayer.gameLayer = gameLayer;
     }
     return self;
 }

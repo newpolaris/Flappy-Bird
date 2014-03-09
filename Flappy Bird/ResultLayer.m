@@ -10,6 +10,7 @@
 #import "MySingleton.h"
 #import "TitleLayer.h"
 #import "ScoreBoard.h"
+#import "GameLayer.h"
 
 @implementation ResultLayer
 
@@ -67,7 +68,7 @@
                                  itemWithNormalSprite:menuShare
                                  selectedSprite:menuShareSelected
                                  block:^(id sender) {
-                                     [[CCDirector sharedDirector] replaceScene:[TitleLayer node]];
+                                     [self.gameLayer tweet];
                                  }];
     
     menuItemShare.scale = gScale;

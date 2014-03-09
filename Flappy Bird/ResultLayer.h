@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "cocos2d.h"
 
+@class GameLayer;
 @class ScoreBoard;
 
 @interface ResultLayer : CCLayer {
@@ -24,6 +25,7 @@
 }
 
 @property (nonatomic) float groundHeight;
+@property (nonatomic, weak) GameLayer *gameLayer;
 
 -(void)runAction;
 -(void)setScore:(int)score best:(int)bestScore;

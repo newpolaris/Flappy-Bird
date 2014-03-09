@@ -6,6 +6,8 @@
 //  Copyright 2014 newpolaris. All rights reserved.
 //
 
+#import <Twitter/TWTweetComposeViewController.h>
+
 #import "GameLayer.h"
 #import "GroundLayer.h"
 #import "BackgroundLayer.h"
@@ -361,6 +363,37 @@ static const int kMaxPipe = 3;
     }
     
     _bird.position = ccp(_bird.position.x, _birdHeight);
+}
+
+-(void)tweet
+{
+    if ([TWTweetComposeViewController canSendTweet]) {
+        TWTweetComposeViewController *twtCntrlr = [[TWTweetComposeViewController alloc] init];
+        NSString *text = [NSString stringWithFormat:@"Just scored %d !!!", self.score];
+        [twtCntrlr setInitialText:text];
+        [twtCntrlr addImage:[self takeScreenShot]];
+        
+        [[CCDirector sharedDirector] presentModalViewController:twtCntrlr
+                                                       animated:YES];
+    }
+}
+
+-(UIImage*)takeScreenShot
+{
+    [CCDirector sharedDirector].nextDeltaTimeZero = YES;
+    CCLayerColor* blankLayer = [CCLayerColor layerWithColor:ccc4(255, 255, 255, 0) width:winSize.width height:winSize.height];
+    
+    blankLayer.position = ccp(winSize.width/2, winSize.height/2);
+    
+    CCRenderTexture* rtx = [CCRenderTexture renderTextureWithWidth:winSize.width height:winSize.height];
+    
+    [rtx begin];
+    [blankLayer visit];
+    [[[CCDirector sharedDirector] runningScene] visit];
+    [rtx end];
+    
+    return [rtx getUIImage];
+    
 }
 
 @end

@@ -156,6 +156,7 @@
 		66AD4B1D18CAF2F600588B7D /* ResultLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 66AD4B1C18CAF2F500588B7D /* ResultLayer.m */; };
 		66AD4B2318CB58BB00588B7D /* ScoreBoard.m in Sources */ = {isa = PBXBuildFile; fileRef = 66AD4B2218CB58BA00588B7D /* ScoreBoard.m */; };
 		66AD4B2618CC445C00588B7D /* Kirakira.m in Sources */ = {isa = PBXBuildFile; fileRef = 66AD4B2518CC445A00588B7D /* Kirakira.m */; };
+		66AD4B2818CC567500588B7D /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66AD4B2718CC567500588B7D /* Twitter.framework */; };
 		66D3F0CA18C4D05B000BF68D /* sfx_hit.wav in Resources */ = {isa = PBXBuildFile; fileRef = 66D3F0C518C4D05B000BF68D /* sfx_hit.wav */; };
 		66D3F0CB18C4D05B000BF68D /* sfx_point.wav in Resources */ = {isa = PBXBuildFile; fileRef = 66D3F0C618C4D05B000BF68D /* sfx_point.wav */; };
 		66D3F0CC18C4D05B000BF68D /* sfx_swooshing.wav in Resources */ = {isa = PBXBuildFile; fileRef = 66D3F0C718C4D05B000BF68D /* sfx_swooshing.wav */; };
@@ -476,6 +477,7 @@
 		66AD4B2218CB58BA00588B7D /* ScoreBoard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScoreBoard.m; sourceTree = "<group>"; };
 		66AD4B2418CC445800588B7D /* Kirakira.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Kirakira.h; sourceTree = "<group>"; };
 		66AD4B2518CC445A00588B7D /* Kirakira.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Kirakira.m; sourceTree = "<group>"; };
+		66AD4B2718CC567500588B7D /* Twitter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Twitter.framework; path = System/Library/Frameworks/Twitter.framework; sourceTree = SDKROOT; };
 		66D3F0C518C4D05B000BF68D /* sfx_hit.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = sfx_hit.wav; sourceTree = "<group>"; };
 		66D3F0C618C4D05B000BF68D /* sfx_point.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = sfx_point.wav; sourceTree = "<group>"; };
 		66D3F0C718C4D05B000BF68D /* sfx_swooshing.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = sfx_swooshing.wav; sourceTree = "<group>"; };
@@ -498,6 +500,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				66AD4B2818CC567500588B7D /* Twitter.framework in Frameworks */,
 				661E36CA18BCDA82006EF8DA /* QuartzCore.framework in Frameworks */,
 				661E36CC18BCDA82006EF8DA /* OpenGLES.framework in Frameworks */,
 				661E36CE18BCDA82006EF8DA /* OpenAL.framework in Frameworks */,
@@ -517,6 +520,7 @@
 		661E36BD18BCDA82006EF8DA = {
 			isa = PBXGroup;
 			children = (
+				66AD4B2718CC567500588B7D /* Twitter.framework */,
 				661E36DD18BCDA82006EF8DA /* Flappy Bird */,
 				661E36C818BCDA82006EF8DA /* Frameworks */,
 				661E36C718BCDA82006EF8DA /* Products */,
@@ -565,9 +569,9 @@
 				66D3F0DA18C774EE000BF68D /* HudLayer.m */,
 				66D3F0CF18C64217000BF68D /* GetReady.h */,
 				66D3F0D018C64218000BF68D /* GetReady.m */,
-				6624ACFC18BF5A1C00A3AEA8 /* GameLayer.h */,
 				66AD4B2418CC445800588B7D /* Kirakira.h */,
 				66AD4B2518CC445A00588B7D /* Kirakira.m */,
+				6624ACFC18BF5A1C00A3AEA8 /* GameLayer.h */,
 				6624ACFD18BF5A1C00A3AEA8 /* GameLayer.mm */,
 				66AD4B1B18CAF2F300588B7D /* ResultLayer.h */,
 				66AD4B1C18CAF2F500588B7D /* ResultLayer.m */,
