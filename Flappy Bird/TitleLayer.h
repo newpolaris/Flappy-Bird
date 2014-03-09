@@ -14,6 +14,7 @@
 
 // 전방 선언.
 @class Title;
+@class iAdLayer;
 
 /**
  *  The intro scene
@@ -32,6 +33,7 @@
 
 + (TitleLayer *)scene;
 
+@property (nonatomic, weak) iAdLayer *iAd;
 @property (nonatomic, weak) Title *title;
 @property (nonatomic, weak) CCSprite *start;
 @property (nonatomic, weak) CCSprite *score;

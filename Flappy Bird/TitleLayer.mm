@@ -15,6 +15,7 @@
 #import "TitleLayer.h"
 #import "MySingleton.h"
 #import "AppDelegate.h"
+#import "iAdLayer.h"
 
 // -----------------------------------------------------------------------
 #pragma mark - TitleLayer
@@ -27,7 +28,8 @@ enum {
     kGround,
     kMenu,
     kCopyright,
-    kTitle
+    kTitle,
+    kiAD
 };
 
 // -----------------------------------------------------------------------
@@ -65,6 +67,8 @@ enum {
     [self initMenu];
     [self initTitle];
     
+    self.iAd = [iAdLayer node];
+    [self addChild:self.iAd];
     
     // done
 	return self;

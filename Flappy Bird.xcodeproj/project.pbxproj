@@ -146,6 +146,7 @@
 		661E38F518BCDEFB006EF8DA /* Title.mm in Sources */ = {isa = PBXBuildFile; fileRef = 661E38F318BCDEFB006EF8DA /* Title.mm */; };
 		6624ACFB18BE3E0A00A3AEA8 /* BackgroundLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 6624ACFA18BE3E0A00A3AEA8 /* BackgroundLayer.m */; };
 		6624ACFE18BF5A1C00A3AEA8 /* GameLayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 6624ACFD18BF5A1C00A3AEA8 /* GameLayer.mm */; };
+		663865EF18CCBF5A00C7AE51 /* iAdLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 663865EE18CCBF5A00C7AE51 /* iAdLayer.m */; };
 		6660A3E618BF5D7400309F2F /* GameScene.mm in Sources */ = {isa = PBXBuildFile; fileRef = 6660A3E518BF5D7400309F2F /* GameScene.mm */; };
 		6660A3E918BF82EF00309F2F /* Pipe.mm in Sources */ = {isa = PBXBuildFile; fileRef = 6660A3E818BF82EE00309F2F /* Pipe.mm */; };
 		6661532218CA1F0C00288624 /* fontSmall.png in Resources */ = {isa = PBXBuildFile; fileRef = 6661532018CA1F0C00288624 /* fontSmall.png */; };
@@ -463,6 +464,8 @@
 		6624ACFA18BE3E0A00A3AEA8 /* BackgroundLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BackgroundLayer.m; sourceTree = "<group>"; };
 		6624ACFC18BF5A1C00A3AEA8 /* GameLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameLayer.h; sourceTree = "<group>"; };
 		6624ACFD18BF5A1C00A3AEA8 /* GameLayer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = GameLayer.mm; sourceTree = "<group>"; };
+		663865ED18CCBF5A00C7AE51 /* iAdLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = iAdLayer.h; path = ../iAdLayer.h; sourceTree = "<group>"; };
+		663865EE18CCBF5A00C7AE51 /* iAdLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = iAdLayer.m; path = ../iAdLayer.m; sourceTree = "<group>"; };
 		6660A3E418BF5D7400309F2F /* GameScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameScene.h; sourceTree = "<group>"; };
 		6660A3E518BF5D7400309F2F /* GameScene.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = GameScene.mm; sourceTree = "<group>"; };
 		6660A3E718BF82EE00309F2F /* Pipe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Pipe.h; sourceTree = "<group>"; };
@@ -559,6 +562,8 @@
 		661E36DD18BCDA82006EF8DA /* Flappy Bird */ = {
 			isa = PBXGroup;
 			children = (
+				663865ED18CCBF5A00C7AE51 /* iAdLayer.h */,
+				663865EE18CCBF5A00C7AE51 /* iAdLayer.m */,
 				66D3F0D218C64C10000BF68D /* ResultBoard.h */,
 				66D3F0D318C64C11000BF68D /* ResultBoard.m */,
 				66EB55B218BD0FA800833542 /* GroundLayer.h */,
@@ -1204,6 +1209,7 @@
 				66AD4B1D18CAF2F600588B7D /* ResultLayer.m in Sources */,
 				66AD4B2318CB58BB00588B7D /* ScoreBoard.m in Sources */,
 				66AD4B2618CC445C00588B7D /* Kirakira.m in Sources */,
+				663865EF18CCBF5A00C7AE51 /* iAdLayer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
