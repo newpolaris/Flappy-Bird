@@ -16,6 +16,7 @@
 #import "SimpleAudioEngine.h"
 #import "HudLayer.h"
 #import "ResultLayer.h"
+#import "ScoreBoard.h"
 
 @implementation GameLayer
 
@@ -143,7 +144,6 @@ static const int kMaxPipe = 3;
 
 -(void)updateScore:(ccTime)dt
 {
-
     _gone -= dt*_ground.moveSpeed;
     
     float newScore = _gone / _pipeGap;
@@ -244,9 +244,35 @@ static const int kMaxPipe = 3;
                                          nil];
     
     [self runAction:spawn];
+    
+    int pastBestScore = [self getHighScore];
+    if (pastBestScore < self.score)
+        [self setHightScore:self.score];
+    
+    // [_result setScore:self.score best:pastBestScore];
+    [_result setScore:80 best:pastBestScore];
     [_result runAction];
 }
 
+-(int)getHighScore
+{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    
+    NSNumber *bestScore = [defaults objectForKey:@"best_score"];
+    
+    if (bestScore == nil)
+        return 0;
+    else
+        return bestScore.intValue;
+}
+
+-(void)setHightScore:(int)score
+{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    
+    NSNumber *bestScore = [NSNumber numberWithInt:score];
+    [defaults setObject:bestScore forKey:@"best_score"];
+}
 
 -(bool)isCollision:(Pipe*)pipe
 {

@@ -9,6 +9,7 @@
 #import "ResultLayer.h"
 #import "MySingleton.h"
 #import "TitleLayer.h"
+#import "ScoreBoard.h"
 
 @implementation ResultLayer
 
@@ -86,49 +87,12 @@
 
 - (void)initBoard
 {
-    CCSprite *scoreBoard = [CCSprite spriteWithSpriteFrameName:@"score_board.png"];
+    scoreBoard = [ScoreBoard node];
     
-    // 백금, 금, 은, 동.
-    NSArray *medals = @[[CCSprite spriteWithSpriteFrameName:@"medal_silver.png"],
-                        [CCSprite spriteWithSpriteFrameName:@"medal_gold.png"],
-                        [CCSprite spriteWithSpriteFrameName:@"medal_cupronikel.png"],
-                        [CCSprite spriteWithSpriteFrameName:@"medal_Bronze.png"]];
-    
-    NSEnumerator *enumerator = [medals objectEnumerator];
-    for (id element in enumerator) {
-        CCSprite *sprite = (CCSprite*)element;
-        sprite.visible = false;
-        [scoreBoard addChild:sprite];
-    }
-    
-    CCSprite *new = [CCSprite spriteWithSpriteFrameName:@"new.png"];
-    new.visible = false;
-    [scoreBoard addChild:new];
-    
-    CCSprite *kirakira = [CCSprite spriteWithSpriteFrameName:@"kirakira.png"];
-    [scoreBoard addChild:kirakira];
-    
-    //
-    scoreLabel = [CCLabelBMFont labelWithString:@"0" fntFile:@"fontSmall.fnt"];
-    scoreLabel.anchorPoint = ccp(0.5, 0.5);
-    scoreLabel.position = ccp(winSize.width*0.5, winSize.height*0.5);
-    scoreLabel.scale = gScale;
-    
-    [scoreBoard addChild:scoreLabel];
-    
-    //
-    bestScoreLabel = [CCLabelBMFont labelWithString:@"0" fntFile:@"fontSmall.fnt"];
-    bestScoreLabel.anchorPoint = ccp(0.5, 0.5);
-    bestScoreLabel.position = ccp(winSize.width*0.5, winSize.height*0.5);
-    bestScoreLabel.scale = gScale;
-    
+    scoreBoard.position = ccp(winSize.width*0.5, winSize.height*0.48);
+    scoreBoard.scale = gScale;
+    scoreBoard.visible = false;
     [self addChild:scoreBoard];
-}
-
-- (void)scoreRenew:(int)score
-{
-    NSString *scoreString = [NSString stringWithFormat:@"%d", score];
-    scoreLabel.string = scoreString;
 }
 
 // 만들어진 메뉴를 배경 sprite 위에 표시합니다.
@@ -148,17 +112,26 @@
     CCDelayTime *waitGameOver = [CCDelayTime actionWithDuration:durationLabel];
     
     CCCallBlock *showBoard = [CCCallBlock actionWithBlock:^{
-        /*
-        CGPoint startPos = board.position;
-        startPos.y += -winSize.height;
+        CGPoint startPos = ccp(0, +winSize.height);
+        CGPoint position = scoreBoard.position;
+        position.y -= winSize.height;
+        scoreBoard.position = position;
+        
+        scoreBoard.visible = true;
         CCMoveBy *moveResult = [CCMoveBy actionWithDuration:durationBoard
                                                    position:startPos];
-        [borad runAction:showBord];
-         */
+        
+        [scoreBoard runAction:moveResult];
     }];
     
     CCDelayTime *waitBoard = [CCDelayTime actionWithDuration:durationBoard];
     
+    CCCallBlock *runNumberAnimation = [CCCallBlock actionWithBlock:^{
+        [scoreBoard startAnimation];
+    }];
+    
+    CCDelayTime *waitNumberAnimation = [CCDelayTime actionWithDuration:0.5];
+        
     CCCallBlock *showMenu = [CCCallBlock actionWithBlock:^{
         // Ground 생선 시점으로 인해 이걸 뒤로 미룸.
         menu.position = ccp(winSize.width/2, _groundHeight * 1.3);
@@ -171,11 +144,20 @@
                        waitGameOver,
                        showBoard,
                        waitBoard,
+                       runNumberAnimation,
+                       waitNumberAnimation,
                        showMenu,
                        nil];
     
     // 액션 실행
     [self runAction:seq];
+}
+
+-(void)setScore:(int)score best:(int)pastBestScore
+{
+    scoreBoard.score = score;
+    scoreBoard.bestScore = pastBestScore;
+    [scoreBoard bestScoreRenew:pastBestScore];
 }
 
 @end

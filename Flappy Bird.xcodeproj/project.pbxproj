@@ -154,6 +154,8 @@
 		66A568E818CA039600C340A8 /* font.png in Resources */ = {isa = PBXBuildFile; fileRef = 66A568E418CA039600C340A8 /* font.png */; };
 		66A568EA18CA039600C340A8 /* font.fnt in Resources */ = {isa = PBXBuildFile; fileRef = 66A568E618CA039600C340A8 /* font.fnt */; };
 		66AD4B1D18CAF2F600588B7D /* ResultLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 66AD4B1C18CAF2F500588B7D /* ResultLayer.m */; };
+		66AD4B2318CB58BB00588B7D /* ScoreBoard.m in Sources */ = {isa = PBXBuildFile; fileRef = 66AD4B2218CB58BA00588B7D /* ScoreBoard.m */; };
+		66AD4B2618CC445C00588B7D /* Kirakira.m in Sources */ = {isa = PBXBuildFile; fileRef = 66AD4B2518CC445A00588B7D /* Kirakira.m */; };
 		66D3F0CA18C4D05B000BF68D /* sfx_hit.wav in Resources */ = {isa = PBXBuildFile; fileRef = 66D3F0C518C4D05B000BF68D /* sfx_hit.wav */; };
 		66D3F0CB18C4D05B000BF68D /* sfx_point.wav in Resources */ = {isa = PBXBuildFile; fileRef = 66D3F0C618C4D05B000BF68D /* sfx_point.wav */; };
 		66D3F0CC18C4D05B000BF68D /* sfx_swooshing.wav in Resources */ = {isa = PBXBuildFile; fileRef = 66D3F0C718C4D05B000BF68D /* sfx_swooshing.wav */; };
@@ -470,6 +472,10 @@
 		66A568E618CA039600C340A8 /* font.fnt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = font.fnt; path = Resources/font.fnt; sourceTree = "<group>"; };
 		66AD4B1B18CAF2F300588B7D /* ResultLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResultLayer.h; sourceTree = "<group>"; };
 		66AD4B1C18CAF2F500588B7D /* ResultLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResultLayer.m; sourceTree = "<group>"; };
+		66AD4B2118CB58B800588B7D /* ScoreBoard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScoreBoard.h; sourceTree = "<group>"; };
+		66AD4B2218CB58BA00588B7D /* ScoreBoard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScoreBoard.m; sourceTree = "<group>"; };
+		66AD4B2418CC445800588B7D /* Kirakira.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Kirakira.h; sourceTree = "<group>"; };
+		66AD4B2518CC445A00588B7D /* Kirakira.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Kirakira.m; sourceTree = "<group>"; };
 		66D3F0C518C4D05B000BF68D /* sfx_hit.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = sfx_hit.wav; sourceTree = "<group>"; };
 		66D3F0C618C4D05B000BF68D /* sfx_point.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = sfx_point.wav; sourceTree = "<group>"; };
 		66D3F0C718C4D05B000BF68D /* sfx_swooshing.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = sfx_swooshing.wav; sourceTree = "<group>"; };
@@ -560,9 +566,13 @@
 				66D3F0CF18C64217000BF68D /* GetReady.h */,
 				66D3F0D018C64218000BF68D /* GetReady.m */,
 				6624ACFC18BF5A1C00A3AEA8 /* GameLayer.h */,
+				66AD4B2418CC445800588B7D /* Kirakira.h */,
+				66AD4B2518CC445A00588B7D /* Kirakira.m */,
 				6624ACFD18BF5A1C00A3AEA8 /* GameLayer.mm */,
 				66AD4B1B18CAF2F300588B7D /* ResultLayer.h */,
 				66AD4B1C18CAF2F500588B7D /* ResultLayer.m */,
+				66AD4B2118CB58B800588B7D /* ScoreBoard.h */,
+				66AD4B2218CB58BA00588B7D /* ScoreBoard.m */,
 				6660A3E718BF82EE00309F2F /* Pipe.h */,
 				6660A3E818BF82EE00309F2F /* Pipe.mm */,
 				661E38E218BCDED1006EF8DA /* Bird.h */,
@@ -1184,6 +1194,8 @@
 				66D3F0D418C64C12000BF68D /* ResultBoard.m in Sources */,
 				66D3F0DB18C774EE000BF68D /* HudLayer.m in Sources */,
 				66AD4B1D18CAF2F600588B7D /* ResultLayer.m in Sources */,
+				66AD4B2318CB58BB00588B7D /* ScoreBoard.m in Sources */,
+				66AD4B2618CC445C00588B7D /* Kirakira.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -167,6 +167,8 @@
 
 -(void) applicationDidEnterBackground:(UIApplication*)application
 {
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
 	if( [navController_ visibleViewController] == director_ )
 		[director_ stopAnimation];
 }

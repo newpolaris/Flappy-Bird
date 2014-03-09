@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 #import "cocos2d.h"
 
+@class ScoreBoard;
+
 @interface ResultLayer : CCLayer {
     CGSize winSize;
     float gScale;
@@ -18,12 +20,12 @@
     
     CCMenu *menu;
     CCSprite *gameOverLabel;
-    CCLabelBMFont *scoreLabel;
-    CCLabelBMFont *bestScoreLabel;
+    ScoreBoard *scoreBoard;
 }
 
 @property (nonatomic) float groundHeight;
 
 -(void)runAction;
+-(void)setScore:(int)score best:(int)bestScore;
 
 @end
