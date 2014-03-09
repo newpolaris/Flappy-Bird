@@ -11,7 +11,6 @@
 #import "AppDelegate.h"
 #import "IntroLayer.h"
 #import "SimpleAudioEngine.h"
-#import "BannerViewController.h"
 
 @implementation MyNavigationController
 
@@ -155,29 +154,8 @@
     [[SimpleAudioEngine sharedEngine] preloadEffect:@"sfx_die.wav"];
     
     // New setup - Load the banner view
-    _bannerViewController = [[BannerViewController alloc] initWithContentViewController:director_];
-    window_.rootViewController = _bannerViewController;
-    [window_ makeKeyAndVisible];
     
 	return YES;
-}
-
-- (void)showAds {
-    [_bannerViewController forceAdViewToHide:NO];
-}
-- (void)hideAds {
-    [_bannerViewController forceAdViewToHide:YES];
-}
-- (BOOL)isAniPhone5 {
-    BOOL result = FALSE;
-    CGSize size = [[CCDirector sharedDirector] winSize];
-    if( UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone ) {
-        if (size.width == 568.0 || size.height == 568.0) {
-            NSLog(@"4\" Retina-iPhone");
-            result = TRUE;
-        }
-    }
-    return result;
 }
 
 // getting a call, pause the game
@@ -197,7 +175,6 @@
 
 -(void) applicationDidEnterBackground:(UIApplication*)application
 {
-    [self hideAds];
     [[NSUserDefaults standardUserDefaults] synchronize];
     
 	if( [navController_ visibleViewController] == director_ )

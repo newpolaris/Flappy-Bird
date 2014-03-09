@@ -56,7 +56,6 @@
                               itemWithNormalSprite:menuOk
                               selectedSprite:menuOkSelected
                               block:^(id sender) {
-                                  [[AppController sharedAppDelegate] hideAds];
                                   [[CCDirector sharedDirector] replaceScene:[TitleLayer node]];
                               }];
     
@@ -70,7 +69,6 @@
                                  itemWithNormalSprite:menuShare
                                  selectedSprite:menuShareSelected
                                  block:^(id sender) {
-                                     [[AppController sharedAppDelegate] hideAds];
                                      [self.gameLayer tweet];
                                  }];
     

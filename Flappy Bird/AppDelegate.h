@@ -10,8 +10,6 @@
 #import <iAd/iAd.h>
 #import "cocos2d.h"
 
-@class BannerViewController;
-
 // Added only for iOS 6 support
 @interface MyNavigationController : UINavigationController <CCDirectorDelegate>
 @end
@@ -29,11 +27,5 @@
 @property (nonatomic, retain) UIWindow *window;
 @property (readonly) MyNavigationController *navController;
 @property (readonly) CCDirectorIOS *director;
-@property (readonly) BannerViewController *bannerViewController;
-
-// adView
-- (void)showAds;
-- (void)hideAds;
-- (BOOL)isAniPhone5;
 
 @end
