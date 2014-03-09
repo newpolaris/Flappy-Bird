@@ -150,6 +150,7 @@
 		6660A3E918BF82EF00309F2F /* Pipe.mm in Sources */ = {isa = PBXBuildFile; fileRef = 6660A3E818BF82EE00309F2F /* Pipe.mm */; };
 		6661532218CA1F0C00288624 /* fontSmall.png in Resources */ = {isa = PBXBuildFile; fileRef = 6661532018CA1F0C00288624 /* fontSmall.png */; };
 		6661532318CA1F0C00288624 /* fontSmall.fnt in Resources */ = {isa = PBXBuildFile; fileRef = 6661532118CA1F0C00288624 /* fontSmall.fnt */; };
+		6692E2BA18CCB007000421E6 /* BannerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6692E2B918CCB007000421E6 /* BannerViewController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		6699C58F18C0E60200E07F69 /* collision.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6699C58E18C0E60200E07F69 /* collision.plist */; };
 		66A568E818CA039600C340A8 /* font.png in Resources */ = {isa = PBXBuildFile; fileRef = 66A568E418CA039600C340A8 /* font.png */; };
 		66A568EA18CA039600C340A8 /* font.fnt in Resources */ = {isa = PBXBuildFile; fileRef = 66A568E618CA039600C340A8 /* font.fnt */; };
@@ -157,6 +158,7 @@
 		66AD4B2318CB58BB00588B7D /* ScoreBoard.m in Sources */ = {isa = PBXBuildFile; fileRef = 66AD4B2218CB58BA00588B7D /* ScoreBoard.m */; };
 		66AD4B2618CC445C00588B7D /* Kirakira.m in Sources */ = {isa = PBXBuildFile; fileRef = 66AD4B2518CC445A00588B7D /* Kirakira.m */; };
 		66AD4B2818CC567500588B7D /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66AD4B2718CC567500588B7D /* Twitter.framework */; };
+		66AD4B2A18CC9C6E00588B7D /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66AD4B2918CC9C6D00588B7D /* iAd.framework */; };
 		66D3F0CA18C4D05B000BF68D /* sfx_hit.wav in Resources */ = {isa = PBXBuildFile; fileRef = 66D3F0C518C4D05B000BF68D /* sfx_hit.wav */; };
 		66D3F0CB18C4D05B000BF68D /* sfx_point.wav in Resources */ = {isa = PBXBuildFile; fileRef = 66D3F0C618C4D05B000BF68D /* sfx_point.wav */; };
 		66D3F0CC18C4D05B000BF68D /* sfx_swooshing.wav in Resources */ = {isa = PBXBuildFile; fileRef = 66D3F0C718C4D05B000BF68D /* sfx_swooshing.wav */; };
@@ -468,6 +470,8 @@
 		6660A3E818BF82EE00309F2F /* Pipe.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Pipe.mm; sourceTree = "<group>"; };
 		6661532018CA1F0C00288624 /* fontSmall.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = fontSmall.png; path = Resources/fontSmall.png; sourceTree = "<group>"; };
 		6661532118CA1F0C00288624 /* fontSmall.fnt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = fontSmall.fnt; path = Resources/fontSmall.fnt; sourceTree = "<group>"; };
+		6692E2B818CCB007000421E6 /* BannerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BannerViewController.h; sourceTree = "<group>"; };
+		6692E2B918CCB007000421E6 /* BannerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BannerViewController.m; sourceTree = "<group>"; };
 		6699C58E18C0E60200E07F69 /* collision.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = collision.plist; path = Resources/collision.plist; sourceTree = "<group>"; };
 		66A568E418CA039600C340A8 /* font.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = font.png; path = Resources/font.png; sourceTree = "<group>"; };
 		66A568E618CA039600C340A8 /* font.fnt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = font.fnt; path = Resources/font.fnt; sourceTree = "<group>"; };
@@ -478,6 +482,7 @@
 		66AD4B2418CC445800588B7D /* Kirakira.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Kirakira.h; sourceTree = "<group>"; };
 		66AD4B2518CC445A00588B7D /* Kirakira.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Kirakira.m; sourceTree = "<group>"; };
 		66AD4B2718CC567500588B7D /* Twitter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Twitter.framework; path = System/Library/Frameworks/Twitter.framework; sourceTree = SDKROOT; };
+		66AD4B2918CC9C6D00588B7D /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
 		66D3F0C518C4D05B000BF68D /* sfx_hit.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = sfx_hit.wav; sourceTree = "<group>"; };
 		66D3F0C618C4D05B000BF68D /* sfx_point.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = sfx_point.wav; sourceTree = "<group>"; };
 		66D3F0C718C4D05B000BF68D /* sfx_swooshing.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = sfx_swooshing.wav; sourceTree = "<group>"; };
@@ -500,6 +505,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				66AD4B2A18CC9C6E00588B7D /* iAd.framework in Frameworks */,
 				66AD4B2818CC567500588B7D /* Twitter.framework in Frameworks */,
 				661E36CA18BCDA82006EF8DA /* QuartzCore.framework in Frameworks */,
 				661E36CC18BCDA82006EF8DA /* OpenGLES.framework in Frameworks */,
@@ -520,7 +526,6 @@
 		661E36BD18BCDA82006EF8DA = {
 			isa = PBXGroup;
 			children = (
-				66AD4B2718CC567500588B7D /* Twitter.framework */,
 				661E36DD18BCDA82006EF8DA /* Flappy Bird */,
 				661E36C818BCDA82006EF8DA /* Frameworks */,
 				661E36C718BCDA82006EF8DA /* Products */,
@@ -538,6 +543,8 @@
 		661E36C818BCDA82006EF8DA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				66AD4B2918CC9C6D00588B7D /* iAd.framework */,
+				66AD4B2718CC567500588B7D /* Twitter.framework */,
 				661E36C918BCDA82006EF8DA /* QuartzCore.framework */,
 				661E36CB18BCDA82006EF8DA /* OpenGLES.framework */,
 				661E36CD18BCDA82006EF8DA /* OpenAL.framework */,
@@ -555,6 +562,8 @@
 		661E36DD18BCDA82006EF8DA /* Flappy Bird */ = {
 			isa = PBXGroup;
 			children = (
+				6692E2B818CCB007000421E6 /* BannerViewController.h */,
+				6692E2B918CCB007000421E6 /* BannerViewController.m */,
 				66D3F0D218C64C10000BF68D /* ResultBoard.h */,
 				66D3F0D318C64C11000BF68D /* ResultBoard.m */,
 				66EB55B218BD0FA800833542 /* GroundLayer.h */,
@@ -1200,6 +1209,7 @@
 				66AD4B1D18CAF2F600588B7D /* ResultLayer.m in Sources */,
 				66AD4B2318CB58BB00588B7D /* ScoreBoard.m in Sources */,
 				66AD4B2618CC445C00588B7D /* Kirakira.m in Sources */,
+				6692E2BA18CCB007000421E6 /* BannerViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

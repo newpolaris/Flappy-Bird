@@ -19,6 +19,7 @@
 #import "HudLayer.h"
 #import "ResultLayer.h"
 #import "ScoreBoard.h"
+#import "AppDelegate.h"
 
 @implementation GameLayer
 
@@ -250,6 +251,8 @@ static const int kMaxPipe = 3;
     int pastBestScore = [self getHighScore];
     if (pastBestScore < self.score)
         [self setHightScore:self.score];
+    
+    [[AppController sharedAppDelegate] showAds];
     
     [_result setScore:self.score best:pastBestScore];
     // [_result setScore:80 best:pastBestScore];

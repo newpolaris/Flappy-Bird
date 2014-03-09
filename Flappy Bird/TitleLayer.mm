@@ -14,7 +14,7 @@
 #import "GameScene.h"
 #import "TitleLayer.h"
 #import "MySingleton.h"
-#import "Ground.h"
+#import "AppDelegate.h"
 
 // -----------------------------------------------------------------------
 #pragma mark - TitleLayer
@@ -51,6 +51,7 @@ enum {
     // Apple recommend assigning self with supers return value
     self = [super init];
     if (!self) return(nil);
+    
     
     // 스프라이트 프레임 캐쉬에 스프라이트를 저장한다.
     [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:@"FlappyBird.plist"];
