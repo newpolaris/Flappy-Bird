@@ -254,7 +254,7 @@ NSString * const BannerViewActionDidFinish = @"BannerViewActionDidFinish";
                 bannerFrame.origin.y = (contentFrame.size.height-_bannerView.frame.size.height);
             }
             _adView.hidden = YES;
-            NSLog(@"[iAd]: Ad Loaded");
+            // NSLog(@"[iAd]: Ad Loaded");
         } else {
             if (kiAdPositionTop) {
                 bannerFrame.origin.y -= _bannerView.frame.size.height;
@@ -262,7 +262,7 @@ NSString * const BannerViewActionDidFinish = @"BannerViewActionDidFinish";
                 bannerFrame.origin.y = contentFrame.size.height;
             }
             _adView.hidden = NO;
-            NSLog(@"[iAd]: No Ad...");
+            // NSLog(@"[iAd]: No Ad...");
         }
     } else { //NOT okToShowAds
         if (kiAdPositionTop) {

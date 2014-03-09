@@ -26,5 +26,6 @@
 
 - (void)bestScoreRenew:(int)score;
 - (void)startAnimation;
+- (void)showLastResult;
 
 @end

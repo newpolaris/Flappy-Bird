@@ -252,8 +252,6 @@ static const int kMaxPipe = 3;
     if (pastBestScore < self.score)
         [self setHightScore:self.score];
     
-    [[AppController sharedAppDelegate] showAds];
-    
     [_result setScore:self.score best:pastBestScore];
     [_result runAction];
 }

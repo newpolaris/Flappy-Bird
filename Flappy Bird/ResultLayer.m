@@ -20,7 +20,7 @@
     self = [super init];
     if (!self) return nil;
     
-    durationLabel = 0.8;
+    durationLabel = 0.5;
     durationBoard = 0.7;
     
     winSize = [[CCDirector sharedDirector] winSize];
@@ -105,9 +105,12 @@
     self.visible = true;
     
     // 떨어지는 시간까지 딜레이
-    CCDelayTime *delay = [CCDelayTime actionWithDuration:1.0f];
+    CCDelayTime *delay = [CCDelayTime actionWithDuration:0.7f];
     
     CCCallBlock *fadeInGameOver = [CCCallBlock actionWithBlock:^{
+        // 이떄 부터 touch로 스킵 가능하게!
+        [self touchBegin];
+        
         gameOverLabel.visible = true;
         CCFadeIn *fadeIn = [CCFadeIn actionWithDuration:durationLabel];
         [gameOverLabel runAction:fadeIn];
@@ -116,6 +119,7 @@
     CCDelayTime *waitGameOver = [CCDelayTime actionWithDuration:durationLabel];
     
     CCCallBlock *showBoard = [CCCallBlock actionWithBlock:^{
+        
         CGPoint startPos = ccp(0, +winSize.height);
         CGPoint position = scoreBoard.position;
         position.y -= winSize.height;
@@ -142,6 +146,10 @@
         menu.visible = true;
     }];
     
+    CCCallBlock *iAdShow = [CCCallBlock actionWithBlock:^{
+        [[AppController sharedAppDelegate] showAds];
+    }];
+    
     CCSequence *seq = [CCSequence actions:
                        delay,
                        fadeInGameOver,
@@ -151,6 +159,7 @@
                        runNumberAnimation,
                        waitNumberAnimation,
                        showMenu,
+                       iAdShow,
                        nil];
     
     // 액션 실행
@@ -162,6 +171,29 @@
     scoreBoard.score = score;
     scoreBoard.bestScore = pastBestScore;
     [scoreBoard bestScoreRenew:pastBestScore];
+}
+
+- (BOOL)ccTouchBegan:(UITouch *)touch withEvent:(UIEvent *)event
+{
+    [self stopAllActions];
+    self.visible = true;
+    gameOverLabel.visible = true;
+    scoreBoard.visible = true;
+    [scoreBoard showLastResult];
+    menu.position = ccp(winSize.width/2, _groundHeight * 1.3);
+    menu.visible = true;
+    [[AppController sharedAppDelegate] showAds];
+    
+    [[[CCDirector sharedDirector] touchDispatcher] removeDelegate:self];
+    return YES;
+}
+
+- (void)touchBegin
+{
+    // Set priority smaller than menu item.
+    [[[CCDirector sharedDirector] touchDispatcher] addTargetedDelegate:self
+                                                              priority:-5
+                                                       swallowsTouches:NO];
 }
 
 @end

@@ -197,15 +197,18 @@
 
 -(void) applicationDidEnterBackground:(UIApplication*)application
 {
-    [self hideAds];
     [[NSUserDefaults standardUserDefaults] synchronize];
     
+    [[CCDirector sharedDirector] stopAnimation];
+    
 	if( [navController_ visibleViewController] == director_ )
-		[director_ stopAnimation];
+        [director_ stopAnimation];
 }
 
 -(void) applicationWillEnterForeground:(UIApplication*)application
 {
+	[[CCDirector sharedDirector] startAnimation];
+    
 	if( [navController_ visibleViewController] == director_ )
 		[director_ startAnimation];
 }

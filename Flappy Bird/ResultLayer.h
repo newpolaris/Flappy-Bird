@@ -28,6 +28,7 @@
 @property (nonatomic, weak) GameLayer *gameLayer;
 
 -(void)runAction;
+-(void)touchBegin;
 -(void)setScore:(int)score best:(int)bestScore;
 
 @end

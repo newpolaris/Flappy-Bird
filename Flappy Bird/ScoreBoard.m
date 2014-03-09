@@ -73,15 +73,9 @@
     [self scoreRenew:(int)currentScore];
 }
 
-- (void)startAnimation
+-(CCCallBlock*)getLastResult
 {
-    CCCallBlock *numAnimationStart = [CCCallBlock actionWithBlock:^{
-        [self schedule:@selector(updateNumberAnimation:)];
-    }];
-    
-    CCDelayTime *numberAnimationDelay = [CCDelayTime actionWithDuration:numberAnimationDuring];
-
-    CCCallBlock *last = [CCCallBlock actionWithBlock:^{
+    return [CCCallBlock actionWithBlock:^{
         [self unschedule:@selector(updateNumberAnimation:)];
         [self scoreRenew:self.score];
 
@@ -107,14 +101,29 @@
             sprite.visible = true;
         }
     }];
+}
+
+- (void)startAnimation
+{
+    CCCallBlock *numAnimationStart = [CCCallBlock actionWithBlock:^{
+        [self schedule:@selector(updateNumberAnimation:)];
+    }];
+    
+    CCDelayTime *numberAnimationDelay = [CCDelayTime actionWithDuration:numberAnimationDuring];
+
     
     CCSequence *seq = [CCSequence actions:
                        numAnimationStart,
                        numberAnimationDelay,
-                       last,
+                       [self getLastResult],
                        nil];
     
     [self runAction:seq];
+}
+
+- (void)showLastResult
+{
+    [self runAction:[self getLastResult]];
 }
 
 - (void)bestScoreRenew:(int)score
