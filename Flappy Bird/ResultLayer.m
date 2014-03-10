@@ -62,8 +62,8 @@
     
     menuItemOk.scale = gScale;
     
-    CCSprite *menuShare= [CCSprite spriteWithSpriteFrameName:@"score.png"];
-    CCSprite *menuShareSelected = [CCSprite spriteWithSpriteFrameName:@"score.png"];
+    CCSprite *menuShare= [CCSprite spriteWithSpriteFrameName:@"share.png"];
+    CCSprite *menuShareSelected = [CCSprite spriteWithSpriteFrameName:@"share.png"];
     menuShareSelected.color = ccc3(128, 128, 128);
 
     CCMenuItem *menuItemShare = [CCMenuItemImage
